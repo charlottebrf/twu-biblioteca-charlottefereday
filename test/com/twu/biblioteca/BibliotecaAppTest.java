@@ -1,3 +1,5 @@
+package com.twu.biblioteca;
+
 import com.twu.biblioteca.BibliotecaApp;
 import org.junit.Test;
 
@@ -8,7 +10,7 @@ public class BibliotecaAppTest {
     public void welcomeMessage() {
         BibliotecaApp biblioteca = new BibliotecaApp();
         String welcome = "Welcome to the new Biblioteca App: we are open for business!";
-        assertEquals(welcome, biblioteca.getWelcome());
+        assertEquals(welcome, biblioteca.printWelcome());
     }
 }
 
