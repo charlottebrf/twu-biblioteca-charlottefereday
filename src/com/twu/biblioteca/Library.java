@@ -13,7 +13,17 @@ public class Library {
     }
 
     public HashMap<String, ArrayList> getBooks() {
-        return this.setBooks();
+        HashMap<String, ArrayList> books = this.setBooks();
+        return books;
     }
+
+    public String getBookTitles(HashMap<String, ArrayList> books) {
+        String titles = "";
+        for (HashMap<String, ArrayList> book : books) {
+            return titles = books.getKey(book);
+        }
+        return titles;
+    }
+
 
 }
