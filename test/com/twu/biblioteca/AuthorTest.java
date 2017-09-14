@@ -9,6 +9,6 @@ public class AuthorTest {
     @Test
     public void createsAnAuthorObject() {
         Author rowling = new Author("J.K.Rowlng");
-        assertEquals(rowling, rowling.getAuthor(rowling));
+        assertEquals("J.K.Rowlng", rowling.getAuthor());
     }
 }
