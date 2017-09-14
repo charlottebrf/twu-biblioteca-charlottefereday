@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class BibliotecaAppTest {
     // TODO: Move these into a separate testing class/ library
     String welcome = "Welcome to the new Biblioteca App: we are open for business!";
-    Printer printer = new Printer(welcome);
+    Printer printer = new Printer();
 
     BookTitle firstHP = new BookTitle("Harry Potter and the Philosopher's Stone");
     Author rowling1 = new Author("J.K.Rowlng");
@@ -59,8 +59,7 @@ public class BibliotecaAppTest {
         assertEquals(welcome, biblioteca.printWelcome());
     }
 
-    @Test
-    public void displaysListOfBooks() {
+    public void helperMethodAddsBooksToLibrary() {
         lib.addBooks(hP1);
         lib.addBooks(hP2);
         lib.addBooks(hP3);
@@ -68,7 +67,12 @@ public class BibliotecaAppTest {
         lib.addBooks(hP5);
         lib.addBooks(hP6);
         lib.addBooks(hP7);
+    }
 
+
+    @Test
+    public void displaysListOfBooks() {
+        this.helperMethodAddsBooksToLibrary();
         LinkedList<String> listOfTitles = new LinkedList<String>();
         String title1 = hP1.getBookTitle();
         listOfTitles.add(title1);
@@ -84,6 +88,7 @@ public class BibliotecaAppTest {
         listOfTitles.add(title6);
         String title7 = hP7.getBookTitle();
         listOfTitles.add(title7);
+
 //        Todo: return these as a sorted collection, e.g. Collections.sort(listOfTitles);
         //test won't pass as in a different order
         assertEquals(listOfTitles, biblioteca.listLibraryBookTitles());
