@@ -74,6 +74,6 @@ public class LibraryTest {
         Integer year1 = year.getYear();
         bookYear.add(year1);
 
-        assertEquals("|" + lib.getBookTitles() + "|" + lib.getBookAuthors() + "|" + lib.getBookYears() + "|", lib.getBookDetails());
+        assertEquals("|" + firstHP.getTitle() + "|" + rowling.getAuthor() + "|" + year.getYear() + "|", lib.getBookDetails());
     }
 }

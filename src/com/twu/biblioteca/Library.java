@@ -7,6 +7,7 @@ import java.util.Collections;
 import static java.util.stream.Collectors.toList;
 
 public class Library {
+//    Todo: change String to be BookTitle type & refactor across other classes
     private Map<String, Book> booksInLibrary;
 
     public Library() {
@@ -37,7 +38,11 @@ public class Library {
     }
 
     public String getBookDetails() {
-        return String.format("|" + this.getBookTitles() + "|" + this.getBookAuthors() + "|" + this.getBookYears() + "|");
-    }
+        String bookDetails = "";
+        for(Book value : booksInLibrary.values()) {
+            return bookDetails += "|" + value.getBookTitle() + "|" + value.getBookAuthor() + "|" + value.getBookYear() + "|";
+        }
+        return bookDetails;
+        }
 
 }
