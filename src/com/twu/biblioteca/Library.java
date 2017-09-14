@@ -40,7 +40,7 @@ public class Library {
     public String getBookDetails() {
         String bookDetails = "";
         for(Book value : booksInLibrary.values()) {
-            return bookDetails += "|" + value.getBookTitle() + "|" + value.getBookAuthor() + "|" + value.getBookYear() + "|" + "\n";
+             bookDetails += "|" + value.getBookTitle() + "|" + value.getBookAuthor() + "|" + value.getBookYear() + "|" + "\n";
         }
         return bookDetails;
         }

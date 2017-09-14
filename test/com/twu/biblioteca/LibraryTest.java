@@ -65,9 +65,9 @@ public class LibraryTest {
 
     @Test
     public void getsAllBookInformationFromTheLibrary() {
-        lib.addBooks(harryPotter1);
         lib.addBooks(hP2);
+        lib.addBooks(harryPotter1);
 
-        assertEquals("|" + firstHP.getTitle() + "|" + rowling.getAuthor() + "|" + year.getYear() + "|" + "\n" + "|" + secondHP.getTitle() + "|" + rowling2.getAuthor() + "|" + year2.getYear() + "|" + "\n" , lib.getBookDetails());
+        assertEquals("|" + secondHP.getTitle() + "|" + rowling2.getAuthor() + "|" + year2.getYear() + "|" + "\n" + "|" + firstHP.getTitle() + "|" + rowling.getAuthor() + "|" + year.getYear() + "|" + "\n", lib.getBookDetails());
     }
 }
