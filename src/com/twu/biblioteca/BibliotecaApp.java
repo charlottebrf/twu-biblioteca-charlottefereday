@@ -3,6 +3,8 @@ import java.util.LinkedList;
 import java.util.Collections;
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 public class BibliotecaApp {
     private final Printer printer;
     private final Library library;
@@ -20,4 +22,18 @@ public class BibliotecaApp {
         return library.getBookTitles();
     }
 
+    public List<String> listLibraryBookAuthors() {
+        return library.getBookAuthors();
+    }
+
+    public List<Integer> listLibraryBookYears() {
+        return library.getBookYears();
+    }
+
+    public String listFullLibraryBooks() {
+        return library.getBookDetails();
+    }
 }
+
+
+

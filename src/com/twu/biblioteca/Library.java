@@ -36,4 +36,8 @@ public class Library {
         return booksInLibrary.values().stream().map(book -> book.getBookYear()).collect(toList());
     }
 
+    public String getBookDetails() {
+        return String.format("|" + this.getBookTitles() + "|" + this.getBookAuthors() + "|" + this.getBookYears() + "|");
+    }
+
 }

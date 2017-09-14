@@ -93,6 +93,63 @@ public class BibliotecaAppTest {
         //test won't pass as in a different order
         assertEquals(listOfTitles, biblioteca.listLibraryBookTitles());
     }
+
+    @Test
+    public void displaysFullDetailsOfBooks() {
+        this.helperMethodAddsBooksToLibrary();
+
+        this.helperMethodAddsBooksToLibrary();
+        LinkedList<String> listOfTitles = new LinkedList<String>();
+        String title1 = hP1.getBookTitle();
+        listOfTitles.add(title1);
+        String title2 = hP2.getBookTitle();
+        listOfTitles.add(title2);
+        String title3 = hP3.getBookTitle();
+        listOfTitles.add(title3);
+        String title4 = hP4.getBookTitle();
+        listOfTitles.add(title4);
+        String title5 = hP5.getBookTitle();
+        listOfTitles.add(title5);
+        String title6 = hP6.getBookTitle();
+        listOfTitles.add(title6);
+        String title7 = hP7.getBookTitle();
+        listOfTitles.add(title7);
+
+        LinkedList<String> listOfAuthors = new LinkedList<String>();
+        String author1 = hP1.getBookAuthor();
+        listOfAuthors.add(author1);
+        String author2 = hP2.getBookAuthor();
+        listOfAuthors.add(author2);
+        String author3 = hP3.getBookAuthor();
+        listOfAuthors.add(author3);
+        String author4 = hP4.getBookAuthor();
+        listOfAuthors.add(author4);
+        String author5 = hP5.getBookAuthor();
+        listOfAuthors.add(author5);
+        String author6 = hP6.getBookAuthor();
+        listOfAuthors.add(author6);
+        String author7 = hP7.getBookAuthor();
+        listOfAuthors.add(author7);
+
+
+        LinkedList<Integer> listOfYears = new LinkedList<Integer>();
+        Integer year1 = hP1.getBookYear();
+        listOfYears.add(year1);
+        Integer year2 = hP2.getBookYear();
+        listOfYears.add(year2);
+        Integer year3 = hP3.getBookYear();
+        listOfYears.add(year3);
+        Integer year4 = hP4.getBookYear();
+        listOfYears.add(year4);
+        Integer year5 = hP5.getBookYear();
+        listOfYears.add(year5);
+        Integer year6 = hP6.getBookYear();
+        listOfYears.add(year6);
+        Integer year7 = hP7.getBookYear();
+        listOfYears.add(year7);
+
+        assertEquals(  "|" + biblioteca.listLibraryBookTitles() + "|" + biblioteca.listLibraryBookAuthors() + "|" + biblioteca.listLibraryBookYears() + "|", biblioteca.listFullLibraryBooks());
+    }
 }
 
 
