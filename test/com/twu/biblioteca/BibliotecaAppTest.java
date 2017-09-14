@@ -1,17 +1,23 @@
 package com.twu.biblioteca;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import com.twu.biblioteca.BibliotecaApp;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
 import java.util.LinkedList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
 
 public class BibliotecaAppTest {
-    // TODO: Refactor these very long building object methods into a separate testing class/ library
+//     TODO: Refactor these very long building object methods into a separate testing class/ library
+    ByteArrayInputStream choice = new ByteArrayInputStream("1".getBytes());
+    Scanner userInput = new Scanner(choice);
+
     String welcome = "Welcome to the new Biblioteca App: we are open for business!";
     String list = "List Books";
     String menu1 = "Main Menu";
@@ -74,7 +80,6 @@ public class BibliotecaAppTest {
         lib.addBooks(hP7);
     }
 
-
     @Test
     public void displaysListOfBooks() {
         this.helperMethodAddsBooksToLibrary();
@@ -117,6 +122,20 @@ public class BibliotecaAppTest {
     @Test
     public void displaysMainMenu() {
         assertEquals(displayMenu, biblioteca.printMainMenu());
+    }
+
+    @Test
+    public void delegatesInteractiveMenu() {
+        this.helperMethodAddsBooksToLibrary();
+
+        assertEquals(   "|" + hP7.getBookTitle() + "|" + hP7.getBookAuthor() + "|" + hP7.getBookYear() + "|" + "\n" +
+                        "|" + hP2.getBookTitle() + "|" + hP2.getBookAuthor() + "|" + hP2.getBookYear() + "|" + "\n" +
+                        "|" + hP3.getBookTitle() + "|" + hP3.getBookAuthor() + "|" + hP3.getBookYear() + "|" + "\n" +
+                        "|" + hP6.getBookTitle() + "|" + hP6.getBookAuthor() + "|" + hP6.getBookYear() + "|" + "\n" +
+                        "|" + hP1.getBookTitle() + "|" + hP1.getBookAuthor() + "|" + hP1.getBookYear() + "|" + "\n" +
+                        "|" + hP4.getBookTitle() + "|" + hP4.getBookAuthor() + "|" + hP4.getBookYear() + "|" + "\n" +
+                        "|" + hP5.getBookTitle() + "|" + hP5.getBookAuthor() + "|" + hP5.getBookYear() + "|" + "\n",
+                        biblioteca.interactiveMenu(userInput));
     }
 
 }

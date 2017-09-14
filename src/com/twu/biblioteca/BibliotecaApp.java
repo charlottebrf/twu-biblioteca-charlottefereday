@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 import java.util.LinkedList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 import static java.util.stream.Collectors.toList;
 
@@ -9,6 +10,7 @@ public class BibliotecaApp {
     private final Printer printer;
     private final Library library;
     private final Menu menu;
+    Scanner userInput = new Scanner(System.in);
 
     public BibliotecaApp(Printer printer, Library library, Menu menu) {
         this.printer = printer;
@@ -39,6 +41,11 @@ public class BibliotecaApp {
 
     public String listFullLibraryBooks() {
         return library.getBookDetails();
+    }
+
+    public String interactiveMenu(Scanner userInput) {
+        this.printMainMenu();
+        return menu.process(userInput.next());
     }
 
 }
