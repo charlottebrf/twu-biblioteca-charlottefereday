@@ -12,6 +12,12 @@ public class LibraryTest {
     Author rowling = new Author("J.K.Rowlng");
     Year year = new Year(1997);
     Book harryPotter1 = new Book(firstHP, rowling, year);
+
+    BookTitle secondHP = new BookTitle("Harry Potter and the Chamber of Secrets");
+    Author rowling2 = new Author("J.K.Rowlng");
+    Year year2 = new Year(1998);
+    Book hP2 = new Book(secondHP, rowling2, year2);
+
     Library lib = new Library();
 
     @Before
@@ -60,20 +66,8 @@ public class LibraryTest {
     @Test
     public void getsAllBookInformationFromTheLibrary() {
         lib.addBooks(harryPotter1);
-        LinkedList<String> title = new LinkedList<String>();
-        String hpTitle = firstHP.getTitle();
-        title.add(hpTitle);
+        lib.addBooks(hP2);
 
-        lib.addBooks(harryPotter1);
-        LinkedList<String> author = new LinkedList<String>();
-        String authorName = rowling.getAuthor();
-        author.add(authorName);
-
-        lib.addBooks(harryPotter1);
-        LinkedList<Integer> bookYear = new LinkedList<Integer>();
-        Integer year1 = year.getYear();
-        bookYear.add(year1);
-
-        assertEquals("|" + firstHP.getTitle() + "|" + rowling.getAuthor() + "|" + year.getYear() + "|", lib.getBookDetails());
+        assertEquals("|" + firstHP.getTitle() + "|" + rowling.getAuthor() + "|" + year.getYear() + "|" + "\n" + "|" + secondHP.getTitle() + "|" + rowling2.getAuthor() + "|" + year2.getYear() + "|" + "\n" , lib.getBookDetails());
     }
 }
