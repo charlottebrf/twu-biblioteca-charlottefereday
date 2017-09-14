@@ -14,6 +14,7 @@ public class BibliotecaApp {
         this.library = library;
     }
 
+    //Todo: menu should be it's own class which can get user input - have a case statement to give the user options 
     public String printMainMenu() {
         return printer.getmainMenu();
     }
