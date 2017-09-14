@@ -11,8 +11,11 @@ import java.util.stream.Collectors;
 import static org.junit.Assert.assertEquals;
 
 public class BibliotecaAppTest {
-    // TODO: Move these into a separate testing class/ library
+    // TODO: Refactor these very long building object methods into a separate testing class/ library
     String welcome = "Welcome to the new Biblioteca App: we are open for business!";
+    String list = "List Books";
+    String menu = "Main Menu";
+    String displayMenu = "****" + menu + "****" + "\n\n" + list;
     Printer printer = new Printer();
 
     BookTitle firstHP = new BookTitle("Harry Potter and the Philosopher's Stone");
@@ -150,6 +153,12 @@ public class BibliotecaAppTest {
 
         assertEquals(  "|" + biblioteca.listLibraryBookTitles() + "|" + biblioteca.listLibraryBookAuthors() + "|" + biblioteca.listLibraryBookYears() + "|", biblioteca.listFullLibraryBooks());
     }
+
+    @Test
+    public void displaysMainMenu() {
+        assertEquals(displayMenu, biblioteca.printMainMenu());
+    }
+
 }
 
 

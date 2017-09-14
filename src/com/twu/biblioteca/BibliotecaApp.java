@@ -14,6 +14,10 @@ public class BibliotecaApp {
         this.library = library;
     }
 
+    public String printMainMenu() {
+        return printer.getmainMenu();
+    }
+
     public String printWelcome() {
         return printer.getWelcome();
     }
@@ -31,8 +35,13 @@ public class BibliotecaApp {
     }
 
     public String listFullLibraryBooks() {
-        return library.getBookDetails();
+        String bookDetails = "";
+        for(Book value : library.getBooks()) {
+            return bookDetails += "|" + value.getBookTitle() + "|" + value.getBookAuthor() + "|" + value.getBookYear() + "|";
+        }
+        return bookDetails;
     }
+
 }
 
 
