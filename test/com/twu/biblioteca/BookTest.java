@@ -9,11 +9,12 @@ public class BookTest {
 
     BookTitle firstHP = new BookTitle("Harry Potter and the Philosopher's Stone");
     Author rowling = new Author("J.K.Rowlng");
-    Book harryPotter1 = new Book(firstHP, rowling, 1997);
+    Year year = new Year(1997);
+    Book harryPotter1 = new Book(firstHP, rowling, year);
 
     @Before
     public void setUp() {
-        Book harryPotter1 = new Book(firstHP, rowling, 1997);
+        Book harryPotter1 = new Book(firstHP, rowling, year);
         BookTitle firstHP = new BookTitle("Harry Potter and the Philosopher's Stone");
         Author rowling = new Author("J.K.Rowlng");
     }
@@ -33,4 +34,8 @@ public class BookTest {
         assertEquals("J.K.Rowlng", harryPotter1.getBookAuthor());
     }
 
+    @Test
+    public void getsYear() {
+        assertEquals(1997, harryPotter1.getBookYear());
+    }
 }
