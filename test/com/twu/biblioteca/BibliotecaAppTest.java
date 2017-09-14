@@ -83,7 +83,7 @@ public class BibliotecaAppTest {
     @Test
     public void displaysListOfBooks() {
         this.helperMethodAddsBooksToLibrary();
-        LinkedList<String> listOfTitles = new LinkedList<String>();
+        List<String> listOfTitles = new LinkedList<String>();
         String title1 = hP1.getBookTitle();
         listOfTitles.add(title1);
         String title2 = hP2.getBookTitle();
@@ -98,6 +98,7 @@ public class BibliotecaAppTest {
         listOfTitles.add(title6);
         String title7 = hP7.getBookTitle();
         listOfTitles.add(title7);
+        Collections.sort(listOfTitles);
 
 //        Todo: return these as a sorted collection, e.g. Collections.sort(listOfTitles);
         //test won't pass as in a different order

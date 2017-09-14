@@ -3,7 +3,9 @@ import java.util.LinkedList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
+import static java.util.Collections.sort;
 import static java.util.stream.Collectors.toList;
 
 public class BibliotecaApp {
@@ -17,8 +19,7 @@ public class BibliotecaApp {
         this.library = library;
         this.menu = menu;
     }
-
-    //Todo: menu should be it's own class which can get user input - have a case statement to give the user options
+    
     public String printMainMenu() {
         return printer.getMenuHeader() + printer.getmainMenu();
     }
@@ -28,7 +29,9 @@ public class BibliotecaApp {
     }
 
     public List<String> listLibraryBookTitles() {
-        return library.getBookTitles();
+        List<String> bookTitles = library.getBookTitles();
+        sort(bookTitles);
+        return bookTitles;
     }
 
     public List<String> listLibraryBookAuthors() {
