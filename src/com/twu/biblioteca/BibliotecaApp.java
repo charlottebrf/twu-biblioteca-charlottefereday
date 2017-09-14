@@ -36,11 +36,7 @@ public class BibliotecaApp {
     }
 
     public String listFullLibraryBooks() {
-        String bookDetails = "";
-        for(Book value : library.getBooks()) {
-            return bookDetails += "|" + value.getBookTitle() + "|" + value.getBookAuthor() + "|" + value.getBookYear() + "|";
-        }
-        return bookDetails;
+        return library.getBookDetails();
     }
 
 }
