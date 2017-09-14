@@ -16,6 +16,6 @@ public class PrinterTest {
 
     @Test
     public void mainMenu() {
-        assertEquals("****" + menu + "****" + "\n\n" + list, printer.mainMenu());
+        assertEquals("****" + menu + "****" + "\n\n" + list, printer.getmainMenu());
     }
 }
