@@ -4,10 +4,11 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class PrinterTest {
+    String welcome = "Welcome to the new Biblioteca App: we are open for business!";
+    Printer printer = new Printer(welcome);
+
     @Test
     public void welcomeMessage() {
-        Printer display = new Printer();
-        String welcome = "Welcome to the new Biblioteca App: we are open for business!";
-        assertEquals(welcome, display.getWelcome());
+        assertEquals(welcome, printer.getWelcome());
     }
 }
