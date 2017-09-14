@@ -1,29 +1,26 @@
 package com.twu.biblioteca;
+
 import java.util.*;
 
+import static java.util.stream.Collectors.toList;
+
 public class Library {
+    private Map<String, Book> booksInLibrary;
 
-    public HashMap<String, ArrayList> setBooks() {
-        HashMap<String, ArrayList> booksInLibrary = new  HashMap<String, ArrayList>();
-        ArrayList<String> authorAndPublicationYear = new ArrayList<String>();
-        authorAndPublicationYear.add("J.K.Rowling");
-        authorAndPublicationYear.add("1997");
-        booksInLibrary.put("Harry Potter and the Philosopher's Stone", authorAndPublicationYear);
-        return booksInLibrary;
+    public Library() {
+        booksInLibrary = new HashMap<String, Book>();
     }
 
-    public HashMap<String, ArrayList> getBooks() {
-        HashMap<String, ArrayList> books = this.setBooks();
-        return books;
+    public void addBooks(Book book) {
+        booksInLibrary.put(book.getBookTitle(), book);
     }
 
-    public String getBookTitles(HashMap<String, ArrayList> books) {
-        String titles = "";
-        for (HashMap<String, ArrayList> book : books) {
-            return titles = books.getKey(book);
-        }
-        return titles;
+    public List<Book> getBooks() {
+        return new LinkedList<>(booksInLibrary.values());
     }
 
+    public List<String> getBookTitles() {
+        return booksInLibrary.values().stream().map(book -> book.getBookTitle()).collect(toList());
+    }
 
 }
