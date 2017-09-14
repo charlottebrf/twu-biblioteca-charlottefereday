@@ -26,4 +26,9 @@ public class Library {
         return booksInLibrary.values().stream().map(book -> book.getBookTitle()).collect(toList());
     }
 
+    public List<String> getBookAuthors() {
+//        Todo:  Figure out how to sort list, e.g. Collections.sort(listOfTitles);
+        return booksInLibrary.values().stream().map(book -> book.getBookAuthor()).collect(toList());
+    }
+
 }

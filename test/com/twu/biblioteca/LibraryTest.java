@@ -34,8 +34,17 @@ public class LibraryTest {
     public void getsABookTitleFromTheLibrary() {
         lib.addBooks(harryPotter1);
         LinkedList<String> title = new LinkedList<String>();
-        String authorName = firstHP.getTitle();
-        title.add(authorName);
+        String hpTitle = firstHP.getTitle();
+        title.add(hpTitle);
         assertEquals(title, lib.getBookTitles());
+    }
+
+    @Test
+    public void getsABookAuthorFromTheLibrary() {
+        lib.addBooks(harryPotter1);
+        LinkedList<String> author = new LinkedList<String>();
+        String authorName = rowling.getAuthor();
+        author.add(authorName);
+        assertEquals(author, lib.getBookAuthors());
     }
 }
