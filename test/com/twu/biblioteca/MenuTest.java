@@ -19,7 +19,7 @@ public class MenuTest {
     Book hP2 = new Book(secondHP, rowling2, year2);
 
     @Test
-    public void hasAnInteractiveMenu() {
+    public void canProcessAStringToSelectMenuOption() {
         library.addBooks(hP2);
         library.addBooks(harryPotter1);
 
