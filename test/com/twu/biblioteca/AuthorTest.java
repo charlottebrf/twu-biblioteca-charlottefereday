@@ -5,10 +5,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class AuthorTest {
+    Author rowling = new Author("J.K.Rowlng");
 
     @Test
-    public void createsAnAuthorObject() {
-        Author rowling = new Author("J.K.Rowlng");
+    public void getsAuthorName() {
         assertEquals("J.K.Rowlng", rowling.getAuthor());
     }
 }
