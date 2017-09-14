@@ -7,7 +7,7 @@ public class BookTitle {
         this.title = title;
     }
 
-    public BookTitle getTitle(BookTitle titleObject) {
-        return titleObject;
+    public String getTitle() {
+        return this.title;
     }
 }
