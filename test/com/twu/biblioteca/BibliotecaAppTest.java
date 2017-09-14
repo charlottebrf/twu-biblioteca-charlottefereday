@@ -14,9 +14,10 @@ public class BibliotecaAppTest {
     // TODO: Refactor these very long building object methods into a separate testing class/ library
     String welcome = "Welcome to the new Biblioteca App: we are open for business!";
     String list = "List Books";
-    String menu = "Main Menu";
-    String displayMenu = "****" + menu + "****" + "\n\n" + list;
+    String menu1 = "Main Menu";
+    String displayMenu = "****" + menu1 + "****" + "\n\n" + list;
     Printer printer = new Printer();
+
 
     BookTitle firstHP = new BookTitle("Harry Potter and the Philosopher's Stone");
     Author rowling1 = new Author("J.K.Rowlng");
@@ -54,7 +55,8 @@ public class BibliotecaAppTest {
     Book hP7 = new Book(seventhHP, rowling7, year7);
 
     Library lib = new Library();
-    BibliotecaApp biblioteca = new BibliotecaApp(printer, lib);
+    Menu menu = new Menu(lib);
+    BibliotecaApp biblioteca = new BibliotecaApp(printer, lib, menu);
 
 
     @Test

@@ -8,15 +8,17 @@ import static java.util.stream.Collectors.toList;
 public class BibliotecaApp {
     private final Printer printer;
     private final Library library;
+    private final Menu menu;
 
-    public BibliotecaApp(Printer printer, Library library) {
+    public BibliotecaApp(Printer printer, Library library, Menu menu) {
         this.printer = printer;
         this.library = library;
+        this.menu = menu;
     }
 
     //Todo: menu should be it's own class which can get user input - have a case statement to give the user options
     public String printMainMenu() {
-        return printer.getmainMenu();
+        return printer.getMenuHeader() + printer.getmainMenu();
     }
 
     public String printWelcome() {
