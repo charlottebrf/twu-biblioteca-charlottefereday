@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 public class PrinterTest {
     Printer printer = new Printer();
     String welcome = "Welcome to the new Biblioteca App: we are open for business!";
-    String list = "List Books";
+    String list = "1. List Books";
     String menu = "Main Menu";
 
     @Test
