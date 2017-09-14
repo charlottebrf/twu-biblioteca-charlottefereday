@@ -47,4 +47,13 @@ public class LibraryTest {
         author.add(authorName);
         assertEquals(author, lib.getBookAuthors());
     }
+
+    @Test
+    public void getsABookYearFromTheLibrary() {
+        lib.addBooks(harryPotter1);
+        LinkedList<Integer> bookYear = new LinkedList<Integer>();
+        Integer year1 = year.getYear();
+        bookYear.add(year1);
+        assertEquals(bookYear, lib.getBookYears());
+    }
 }

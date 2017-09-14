@@ -31,4 +31,9 @@ public class Library {
         return booksInLibrary.values().stream().map(book -> book.getBookAuthor()).collect(toList());
     }
 
+    public List<Integer> getBookYears() {
+//        Todo:  Figure out how to sort list, e.g. Collections.sort(listOfTitles);
+        return booksInLibrary.values().stream().map(book -> book.getBookYear()).collect(toList());
+    }
+
 }
