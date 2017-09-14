@@ -14,7 +14,6 @@ public class LibraryTest {
     Book harryPotter1 = new Book(firstHP, rowling, year);
     Library lib = new Library();
 
-
     @Before
     public void setUp() {
         Book harryPotter1 = new Book(firstHP, rowling, year);
@@ -31,11 +30,12 @@ public class LibraryTest {
         assertEquals(list, lib.getBooks());
     }
 
-//    @Test
-//    public void getsABookFromTheLibrary() {
-//        Library lib = new Library();
-//        lib.addBooks(new Book("Harry Potter and the Philosopher's Stone", "J.K.Rowlng", 1997));
-//        String bookTitle = "Harry Potter and the Philosopher's Stone";
-//        assertEquals(bookTitle, lib.getBookTitles());
-//    }
+    @Test
+    public void getsABookTitleFromTheLibrary() {
+        lib.addBooks(harryPotter1);
+        LinkedList<String> title = new LinkedList<String>();
+        String authorName = firstHP.getTitle();
+        title.add(authorName);
+        assertEquals(title, lib.getBookTitles());
+    }
 }
