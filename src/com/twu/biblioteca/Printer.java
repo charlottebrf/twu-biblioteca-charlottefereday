@@ -8,5 +8,7 @@ public class Printer {
 
     public String getWelcome() { return this.welcome; }
 
-    public String getmainMenu() { return "****" + this.menu + "****" + "\n\n" + this.list; }
+    public String getmainMenu() { return this.list; }
+
+    public String getMenuHeader() { return "****" + this.menu + "****" + "\n\n"; }
 }

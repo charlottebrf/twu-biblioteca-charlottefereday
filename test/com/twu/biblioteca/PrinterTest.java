@@ -4,8 +4,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class PrinterTest {
-    String welcome = "Welcome to the new Biblioteca App: we are open for business!";
     Printer printer = new Printer();
+    String welcome = "Welcome to the new Biblioteca App: we are open for business!";
     String list = "List Books";
     String menu = "Main Menu";
 
@@ -16,6 +16,11 @@ public class PrinterTest {
 
     @Test
     public void mainMenu() {
-        assertEquals("****" + menu + "****" + "\n\n" + list, printer.getmainMenu());
+        assertEquals(list, printer.getmainMenu());
+    }
+
+    @Test
+    public void printMenuHeader() {
+        assertEquals("****" + this.menu + "****" + "\n\n", printer.getMenuHeader());
     }
 }
