@@ -66,4 +66,17 @@ public class LibraryTest {
                                "|" + new BookTitle("Harry Potter and the Philosopher's Stone").getTitle() + "|" + new Author("J.K.Rowlng").getAuthor() + "|" + new Year(1997).getYear() + "|" + "\n",
                                 lib.getBookDetails());
     }
+
+    @Test
+    public void updatesListOfBooksOnceABookHasBeenCheckedOut() throws Exception {
+        lib.addBooks(harryPotter1);
+        lib.addBooks(hP2);
+        lib.removeBooks(hP2);
+
+        LinkedList<String> title = new LinkedList<String>();
+        String hpTitle = new BookTitle("Harry Potter and the Philosopher's Stone").getTitle();
+        title.add(hpTitle);
+
+        assertEquals(title, lib.getBookTitles());
+    }
 }

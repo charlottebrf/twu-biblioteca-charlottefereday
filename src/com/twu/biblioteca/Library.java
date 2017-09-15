@@ -19,6 +19,8 @@ public class Library {
         booksInLibrary.put(book.getBookTitle(), book);
     }
 
+    public void removeBooks(Book book) { booksInLibrary.remove(book.getBookTitle());}
+
     public List<Book> getBooks() {
         return new LinkedList<>(booksInLibrary.values());
     }
