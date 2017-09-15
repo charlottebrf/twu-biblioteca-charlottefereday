@@ -36,7 +36,7 @@ public class MenuTest {
 
     @Test
     public void givesAQuitOption() {
-        assertEquals("You have selected quit: exiting the program now", menu.process("3"));
+        assertEquals("", menu.process("3"));
     }
 
     @Test
