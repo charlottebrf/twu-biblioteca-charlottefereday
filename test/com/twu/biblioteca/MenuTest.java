@@ -40,7 +40,7 @@ public class MenuTest {
     }
 
     @Test
-    public void checkoutABookOption() throws Exception {
+    public void checkoutABookOption() {
         assertEquals("You have chosen to check out a book, redirecting you now", menu.process("2"));
     }
 }
