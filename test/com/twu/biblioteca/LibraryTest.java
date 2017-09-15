@@ -72,7 +72,7 @@ public class LibraryTest {
     public void returnsABookObjectWhenGivenABookTitle() {
         lib.addBooks(harryPotter1);
 
-        assertEquals(harryPotter1, lib.findBookFromTitle(userInput));
+        assertEquals(harryPotter1.getBookTitle(), lib.findBookFromTitle(userInput));
     }
 
     @Test

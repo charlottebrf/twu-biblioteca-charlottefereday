@@ -35,7 +35,8 @@ public class Library {
 
     public Book findBookFromTitle(Scanner userInput) {
         String returnedBook = userInput.next();
-        return booksInLibrary.get(returnedBook);
+        Book retrievedBook = booksInLibrary.get(returnedBook);
+        return retrievedBook;
     }
 
 //    Todo: Refactor to move the printing of titles away from the library higher up the stack to the printer
