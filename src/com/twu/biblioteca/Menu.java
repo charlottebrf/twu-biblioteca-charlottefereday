@@ -13,9 +13,11 @@ public class Menu {
         switch (selection) {
             case "1":  menuChoice = this.library.getBookDetails();
                 break;
+            case "2": menuChoice = this.checkOut();
+                break;
             default: menuChoice = this.checkIsValidOption(selection);
-            break;
-            case "2": return this.exitProgram();
+                break;
+            case "3": return this.exitProgram();
         }
         return menuChoice;
     }
@@ -26,6 +28,10 @@ public class Menu {
 
     public String exitProgram() {
         return "You have selected quit: exiting the program now";
+    }
+
+    public String checkOut() {
+     return "You have chosen to check out a book, redirecting you now";
     }
 }
 

@@ -36,6 +36,11 @@ public class MenuTest {
 
     @Test
     public void givesAQuitOption() {
-        assertEquals("You have selected quit: exiting the program now", menu.process("2"));
+        assertEquals("You have selected quit: exiting the program now", menu.process("3"));
+    }
+
+    @Test
+    public void checkoutABookOption() throws Exception {
+        assertEquals("You have chosen to check out a book, redirecting you now", menu.process("2"));
     }
 }
