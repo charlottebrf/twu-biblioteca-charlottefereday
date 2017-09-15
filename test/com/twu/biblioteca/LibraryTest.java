@@ -8,21 +8,15 @@ import static org.junit.Assert.*;
 
 public class LibraryTest {
 
-    BookTitle firstHP = new BookTitle("Harry Potter and the Philosopher's Stone");
-    Author rowling = new Author("J.K.Rowlng");
-    Year year = new Year(1997);
-    Book harryPotter1 = new Book(firstHP, rowling, year);
+    Book harryPotter1 = new Book(new BookTitle("Harry Potter and the Philosopher's Stone"), new Author("J.K.Rowlng"), new Year(1997));
 
-    BookTitle secondHP = new BookTitle("Harry Potter and the Chamber of Secrets");
-    Author rowling2 = new Author("J.K.Rowlng");
-    Year year2 = new Year(1998);
-    Book hP2 = new Book(secondHP, rowling2, year2);
+    Book hP2 = new Book(new BookTitle("Harry Potter and the Chamber of Secrets"), new Author("J.K.Rowlng"), new Year(1998));
 
     Library lib = new Library();
 
     @Before
     public void setUp() {
-        Book harryPotter1 = new Book(firstHP, rowling, year);
+        Book harryPotter1 = new Book(new BookTitle("Harry Potter and the Philosopher's Stone"), new Author("J.K.Rowlng"), new Year(1997));
         BookTitle firstHP = new BookTitle("Harry Potter and the Philosopher's Stone");
         Author rowling = new Author("J.K.Rowlng");
         Library lib = new Library();
@@ -40,7 +34,7 @@ public class LibraryTest {
     public void getsABookTitleFromTheLibrary() {
         lib.addBooks(harryPotter1);
         LinkedList<String> title = new LinkedList<String>();
-        String hpTitle = firstHP.getTitle();
+        String hpTitle = new BookTitle("Harry Potter and the Philosopher's Stone").getTitle();
         title.add(hpTitle);
         assertEquals(title, lib.getBookTitles());
     }
@@ -49,7 +43,7 @@ public class LibraryTest {
     public void getsABookAuthorFromTheLibrary() {
         lib.addBooks(harryPotter1);
         LinkedList<String> author = new LinkedList<String>();
-        String authorName = rowling.getAuthor();
+        String authorName = new Author("J.K.Rowlng").getAuthor();
         author.add(authorName);
         assertEquals(author, lib.getBookAuthors());
     }
@@ -58,7 +52,7 @@ public class LibraryTest {
     public void getsABookYearFromTheLibrary() {
         lib.addBooks(harryPotter1);
         LinkedList<Integer> bookYear = new LinkedList<Integer>();
-        Integer year1 = year.getYear();
+        Integer year1 = new Year(1997).getYear();
         bookYear.add(year1);
         assertEquals(bookYear, lib.getBookYears());
     }
@@ -68,8 +62,8 @@ public class LibraryTest {
         lib.addBooks(hP2);
         lib.addBooks(harryPotter1);
 
-        assertEquals("|" + secondHP.getTitle() + "|" + rowling2.getAuthor() + "|" + year2.getYear() + "|" + "\n" +
-                               "|" + firstHP.getTitle() + "|" + rowling.getAuthor() + "|" + year.getYear() + "|" + "\n",
+        assertEquals("|" + new BookTitle("Harry Potter and the Chamber of Secrets").getTitle() + "|" + new Author("J.K.Rowlng").getAuthor() + "|" + new Year(1998).getYear() + "|" + "\n" +
+                               "|" + new BookTitle("Harry Potter and the Philosopher's Stone").getTitle() + "|" + new Author("J.K.Rowlng").getAuthor() + "|" + new Year(1997).getYear() + "|" + "\n",
                                 lib.getBookDetails());
     }
 }

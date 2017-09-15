@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.LinkedList;
 import java.util.Collections;
 
+import static java.util.Collections.sort;
 import static java.util.stream.Collectors.toList;
 
 public class Library {
@@ -28,15 +29,16 @@ public class Library {
     }
 
     public List<String> getBookAuthors() {
-//        Todo:  Figure out how to sort list, e.g. Collections.sort(listOfTitles);
+//        Todo:  Figure out how to sort list, e.g. Collections.sort(listOfTitles) & if this method should be deleted
         return booksInLibrary.values().stream().map(book -> book.getBookAuthor()).collect(toList());
     }
 
     public List<Integer> getBookYears() {
-//        Todo:  Figure out how to sort list, e.g. Collections.sort(listOfTitles);
+//        Todo:  Figure out how to sort list, e.g. Collections.sort(listOfTitles) & if this method should be deleted
         return booksInLibrary.values().stream().map(book -> book.getBookYear()).collect(toList());
     }
 
+//    Todo: Refactor to move the printing of titles away from the library higher up the stack to the printer
     public String getBookDetails() {
         String bookDetails = "";
         for(Book value : booksInLibrary.values()) {
