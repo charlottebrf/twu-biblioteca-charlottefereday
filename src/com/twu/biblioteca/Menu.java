@@ -14,12 +14,18 @@ public class Menu {
             case "1":  menuChoice = this.library.getBookDetails();
                 break;
             default: menuChoice = this.checkIsValidOption(selection);
+            break;
+            case "2": return this.exitProgram();
         }
         return menuChoice;
     }
 
     public String checkIsValidOption(String selection) {
             return "Select a valid option!";
+    }
+
+    public String exitProgram() {
+        return "You have selected quit: exiting the program now";
     }
 }
 

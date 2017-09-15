@@ -33,4 +33,9 @@ public class MenuTest {
     public void givesAMesageforAnInvalidOption() {
         assertEquals("Select a valid option!", menu.process("x"));
     }
+
+    @Test
+    public void givesAQuitOption() {
+        assertEquals("You have selected quit: exiting the program now", menu.process("2"));
+    }
 }
