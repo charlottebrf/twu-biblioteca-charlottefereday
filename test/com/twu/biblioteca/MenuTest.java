@@ -31,7 +31,7 @@ public class MenuTest {
 
     @Test
     public void givesAMesageforAnInvalidOption() {
-        assertEquals("Select a valid option!", menu.process("x"));
+        assertEquals("", menu.process("x"));
     }
 
     @Test

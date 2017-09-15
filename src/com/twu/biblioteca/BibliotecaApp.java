@@ -42,7 +42,7 @@ public class BibliotecaApp {
     }
 
     //Todo: fix so it doesn't print blank
-    //Todo: if a user clicks to quit the return is an empty string which should then break the below loop
+    //Todo: if a user clicks to quit or enters the wrong option they'll get a console log the return is an empty string which should then break the below loop
     public String interactiveMenu(Scanner userInput) {
         String line = "";
         while (!(line = this.catchException(userInput)).isEmpty()) {

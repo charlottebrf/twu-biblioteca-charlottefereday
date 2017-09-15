@@ -15,15 +15,16 @@ public class Menu {
                 break;
 //            case "2": menuChoice = this.checkOut();
 //                break;
-            default: menuChoice = this.checkIsValidOption(selection);
+            default: menuChoice = this.checkIsValidOption();
                 break;
             case "3": return this.exitProgram();
         }
         return menuChoice;
     }
 
-    public String checkIsValidOption(String selection) {
-            return "Select a valid option!";
+    public String checkIsValidOption() {
+        System.out.println("Select a valid option!");
+        return "";
     }
 
     public String exitProgram() {
