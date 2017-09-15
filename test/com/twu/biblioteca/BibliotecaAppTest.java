@@ -1,64 +1,34 @@
 package com.twu.biblioteca;
 
-import com.sun.xml.internal.bind.v2.TODO;
-import com.twu.biblioteca.BibliotecaApp;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.util.LinkedList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
 
 public class BibliotecaAppTest {
-//     TODO: Refactor these very long building object methods into a separate testing class/ library
     ByteArrayInputStream choice = new ByteArrayInputStream("1".getBytes());
     Scanner userInput = new Scanner(choice);
 
     String welcome = "Welcome to the new Biblioteca App: we are open for business!";
-    String list = "List Books";
+    String list = "1. List Books";
     String menu1 = "Main Menu";
     String displayMenu = "****" + menu1 + "****" + "\n\n" + list;
     Printer printer = new Printer();
 
 
-    BookTitle firstHP = new BookTitle("Harry Potter and the Philosopher's Stone");
-    Author rowling1 = new Author("J.K.Rowlng");
-    Year year1 = new Year(1997);
-    Book hP1 = new Book(firstHP, rowling1, year1);
-
-    BookTitle secondHP = new BookTitle("Harry Potter and the Chamber of Secrets");
-    Author rowling2 = new Author("J.K.Rowlng");
-    Year year2 = new Year(1998);
-    Book hP2 = new Book(secondHP, rowling2, year2);
-
-    BookTitle thirdHP = new BookTitle("Harry Potter and the Prizioner of Azkaban");
-    Author rowling3 = new Author("J.K.Rowlng");
-    Year year3 = new Year(1999);
-    Book hP3 = new Book(thirdHP, rowling3, year3);
-
-    BookTitle fourthHP = new BookTitle("Harry Potter and the Goblet of Fire");
-    Author rowling4 = new Author("J.K.Rowlng");
-    Year year4 = new Year(2000);
-    Book hP4 = new Book(fourthHP, rowling4, year4);
-
-    BookTitle fifthHP = new BookTitle("Harry Potter and the Order of the Phoenix");
-    Author rowling5 = new Author("J.K.Rowlng");
-    Year year5 = new Year(2003);
-    Book hP5 = new Book(fifthHP, rowling5, year5);
-
-    BookTitle sixthHP = new BookTitle("Harry Potter and the Half Blood Prince");
-    Author rowling6 = new Author("J.K.Rowlng");
-    Year year6 = new Year(2005);
-    Book hP6 = new Book(sixthHP, rowling6, year6);
-
-    BookTitle seventhHP = new BookTitle("Harry Potter and the Deathly Hallows");
-    Author rowling7 = new Author("J.K.Rowlng");
-    Year year7 = new Year(2007);
-    Book hP7 = new Book(seventhHP, rowling7, year7);
+    private final Author author = new Author("J.K.Rowlng");
+    private final Book hP1 = new Book(new BookTitle("Harry Potter and the Philosopher's Stone"), author, new Year(1997));
+    private final Book hP2 = new Book(new BookTitle("Harry Potter and the Chamber of Secrets"), author, new Year(1998));
+    private final Book hP3 = new Book(new BookTitle("Harry Potter and the Prizioner of Azkaban"), author, new Year(1999));
+    private final Book hP4 = new Book(new BookTitle("Harry Potter and the Goblet of Fire"), author, new Year(2000));
+    private final Book hP5 = new Book(new BookTitle("Harry Potter and the Order of the Phoenix"), author, new Year(2003));
+    private final Book hP6 = new Book(new BookTitle("Harry Potter and the Half Blood Prince"), author, new Year(2005));
+    private final Book hP7 = new Book(new BookTitle("Harry Potter and the Deathly Hallows"), author, new Year(2007));
 
     Library lib = new Library();
     Menu menu = new Menu(lib);
@@ -70,7 +40,7 @@ public class BibliotecaAppTest {
         assertEquals(welcome, biblioteca.printWelcome());
     }
 
-    public void helperMethodAddsBooksToLibrary() {
+    public void checkBooksIntoLibrary() {
         lib.addBooks(hP1);
         lib.addBooks(hP2);
         lib.addBooks(hP3);
@@ -82,8 +52,8 @@ public class BibliotecaAppTest {
 
     @Test
     public void displaysListOfBooks() {
-        this.helperMethodAddsBooksToLibrary();
-        List<String> listOfTitles = new LinkedList<String>();
+        this.checkBooksIntoLibrary();
+        List<String> listOfTitles = new LinkedList<>();
         String title1 = hP1.getBookTitle();
         listOfTitles.add(title1);
         String title2 = hP2.getBookTitle();
@@ -100,15 +70,13 @@ public class BibliotecaAppTest {
         listOfTitles.add(title7);
         Collections.sort(listOfTitles);
 
-//        Todo: return these as a sorted collection, e.g. Collections.sort(listOfTitles);
-        //test won't pass as in a different order
         assertEquals(listOfTitles, biblioteca.listLibraryBookTitles());
     }
 
 
     @Test
     public void displaysFullDetailsOfBooks() {
-        this.helperMethodAddsBooksToLibrary();
+        this.checkBooksIntoLibrary();
 //        Todo: return these as a sorted collection, e.g. Collections.sort(listOfTitles);
         assertEquals(  "|" + hP7.getBookTitle() + "|" + hP7.getBookAuthor() + "|" + hP7.getBookYear() + "|" + "\n" +
                                 "|" + hP2.getBookTitle() + "|" + hP2.getBookAuthor() + "|" + hP2.getBookYear() + "|" + "\n" +
@@ -127,7 +95,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void delegatesInteractiveMenu() {
-        this.helperMethodAddsBooksToLibrary();
+        this.checkBooksIntoLibrary();
 
         assertEquals(   "|" + hP7.getBookTitle() + "|" + hP7.getBookAuthor() + "|" + hP7.getBookYear() + "|" + "\n" +
                         "|" + hP2.getBookTitle() + "|" + hP2.getBookAuthor() + "|" + hP2.getBookYear() + "|" + "\n" +
