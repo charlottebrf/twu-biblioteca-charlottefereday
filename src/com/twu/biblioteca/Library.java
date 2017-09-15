@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import java.util.*;
 import java.util.LinkedList;
 import java.util.Collections;
+import java.util.Scanner;
 
 import static java.util.Collections.sort;
 import static java.util.stream.Collectors.toList;
@@ -19,7 +20,9 @@ public class Library {
         booksInLibrary.put(book.getBookTitle(), book);
     }
 
-    public void removeBooks(Book book) { booksInLibrary.remove(book.getBookTitle());}
+    public boolean removeBooks(Book book) {
+        booksInLibrary.remove(book.getBookTitle());
+    }
 
     public List<Book> getBooks() {
         return new LinkedList<>(booksInLibrary.values());
@@ -30,6 +33,10 @@ public class Library {
         return booksInLibrary.values().stream().map(book -> book.getBookTitle()).collect(toList());
     }
 
+    public Book findBookFromTitle(Scanner userInput) {
+        String returnedBook = userInput.next();
+        return booksInLibrary.get(returnedBook);
+    }
     public List<String> getBookAuthors() {
 //        Todo:  Figure out how to sort list, e.g. Collections.sort(listOfTitles) & if this method should be deleted
         return booksInLibrary.values().stream().map(book -> book.getBookAuthor()).collect(toList());
@@ -48,5 +55,4 @@ public class Library {
         }
         return bookDetails;
         }
-
 }

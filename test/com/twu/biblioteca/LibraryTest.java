@@ -2,7 +2,10 @@ package com.twu.biblioteca;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayInputStream;
 import java.util.*;
+import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
@@ -11,6 +14,9 @@ public class LibraryTest {
     Book harryPotter1 = new Book(new BookTitle("Harry Potter and the Philosopher's Stone"), new Author("J.K.Rowlng"), new Year(1997));
 
     Book hP2 = new Book(new BookTitle("Harry Potter and the Chamber of Secrets"), new Author("J.K.Rowlng"), new Year(1998));
+
+    ByteArrayInputStream choice = new ByteArrayInputStream("Harry Potter and the Philosopher's Stone".getBytes());
+    Scanner userInput = new Scanner(choice);
 
     Library lib = new Library();
 
@@ -78,5 +84,12 @@ public class LibraryTest {
         title.add(hpTitle);
 
         assertEquals(title, lib.getBookTitles());
+    }
+
+    @Test
+    public void returnsABookObjectWhenGivenABookTitle() {
+        lib.addBooks(harryPotter1);
+
+        assertEquals(harryPotter1, lib.findBookFromTitle(userInput));
     }
 }
