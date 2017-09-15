@@ -1,4 +1,5 @@
 package com.twu.biblioteca;
+import java.util.Scanner;
 
 public class Menu {
     private final Library library;
@@ -33,7 +34,18 @@ public class Menu {
     }
 
     public String checkOut() {
-        return "You have chosen to check out a book, redirecting you now";
+         System.out.println("Please write the exact title of the book you would like to check out");
+         printer.
+    }
+
+    public void inputBookTitle(Scanner title) {
+        String stringifiedTitle = "";
+        stringifiedTitle = title;
+        //turn scanner into string
+        //give string to method to check if title is in library
+        //if it is remove it from the library
+        //else give an error message
+
     }
 }
 
