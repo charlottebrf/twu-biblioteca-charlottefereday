@@ -34,7 +34,7 @@ public class BibliotecaAppTest {
     private final Book hP7 = new Book(new BookTitle("Harry Potter and the Deathly Hallows"), author, new Year(2007));
 
     Library lib = new Library();
-    Menu menu = new Menu(lib);
+    Menu menu = new Menu(lib, hP1, printer);
     BibliotecaApp biblioteca = new BibliotecaApp(printer, lib, menu);
 
 

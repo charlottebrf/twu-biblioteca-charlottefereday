@@ -6,6 +6,7 @@ public class Printer {
     private String list = "1. List Books\n2. checkout books\n3. Exit";
     private String menu = "Main Menu";
     private String checkOut = "You have chosen to check out a book, redirecting you now";
+    private String returnBook = "You have chosen to return a book, redirecting you now";
 
     public void getWelcome() { System.out.println(welcome); }
 
@@ -14,4 +15,6 @@ public class Printer {
     public void getMenuHeader() { System.out.println("****" + this.menu + "****" + "\n\n"); }
 
     public void checkOutMessage() { System.out.println(checkOut);}
+
+    public void returnMessage() { System.out.println(returnBook);}
 }
