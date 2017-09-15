@@ -48,9 +48,7 @@ public class BibliotecaApp {
         String line = "";
         while (!(line = this.catchException(userInput)).isEmpty()) {
             this.printMainMenu();
-            menu.process(line);
         }
-        System.out.println(menu.process(line));
         return menu.process(line);
     }
 
