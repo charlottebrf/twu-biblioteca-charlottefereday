@@ -49,6 +49,7 @@ public class Menu {
     }
 
 //    //Todo: figure out how I can get the scanner object in here so line 33 can work & refactor as very long
+//    Todo: think about responsbility - is the menu the correct place or should this be refactored to the library?
     public String checkOut(Scanner userInputBookTitle) {
         String stringifiedTitle = userInputBookTitle.next();
         String resultString = "";
