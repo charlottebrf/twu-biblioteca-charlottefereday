@@ -1,4 +1,5 @@
 package com.twu.biblioteca;
+
 public class Menu {
     private final Library library;
 
@@ -7,12 +8,18 @@ public class Menu {
     }
 
     public String process(String selection) {
+
         String menuChoice = "";
         switch (selection) {
             case "1":  menuChoice = this.library.getBookDetails();
                 break;
+            default: menuChoice = this.checkIsValidOption(selection);
         }
         return menuChoice;
+    }
+
+    public String checkIsValidOption(String selection) {
+            return "Select a valid option!";
     }
 }
 

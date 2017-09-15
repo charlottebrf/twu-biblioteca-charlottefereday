@@ -2,9 +2,10 @@ package com.twu.biblioteca;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class MenuTest {
+
     Library library = new Library();
     Menu menu = new Menu(library);
 
@@ -30,6 +31,6 @@ public class MenuTest {
 
     @Test
     public void givesAMesageforAnInvalidOption() {
-
+        assertEquals("Select a valid option!", menu.process("x"));
     }
 }
