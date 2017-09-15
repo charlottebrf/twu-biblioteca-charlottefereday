@@ -9,16 +9,16 @@ import java.util.Scanner;
 import static org.junit.Assert.assertEquals;
 
 public class MenuTest {
-
-    ByteArrayInputStream choice = new ByteArrayInputStream("Harry Potter and the Philosopher's Stone".getBytes());
-    Scanner userInput = new Scanner(choice);
-    String success = "Thank you! Enjoy the book";
-
     Library library = new Library();
     Book harryPotter1 = new Book(new BookTitle("Harry Potter and the Philosopher's Stone"), new Author("J.K.Rowlng"), new Year(1997));
     Book hP2 = new Book(new BookTitle("Harry Potter and the Chamber of Secrets"), new Author("J.K.Rowlng"), new Year(1998));
     Printer printer = new Printer();
     Menu menu = new Menu(library, harryPotter1, printer);
+
+    ByteArrayInputStream choice = new ByteArrayInputStream("Harry Potter and the Philosopher's Stone".getBytes());
+    Scanner userInput = new Scanner(choice);
+    String success = "Thank you! Enjoy the book";
+    String success2 = "Thank you for returning the book.";
 
     @Test
     public void canProcessAStringToSelectMenuOption() {
@@ -37,7 +37,7 @@ public class MenuTest {
 
     @Test
     public void givesAQuitOption() {
-        assertEquals("", menu.process("3"));
+        assertEquals("", menu.process("4"));
     }
 
     //Todo: once I get the Scanner issue sorted out test this functionality using menu.process("2") as above
@@ -45,8 +45,15 @@ public class MenuTest {
     public void checkoutABookOption() {
         library.addBooks(harryPotter1);
         library.addBooks(hP2);
-        menu.checkOut(userInput);
 
-        assertEquals(success, menu.checkOut(userInput));
+        assertEquals(success, menu.checkOutBook(userInput));
+    }
+
+    @Test
+    public void returnABookOption() {
+        library.addBooks(harryPotter1);
+        library.addBooks(hP2);
+
+        assertEquals(success2, menu.returnBook(userInput));
     }
 }
