@@ -15,12 +15,13 @@ public class BibliotecaApp {
         this.menu = menu;
     }
 
-    public String printMainMenu() {
-        return printer.getMenuHeader() + printer.getmainMenu();
+    public void printMainMenu() {
+        printer.getMenuHeader();
+        printer.getMainMenu();
     }
 
-    public String printWelcome() {
-        return printer.getWelcome();
+    public void printWelcome() {
+        printer.getWelcome();
     }
 
     public List<String> listLibraryBookTitles() {

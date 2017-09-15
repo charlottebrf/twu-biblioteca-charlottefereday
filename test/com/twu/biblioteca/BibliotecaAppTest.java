@@ -38,11 +38,6 @@ public class BibliotecaAppTest {
     BibliotecaApp biblioteca = new BibliotecaApp(printer, lib, menu);
 
 
-    @Test
-    public void displaysWelcomeMessage() {
-        assertEquals(welcome, biblioteca.printWelcome());
-    }
-
     public void checkBooksIntoLibrary() {
         lib.addBooks(hP1);
         lib.addBooks(hP2);
@@ -92,11 +87,6 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void displaysMainMenu() {
-        assertEquals(displayMenu, biblioteca.printMainMenu());
-    }
-
-    @Test
     public void delegatesInteractiveMenu() {
         this.checkBooksIntoLibrary();
 
@@ -110,13 +100,6 @@ public class BibliotecaAppTest {
                         biblioteca.interactiveMenu(userInput));
     }
 
-    @Test
-    public void doesntLoadInteractiveMenuIfGivenAnEmptyString() {
-        this.checkBooksIntoLibrary();
-        String nada = null;
-
-        assertEquals(nada, biblioteca.interactiveMenu(userInput2));
-    }
 }
 
 
