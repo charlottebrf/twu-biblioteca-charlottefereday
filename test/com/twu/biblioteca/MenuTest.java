@@ -27,4 +27,9 @@ public class MenuTest {
                     "|" + firstHP.getTitle() + "|" + rowling.getAuthor() + "|" + year.getYear() + "|" + "\n",
                     menu.process("1"));
     }
+
+    @Test
+    public void givesAMesageforAnInvalidOption() {
+
+    }
 }

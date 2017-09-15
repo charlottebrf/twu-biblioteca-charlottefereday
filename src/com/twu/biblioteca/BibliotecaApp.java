@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
+import javax.lang.model.type.NullType;
+import java.io.ByteArrayInputStream;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import static java.util.Collections.sort;
@@ -33,10 +36,32 @@ public class BibliotecaApp {
         return library.getBookDetails();
     }
 
-    public String interactiveMenu(Scanner userInput) {
-        printMainMenu();
-        return menu.process(userInput.next());
+    private String catchException(String line, Scanner userInput) {
+        try {
+            userInput.next();
+        } catch (Exception NoSuchElementException) {
+            userInput.next();
+        }
+        return line;
     }
+
+    private String catchNextException(Scanner userInput) {
+        try {
+            userInput.next();
+        } catch (Exception NoSuchElementException) {
+            userInput.next();
+        }
+        return userInput.next();
+    }
+
+    public String interactiveMenu(Scanner userInput) {
+        String line = "";
+        while (!(line = this.catchException(line,userInput)).isEmpty()) {
+            this.printMainMenu();
+        }
+        return menu.process(this.catchNextException(userInput));
+    }
+
 
 }
 
