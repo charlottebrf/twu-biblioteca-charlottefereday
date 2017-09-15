@@ -20,7 +20,7 @@ public class Library {
         booksInLibrary.put(book.getBookTitle(), book);
     }
 
-    public boolean removeBooks(Book book) {
+    public void removeBooks(Book book) {
         booksInLibrary.remove(book.getBookTitle());
     }
 
@@ -37,15 +37,6 @@ public class Library {
         String returnedBook = userInput.next();
         return booksInLibrary.get(returnedBook);
     }
-    public List<String> getBookAuthors() {
-//        Todo:  Figure out how to sort list, e.g. Collections.sort(listOfTitles) & if this method should be deleted
-        return booksInLibrary.values().stream().map(book -> book.getBookAuthor()).collect(toList());
-    }
-
-    public List<Integer> getBookYears() {
-//        Todo:  Figure out how to sort list, e.g. Collections.sort(listOfTitles) & if this method should be deleted
-        return booksInLibrary.values().stream().map(book -> book.getBookYear()).collect(toList());
-    }
 
 //    Todo: Refactor to move the printing of titles away from the library higher up the stack to the printer
     public String getBookDetails() {
@@ -54,5 +45,17 @@ public class Library {
              bookDetails += "|" + value.getBookTitle() + "|" + value.getBookAuthor() + "|" + value.getBookYear() + "|" + "\n";
         }
         return bookDetails;
+        }
+
+        public Boolean hasBookTitleInLibrary(String title) {
+            Boolean trueOrFalse = new Boolean(false);
+
+            Book bookValues = booksInLibrary.get(title);
+            if (bookValues != null) {
+                trueOrFalse = true;
+            } else if (bookValues == null) {
+                return trueOrFalse;
+            }
+            return trueOrFalse;
         }
 }

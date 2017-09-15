@@ -46,24 +46,6 @@ public class LibraryTest {
     }
 
     @Test
-    public void getsABookAuthorFromTheLibrary() {
-        lib.addBooks(harryPotter1);
-        LinkedList<String> author = new LinkedList<String>();
-        String authorName = new Author("J.K.Rowlng").getAuthor();
-        author.add(authorName);
-        assertEquals(author, lib.getBookAuthors());
-    }
-
-    @Test
-    public void getsABookYearFromTheLibrary() {
-        lib.addBooks(harryPotter1);
-        LinkedList<Integer> bookYear = new LinkedList<Integer>();
-        Integer year1 = new Year(1997).getYear();
-        bookYear.add(year1);
-        assertEquals(bookYear, lib.getBookYears());
-    }
-
-    @Test
     public void getsAllBookInformationFromTheLibrary() {
         lib.addBooks(hP2);
         lib.addBooks(harryPotter1);
@@ -92,4 +74,24 @@ public class LibraryTest {
 
         assertEquals(harryPotter1, lib.findBookFromTitle(userInput));
     }
+
+    @Test
+    public void returnsFalseIfBookIsNotInTheLibrary() {
+        lib.addBooks(harryPotter1);
+        lib.addBooks(hP2);
+        lib.removeBooks(hP2);
+        String title = hP2.getBookTitle();
+
+        assertEquals(false, lib.hasBookTitleInLibrary(title));
+    }
+
+    @Test
+    public void returnsTrueIfBookIsInTheLibrary() {
+        lib.addBooks(harryPotter1);
+        lib.addBooks(hP2);
+        String title = hP2.getBookTitle();
+
+        assertEquals(true, lib.hasBookTitleInLibrary(title));
+    }
+
 }
