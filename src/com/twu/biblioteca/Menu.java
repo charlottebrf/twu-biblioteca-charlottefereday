@@ -1,26 +1,16 @@
 package com.twu.biblioteca;
+import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
 public class Menu {
     private final Library library;
+    private final Book book;
+    private final Printer printer;
 
-    public Menu(Library library) {
+    public Menu(Library library, Book book, Printer printer) {
         this.library = library;
-    }
-
-    public String process(String selection) {
-
-        String menuChoice = "";
-        switch (selection) {
-            case "1":  menuChoice = this.library.getBookDetails();
-                break;
-            case "2": menuChoice = this.checkOut();
-                break;
-            default: menuChoice = this.checkIsValidOption();
-                break;
-            case "3": return this.exitProgram();
-        }
-        return menuChoice;
+        this.book = book;
+        this.printer = printer;
     }
 
     public String checkIsValidOption() {
@@ -33,20 +23,35 @@ public class Menu {
         return "";
     }
 
-    public String checkOut() {
-         System.out.println("Please write the exact title of the book you would like to check out");
-         printer.
+
+    public String process(String selection) {
+
+        String menuChoice = "";
+        switch (selection) {
+            case "1":  menuChoice = this.library.getBookDetails();
+                break;
+            case "2": menuChoice = this.checkOut(userInputBookTitle);
+                break;
+            default: menuChoice = this.checkIsValidOption();
+                break;
+            case "3": return this.exitProgram();
+        }
+        return menuChoice;
     }
 
-    public void inputBookTitle(Scanner title) {
-        String stringifiedTitle = "";
-        stringifiedTitle = title;
-        //turn scanner into string
-        //give string to method to check if title is in library
-        //if it is remove it from the library
-        //else give an error message
-
+    //Todo: update this so that library checks that the title is no longer in the library
+    public String successMessage() {
+        return "Congratulations you have returned your book";
     }
+
+    //Todo: figure out how I can get the scanner object in here so line 33 can work
+    public String checkOut(Scanner userInputBookTitle) {
+        printer.checkOutMessage();
+        Book returnedBook = library.findBookFromTitle(userInputBookTitle);
+        library.removeBooks(returnedBook);
+        return this.successMessage();
+    }
+
 }
 
 
