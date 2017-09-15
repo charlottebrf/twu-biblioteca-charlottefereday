@@ -81,10 +81,10 @@ public class Menu {
         switch (selection) {
             case "1":  menuChoice = this.library.getBookDetails();
                 break;
-//            case "2": menuChoice = this.checkOutBook(userInputBookTitle);
-//                break;
-//            case "3": menuChoice = this.returnBook(userInputBookTitle);
-//                break;
+            case "2": menuChoice = this.checkOutBook(userInputBookTitle);
+                break;
+            case "3": menuChoice = this.returnBook(userInputBookTitle);
+                break;
             default: menuChoice = this.checkIsValidOption();
                 break;
             case "4": return this.exitProgram();
