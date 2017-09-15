@@ -1,8 +1,5 @@
 package com.twu.biblioteca;
-import javax.lang.model.type.NullType;
-import java.io.ByteArrayInputStream;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import static java.util.Collections.sort;
@@ -36,32 +33,25 @@ public class BibliotecaApp {
         return library.getBookDetails();
     }
 
-    private String catchException(String line, Scanner userInput) {
+    private String catchException(Scanner userInput) {
         try {
-            userInput.next();
+            return userInput.next();
         } catch (Exception NoSuchElementException) {
-            userInput.next();
+            return "";
         }
-        return line;
     }
 
-    private String catchNextException(Scanner userInput) {
-        try {
-            userInput.next();
-        } catch (Exception NoSuchElementException) {
-            userInput.next();
-        }
-        return userInput.next();
-    }
-
+    //Todo: fix so it doesn't print blank
+    //Todo: do i need to add in the exit condition also for option "2" to break the loop?
     public String interactiveMenu(Scanner userInput) {
         String line = "";
-        while (!(line = this.catchException(line,userInput)).isEmpty()) {
+        while (!(line = this.catchException(userInput)).isEmpty()) {
             this.printMainMenu();
+            menu.process(line);
         }
-        return menu.process(this.catchNextException(userInput));
+        System.out.println(menu.process(line));
+        return menu.process(line);
     }
-
 
 }
 

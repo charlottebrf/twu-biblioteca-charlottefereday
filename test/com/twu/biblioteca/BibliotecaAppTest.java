@@ -14,6 +14,9 @@ public class BibliotecaAppTest {
     ByteArrayInputStream choice = new ByteArrayInputStream("1".getBytes());
     Scanner userInput = new Scanner(choice);
 
+    ByteArrayInputStream choice2 = new ByteArrayInputStream("".getBytes());
+    Scanner userInput2 = new Scanner(choice2);
+
     String welcome = "Welcome to the new Biblioteca App: we are open for business!";
     String list = "1. List Books";
     String menu1 = "Main Menu";
@@ -107,6 +110,13 @@ public class BibliotecaAppTest {
                         biblioteca.interactiveMenu(userInput));
     }
 
+    @Test
+    public void doesntLoadInteractiveMenuIfGivenAnEmptyString() {
+        this.checkBooksIntoLibrary();
+        String nada = null;
+
+        assertEquals(nada, biblioteca.interactiveMenu(userInput2));
+    }
 }
 
 
