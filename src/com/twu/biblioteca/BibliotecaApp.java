@@ -36,12 +36,12 @@ public class BibliotecaApp {
     //Todo: fix so it doesn't print blank
     //Todo: if a user clicks to quit or enters the wrong option they'll get a console log the return is an empty string which should then break the below loop
     public String interactiveMenu() {
-        String userInput = keyboard.read();
-        String line = "";
-        while ( userInput != "") {
-            this.printMainMenu();
+        String userInput = "";
+        while ( userInput.equals("")) {
+            printMainMenu();
+            userInput = keyboard.read();
         }
-        return menu.process();
+        return menu.process(userInput);
     }
 
 }
