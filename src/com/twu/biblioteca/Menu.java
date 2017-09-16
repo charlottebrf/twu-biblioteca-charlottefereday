@@ -7,6 +7,7 @@ public class Menu {
     private final Book book;
     private final Printer printer;
 
+
     public Menu(Library library, Book book, Printer printer) {
         this.library = library;
         this.book = book;
@@ -27,9 +28,9 @@ public class Menu {
 
     public String checkedOutSuccessOrFailureMessage(String stringifiedTitle) {
         String message = "";
-        if (library.hasBookTitleInLibrary(stringifiedTitle) == true) {
+        if (library.hasBookTitleInLibrary(stringifiedTitle)) {
             message = "That book is not available.";
-        } else if (library.hasBookTitleInLibrary(stringifiedTitle) == false) {
+        } else {
             message = "Thank you! Enjoy the book";
         }
         return message;
@@ -37,9 +38,9 @@ public class Menu {
 
     public String returnedSuccessOrFailureMessage(String stringifiedTitle) {
         String message = "";
-        if (library.hasBookTitleInLibrary(stringifiedTitle) == true) {
+        if (library.hasBookTitleInLibrary(stringifiedTitle)) {
             message = "Thank you for returning the book.";
-        } else if (library.hasBookTitleInLibrary(stringifiedTitle) == false) {
+        } else {
             message = "That is not a valid book to return.";
         }
         return message;
@@ -49,30 +50,22 @@ public class Menu {
     //Todo: think about responsbility - is the menu the correct place or should this be refactored to the library to check books & printer class to console log
     public String checkOutBook(Scanner userInputBookTitle) {
         String stringifiedTitle = userInputBookTitle.next();
-        String resultString = "";
-        if (library.hasBookTitleInLibrary(stringifiedTitle) == true) {
+        if (library.hasBookTitleInLibrary(stringifiedTitle)) {
             printer.checkOutMessage();
-            Book checkedOutBook = library.findBookFromTitle(userInputBookTitle);
+            Book checkedOutBook = library.findBookFromTitle();
             library.removeBooks(checkedOutBook);
-            resultString = this.checkedOutSuccessOrFailureMessage(stringifiedTitle );
-        } else {
-            resultString = this.checkedOutSuccessOrFailureMessage(stringifiedTitle);
         }
-        return resultString;
+        return checkedOutSuccessOrFailureMessage(stringifiedTitle );
     }
 
     public String returnBook(Scanner userInputBookTitle) {
         String stringifiedTitle = userInputBookTitle.next();
-        String resultString = "";
-        if (library.hasBookTitleInLibrary(stringifiedTitle) == false) {
+        if (!library.hasBookTitleInLibrary(stringifiedTitle)) {
             printer.returnMessage();
-            Book returnedBook = library.findBookFromTitle(userInputBookTitle);
+            Book returnedBook = library.findBookFromTitle();
             library.addBooks(returnedBook);
-            resultString = this.returnedSuccessOrFailureMessage(stringifiedTitle);
-        } else {
-            resultString = this.returnedSuccessOrFailureMessage(stringifiedTitle);
         }
-        return resultString;
+        return returnedSuccessOrFailureMessage(stringifiedTitle);;
     }
 
     //    //Todo: figure out how I can get the scanner object in here so line 33 can work
@@ -81,10 +74,10 @@ public class Menu {
         switch (selection) {
             case "1":  menuChoice = this.library.getBookDetails();
                 break;
-            case "2": menuChoice = this.checkOutBook(userInputBookTitle);
-                break;
-            case "3": menuChoice = this.returnBook(userInputBookTitle);
-                break;
+//            case "2": menuChoice = this.checkOutBook();
+//                break;
+//            case "3": menuChoice = this.returnBook();
+//                break;
             default: menuChoice = this.checkIsValidOption();
                 break;
             case "4": return this.exitProgram();
