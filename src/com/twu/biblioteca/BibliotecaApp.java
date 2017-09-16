@@ -34,7 +34,7 @@ public class BibliotecaApp {
         return library.getBookDetails();
     }
 
-    private String catchException(Scanner userInput) {
+    private String readInput(Scanner userInput) {
         try {
             return userInput.next();
         } catch (Exception NoSuchElementException) {
@@ -46,7 +46,7 @@ public class BibliotecaApp {
     //Todo: if a user clicks to quit or enters the wrong option they'll get a console log the return is an empty string which should then break the below loop
     public String interactiveMenu(Scanner userInput) {
         String line = "";
-        while (!(line = this.catchException(userInput)).isEmpty()) {
+        while (!(line = readInput(userInput)).isEmpty()) {
             this.printMainMenu();
         }
         return menu.process(line);
