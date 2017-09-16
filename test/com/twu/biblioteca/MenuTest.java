@@ -15,11 +15,11 @@ public class MenuTest {
     Book harryPotter1 = new Book(new BookTitle("Harry Potter and the Philosopher's Stone"), new Author("J.K.Rowlng"), new Year(1997));
     Book hP2 = new Book(new BookTitle("Harry Potter and the Chamber of Secrets"), new Author("J.K.Rowlng"), new Year(1998));
     Printer printer = new Printer();
-    Keyboard keyboard = new Keyboard(toStream(harryPotter1.getBookTitle()));
+//    Keyboard keyboard = new Keyboard(toStream("1"));
     public InputStream toStream(String stringy) {
         return new ByteArrayInputStream( stringy.getBytes() );
     }
-    Menu menu = new Menu(library, harryPotter1, printer, keyboard);
+    Menu menu = new Menu(library, harryPotter1, printer);
 
 
     String success = "Thank you! Enjoy the book";
@@ -27,38 +27,38 @@ public class MenuTest {
 
     @Before
     public void setUp() {
-        menu = new Menu(library, harryPotter1, printer, keyboard);
+        menu = new Menu(library, harryPotter1, printer);
         library.addBooks(hP2);
         library.addBooks(harryPotter1);
     }
 
     @Test
     public void canProcessAStringToSelectMenuOption() {
+        Menu menu2 = new Menu(library, harryPotter1, printer);
         assertEquals("|" + hP2.getBookTitle() + "|" + hP2.getBookAuthor() + "|" + hP2.getBookYear() + "|" + "\n" +
                     "|" + harryPotter1.getBookTitle() + "|" + harryPotter1.getBookAuthor() + "|" + harryPotter1.getBookYear() + "|" + "\n",
-                    menu.process());
+                    menu2.process("1"));
     }
 
     @Test
     public void givesAMesageforAnInvalidOption() {
-        "x";
-        assertEquals("", menu.process());
+
+        assertEquals("", menu.process("x"));
     }
 
     @Test
     public void givesAQuitOption() {
-        "2";
-        assertEquals("", menu.process());
+        assertEquals("", menu.process("4"));
     }
 
 
-    @Test
-    public void checkoutABookOption() {
-        assertEquals(success, menu.checkOutBook());
-    }
-
-    @Test
-    public void returnABookOption() {
-        assertEquals(success2, menu.returnBook());
-    }
+//    @Test
+//    public void checkoutABookOption() {
+//        assertEquals(success, menu.checkOutBook());
+//    }
+//
+//    @Test
+//    public void returnABookOption() {
+//        assertEquals(success2, menu.returnBook());
+//    }
 }

@@ -16,19 +16,9 @@ public class Menu {
         this.keyboard = keyboard;
     }
 
-//    public Menu() {
-//        this(new Keyboard());
-//    }
-
-//    public Menu(Library library, Book book, Printer printer) {
-//        this(new Keyboard());
-//        this.library = library;
-//        this.book = book;
-//        this.printer = printer;
-//    }
-//
-//    public Menu(Keyboard keyboard) {
-//    }
+    public Menu(Library library, Book book, Printer printer) {
+        this(library, book, printer, new Keyboard());
+    }
 
     //Todo: change any strings printed here to be printed by the printer as console logs
 
@@ -64,40 +54,42 @@ public class Menu {
 
     //Todo: figure out how I can get the scanner object in here so line 33 can work & refactor as very long
     //Todo: think about responsbility - is the menu the correct place or should this be refactored to the library to check books & printer class to console log
+//    Todo: fix this to add in a book registry: which keeps track of all the books & also asks the user for the title, year & date
     public String checkOutBook() {
-        String stringifiedTitle = keyboard.read();
-        if (library.hasBookTitleInLibrary(stringifiedTitle)) {
+        String title = keyboard.read();
+        if (library.hasBookTitleInLibrary(title)) {
             printer.checkOutMessage();
             Book checkedOutBook = library.findBookFromTitle();
             library.removeBooks(checkedOutBook);
         }
-        return checkedOutSuccessOrFailureMessage(stringifiedTitle );
+        return checkedOutSuccessOrFailureMessage(title);
     }
 
     public String returnBook() {
-        String stringifiedTitle = keyboard.read();
-        if (!library.hasBookTitleInLibrary(stringifiedTitle)) {
+        String title = keyboard.read();
+        //Todo: can't return the book as no book will be returned
+        if (!library.hasBookTitleInLibrary(title)) {
             printer.returnMessage();
-            Book returnedBook = library.findBookFromTitle();
-            library.addBooks(returnedBook);
+
+//            Todo: fix this to add in a book registry: which keeps track of all the books & also asks the user for the title, year & date
+//            library.addBooks(title);
         }
-        return returnedSuccessOrFailureMessage(stringifiedTitle);
+        return returnedSuccessOrFailureMessage(title);
     }
 
     //    //Todo: figure out how I can get the scanner object in here so line 33 can work
-    public String process() {
-        String selection = keyboard.read();
+    public String process(String selection) {
         String menuChoice = "";
         switch (selection) {
-            case "1":  menuChoice = this.library.getBookDetails();
+            case "1":  menuChoice = library.getBookDetails();
                 break;
-            case "2": menuChoice = this.checkOutBook();
+            case "2": menuChoice = checkOutBook();
                 break;
-            case "3": menuChoice = this.returnBook();
+            case "3": menuChoice = returnBook();
                 break;
-            default: menuChoice = this.checkIsValidOption();
+            default: menuChoice = checkIsValidOption();
                 break;
-            case "4": return this.exitProgram();
+            case "4": return exitProgram();
         }
         return menuChoice;
     }
