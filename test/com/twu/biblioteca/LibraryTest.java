@@ -4,10 +4,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
-import java.util.*;
-import java.util.Scanner;
+import java.io.InputStream;
+import java.util.Collections;
+import java.util.LinkedList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class LibraryTest {
 
@@ -15,32 +16,31 @@ public class LibraryTest {
 
     Book hP2 = new Book(new BookTitle("Harry Potter and the Chamber of Secrets"), new Author("J.K.Rowlng"), new Year(1998));
 
-    ByteArrayInputStream choice = new ByteArrayInputStream("Harry Potter and the Philosopher's Stone".getBytes());
-    Scanner userInput = new Scanner(choice);
+    public InputStream toStream(String stringy) {
+        return new ByteArrayInputStream( stringy.getBytes() );
+    }
 
     Library lib = new Library();
 
+
     @Before
     public void setUp() {
-        Book harryPotter1 = new Book(new BookTitle("Harry Potter and the Philosopher's Stone"), new Author("J.K.Rowlng"), new Year(1997));
-        BookTitle firstHP = new BookTitle("Harry Potter and the Philosopher's Stone");
-        Author rowling = new Author("J.K.Rowlng");
-        Library lib = new Library();
+        lib = new Library();
+        lib.addBooks(harryPotter1);
+        lib.addBooks(hP2);
     }
 
     @Test
     public void addsABookToTheLibrary() {
-        lib.addBooks(harryPotter1);
-        LinkedList<Book> list = new LinkedList<Book>();
-        list.add(harryPotter1);
-        assertEquals(list, lib.getBooks());
+        LinkedList<Book> expectedBooksInLib = new LinkedList<Book>();
+        expectedBooksInLib.add(hP2);
+        expectedBooksInLib.add(harryPotter1);
+
+        assertEquals(expectedBooksInLib, lib.getBooks());
     }
 
     @Test
     public void getsABookTitleFromTheLibrary() {
-        lib.addBooks(harryPotter1);
-        lib.addBooks(hP2);
-
         LinkedList<String> title = new LinkedList<String>();
         title.add(harryPotter1.getBookTitle());
         title.add(hP2.getBookTitle());
@@ -51,18 +51,12 @@ public class LibraryTest {
 
     @Test
     public void getsAllBookInformationFromTheLibrary() {
-        lib.addBooks(hP2);
-        lib.addBooks(harryPotter1);
-
-        assertEquals("|" + new BookTitle("Harry Potter and the Chamber of Secrets").getTitle() + "|" + new Author("J.K.Rowlng").getAuthor() + "|" + new Year(1998).getYear() + "|" + "\n" +
-                               "|" + new BookTitle("Harry Potter and the Philosopher's Stone").getTitle() + "|" + new Author("J.K.Rowlng").getAuthor() + "|" + new Year(1997).getYear() + "|" + "\n",
+        assertEquals("|Harry Potter and the Chamber of Secrets|J.K.Rowlng|1998|\n|Harry Potter and the Philosopher's Stone|J.K.Rowlng|1997|\n",
                                 lib.getBookDetails());
     }
 
     @Test
     public void updatesListOfBooksOnceABookHasBeenCheckedOut() throws Exception {
-        lib.addBooks(harryPotter1);
-        lib.addBooks(hP2);
         lib.removeBooks(hP2);
 
         LinkedList<String> title = new LinkedList<String>();
@@ -74,15 +68,23 @@ public class LibraryTest {
 
     @Test
     public void returnsABookObjectWhenGivenABookTitle() {
-        lib.addBooks(harryPotter1);
+        Keyboard keyboard = new Keyboard(toStream(harryPotter1.getBookTitle()));
+        Library lib2 = new Library(keyboard);
 
-        assertEquals(harryPotter1, lib.findBookFromTitle(userInput));
+        assertEquals(harryPotter1, lib2.findBookFromTitle());
+    }
+
+    @Test
+    public void returnsNoBookObjectWhenGivenABookTitle() {
+        Keyboard keyboard = new Keyboard(toStream(harryPotter1.getBookTitle()));
+        Library lib2 = new Library(keyboard);
+        lib2.removeBooks(harryPotter1);
+
+        assertEquals(null, lib2.findBookFromTitle());
     }
 
     @Test
     public void returnsFalseIfBookIsNotInTheLibrary() {
-        lib.addBooks(harryPotter1);
-        lib.addBooks(hP2);
         lib.removeBooks(hP2);
         String title = hP2.getBookTitle();
 
@@ -91,8 +93,6 @@ public class LibraryTest {
 
     @Test
     public void returnsTrueIfBookIsInTheLibrary() {
-        lib.addBooks(harryPotter1);
-        lib.addBooks(hP2);
         String title = hP2.getBookTitle();
 
         assertEquals(true, lib.hasBookTitleInLibrary(title));

@@ -1,20 +1,21 @@
 package com.twu.biblioteca;
 
 import java.util.*;
-import java.util.LinkedList;
-import java.util.Collections;
-import java.util.Scanner;
 
-
-import static java.util.Collections.sort;
 import static java.util.stream.Collectors.toList;
 
 public class Library {
-    //    Todo: change String to be BookTitle type & refactor across other classes
+
     private Map<String, Book> booksInLibrary;
+    private final Keyboard keyboard;
+
+    public Library(Keyboard keyboard) {
+        booksInLibrary = new HashMap<String, Book>();
+        this.keyboard = keyboard;
+    }
 
     public Library() {
-        booksInLibrary = new HashMap<String, Book>();
+        this(new Keyboard());
     }
 
     public void addBooks(Book book) {
@@ -30,40 +31,19 @@ public class Library {
     }
 
     public List<String> getBookTitles() {
-//        Todo:  Figure out how to sort list, e.g. Collections.sort(listOfTitles);
         List<String> titles = booksInLibrary.values().stream().map(book -> book.getBookTitle()).collect(toList());
         Collections.sort(titles);
         return titles;
     }
 
-    private String readInput(Scanner userInput) {
-        try {
-            return userInput.next();
-        } catch (NoSuchElementException e) {
-            return "";
-        }
-    }
+    public Book findBookFromTitle() {
+        String desiredTitle = keyboard.read();
 
-    public String getUserTitle(Scanner userInput) {
-        String returnedBook = "";
-        String currentline = "";
-        while (!(currentline = this.readInput(userInput)).isEmpty()) {
-            returnedBook += currentline;
-        }
-        return returnedBook;
-    }
-
-    public Book findBookFromTitle(Scanner userInput) {
-        String returnedBook = this.getUserTitle(userInput);
-        Book bookStatus = new Book(new BookTitle("No book"), new Author("No book"), new Year(1111));
-
-        System.out.println(returnedBook);
-        if (returnedBook != "") {
-            bookStatus = booksInLibrary.get(returnedBook);
+        if (!desiredTitle.equals("")) {
+            return booksInLibrary.get(desiredTitle);
         } else {
-            return bookStatus;
+            return Book.noBook();
         }
-        return bookStatus;
     }
 
     //    Todo: Refactor to move the printing of titles away from the library higher up the stack to the printer
