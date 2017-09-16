@@ -39,9 +39,13 @@ public class LibraryTest {
     @Test
     public void getsABookTitleFromTheLibrary() {
         lib.addBooks(harryPotter1);
+        lib.addBooks(hP2);
+
         LinkedList<String> title = new LinkedList<String>();
-        String hpTitle = new BookTitle("Harry Potter and the Philosopher's Stone").getTitle();
-        title.add(hpTitle);
+        title.add(harryPotter1.getBookTitle());
+        title.add(hP2.getBookTitle());
+        Collections.sort(title);
+
         assertEquals(title, lib.getBookTitles());
     }
 
@@ -72,7 +76,7 @@ public class LibraryTest {
     public void returnsABookObjectWhenGivenABookTitle() {
         lib.addBooks(harryPotter1);
 
-        assertEquals(harryPotter1.getBookTitle(), lib.findBookFromTitle(userInput));
+        assertEquals(harryPotter1, lib.findBookFromTitle(userInput));
     }
 
     @Test
