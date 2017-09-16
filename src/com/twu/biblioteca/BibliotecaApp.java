@@ -8,11 +8,13 @@ public class BibliotecaApp {
     private final Printer printer;
     private final Library library;
     private final Menu menu;
+    private final Keyboard keyboard;
 
-    public BibliotecaApp(Printer printer, Library library, Menu menu) {
+    public BibliotecaApp(Printer printer, Library library, Menu menu, Keyboard keyboard) {
         this.printer = printer;
         this.library = library;
         this.menu = menu;
+        this.keyboard = keyboard;
     }
 
     public void printMainMenu() {
@@ -30,26 +32,16 @@ public class BibliotecaApp {
         return bookTitles;
     }
 
-    public String listFullLibraryBooks() {
-        return library.getBookDetails();
-    }
-
-    private String readInput(Scanner userInput) {
-        try {
-            return userInput.next();
-        } catch (Exception NoSuchElementException) {
-            return "";
-        }
-    }
 
     //Todo: fix so it doesn't print blank
     //Todo: if a user clicks to quit or enters the wrong option they'll get a console log the return is an empty string which should then break the below loop
-    public String interactiveMenu(Scanner userInput) {
+    public String interactiveMenu() {
+        String userInput = keyboard.read();
         String line = "";
-        while (!(line = readInput(userInput)).isEmpty()) {
+        while ( userInput != "") {
             this.printMainMenu();
         }
-        return menu.process(line);
+        return menu.process();
     }
 
 }

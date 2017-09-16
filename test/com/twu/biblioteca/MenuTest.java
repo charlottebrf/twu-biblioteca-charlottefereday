@@ -1,8 +1,10 @@
 package com.twu.biblioteca;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -13,47 +15,50 @@ public class MenuTest {
     Book harryPotter1 = new Book(new BookTitle("Harry Potter and the Philosopher's Stone"), new Author("J.K.Rowlng"), new Year(1997));
     Book hP2 = new Book(new BookTitle("Harry Potter and the Chamber of Secrets"), new Author("J.K.Rowlng"), new Year(1998));
     Printer printer = new Printer();
-    Menu menu = new Menu(library, harryPotter1, printer);
+    Keyboard keyboard = new Keyboard(toStream(harryPotter1.getBookTitle()));
+    public InputStream toStream(String stringy) {
+        return new ByteArrayInputStream( stringy.getBytes() );
+    }
+    Menu menu = new Menu(library, harryPotter1, printer, keyboard);
 
-    ByteArrayInputStream choice = new ByteArrayInputStream("Harry Potter and the Philosopher's Stone".getBytes());
-    Scanner userInput = new Scanner(choice);
+
     String success = "Thank you! Enjoy the book";
     String success2 = "Thank you for returning the book.";
 
-    @Test
-    public void canProcessAStringToSelectMenuOption() {
+    @Before
+    public void setUp() {
+        menu = new Menu(library, harryPotter1, printer, keyboard);
         library.addBooks(hP2);
         library.addBooks(harryPotter1);
+    }
 
+    @Test
+    public void canProcessAStringToSelectMenuOption() {
         assertEquals("|" + hP2.getBookTitle() + "|" + hP2.getBookAuthor() + "|" + hP2.getBookYear() + "|" + "\n" +
                     "|" + harryPotter1.getBookTitle() + "|" + harryPotter1.getBookAuthor() + "|" + harryPotter1.getBookYear() + "|" + "\n",
-                    menu.process("1"));
+                    menu.process());
     }
 
     @Test
     public void givesAMesageforAnInvalidOption() {
-        assertEquals("", menu.process("x"));
+        "x";
+        assertEquals("", menu.process());
     }
 
     @Test
     public void givesAQuitOption() {
-        assertEquals("", menu.process("4"));
+        "2";
+        assertEquals("", menu.process());
     }
 
-    //Todo: once I get the Scanner issue sorted out test this functionality using menu.process("2") as above
+
     @Test
     public void checkoutABookOption() {
-        library.addBooks(harryPotter1);
-        library.addBooks(hP2);
-
-        assertEquals(success, menu.checkOutBook(userInput));
+        assertEquals(success, menu.checkOutBook());
     }
 
     @Test
     public void returnABookOption() {
-        library.addBooks(harryPotter1);
-        library.addBooks(hP2);
-
-        assertEquals(success2, menu.returnBook(userInput));
+        assertEquals(success2, menu.returnBook());
     }
 }
