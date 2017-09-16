@@ -38,12 +38,7 @@ public class Library {
 
     public Book findBookFromTitle() {
         String desiredTitle = keyboard.read();
-
-        if (!desiredTitle.equals("")) {
-            return booksInLibrary.get(desiredTitle);
-        } else {
-            return Book.noBook();
-        }
+        return booksInLibrary.getOrDefault(desiredTitle, Book.NO_BOOK);
     }
 
     //    Todo: Refactor to move the printing of titles away from the library higher up the stack to the printer
@@ -55,15 +50,7 @@ public class Library {
         return bookDetails;
     }
 
-    public Boolean hasBookTitleInLibrary(String title) {
-        Boolean trueOrFalse = new Boolean(false);
-
-        Book bookValues = booksInLibrary.get(title);
-        if (bookValues != null) {
-            trueOrFalse = true;
-        } else if (bookValues == null) {
-            return trueOrFalse;
-        }
-        return trueOrFalse;
+    public boolean hasBookTitleInLibrary(String title) {
+        return booksInLibrary.containsKey(title);
     }
 }

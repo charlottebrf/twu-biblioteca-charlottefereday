@@ -70,17 +70,17 @@ public class LibraryTest {
     public void returnsABookObjectWhenGivenABookTitle() {
         Keyboard keyboard = new Keyboard(toStream(harryPotter1.getBookTitle()));
         Library lib2 = new Library(keyboard);
+        lib2.addBooks(harryPotter1);
 
         assertEquals(harryPotter1, lib2.findBookFromTitle());
     }
 
     @Test
     public void returnsNoBookObjectWhenGivenABookTitle() {
-        Keyboard keyboard = new Keyboard(toStream(harryPotter1.getBookTitle()));
+        Keyboard keyboard = new Keyboard(toStream("heqvdkjewvcjms"));
         Library lib2 = new Library(keyboard);
-        lib2.removeBooks(harryPotter1);
 
-        assertEquals(null, lib2.findBookFromTitle());
+        assertEquals(Book.NO_BOOK, lib2.findBookFromTitle());
     }
 
     @Test
