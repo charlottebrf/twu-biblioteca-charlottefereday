@@ -42,28 +42,26 @@ public class Menu {
     }
 
     public String checkedOutSuccessOrFailureMessage(String title) {
-        if (library.hasBookTitleInLibrary(title)) {
-            return printer.display("That book is not available.");
-        } else {
+        if (library.findBookFromTitle(title) == Book.NO_BOOK && register.hasBookTitleInRegister(title) ) {
             return printer.display("Thank you! Enjoy the book");
+        } else {
+            return printer.display("That book is not available.");
         }
     }
 
     public String returnedSuccessOrFailureMessage(String title) {
-        if (library.hasBookTitleInLibrary(title)) {
+        if (library.findBookFromTitle(title) != Book.NO_BOOK && register.hasBookTitleInRegister(title)) {
             return printer.display("Thank you for returning the book.");
         } else {
             return printer.display("That is not a valid book to return.");
         }
     }
 
-    //Todo: think about responsbility - is the menu the correct place or should this be refactored to the library to check books & printer class to console log
-//    Todo: fix this to add in a book registry: which keeps track of all the books & also asks the user for the title, year & date
     public String checkOutBook() {
         String title = keyboard.read();
-        if (register.findBookInRegisterFromTitle(title) && library.hasBookTitleInLibrary() ) {
+        if (register.hasBookTitleInRegister(title) && library.hasBookTitleInLibrary(title) ) {
             printer.display("You have chosen to check out a book, redirecting you now");
-            Book checkedOutBook = library.findBookFromTitle();
+            Book checkedOutBook = library.findBookFromTitle(title);
             library.removeBooks(checkedOutBook);
             return checkedOutSuccessOrFailureMessage(title);
         } else {
@@ -73,11 +71,9 @@ public class Menu {
 
     public String returnBook() {
         String title = keyboard.read();
-        //Todo: can't return the book as no book will be returned
-        if (!library.hasBookTitleInLibrary(title)) {
+        if (register.hasBookTitleInRegister(title) && !library.hasBookTitleInLibrary(title)) {
             printer.display("You have chosen to return a book, redirecting you now");
-//            Todo: fix this to add in a book registry: which keeps track of all the books & also asks the user for the title, year & date
-            Book returnedBook = library.findBookFromTitle();
+            Book returnedBook = register.findBookInRegisterFromTitle(title);
             library.addBooks(returnedBook);
             return returnedSuccessOrFailureMessage(title);
         } else {
