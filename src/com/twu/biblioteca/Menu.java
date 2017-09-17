@@ -71,7 +71,7 @@ public class Menu {
             returnedSuccessOrFailureMessage(title);
         }
     }
-    
+
     public void process(String selection) {
         switch (selection) {
             case "1":  library.getBookDetails();
