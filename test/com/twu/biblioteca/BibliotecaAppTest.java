@@ -28,7 +28,7 @@ public class BibliotecaAppTest {
     }
     Library lib = new Library();
     BookRegister register = new BookRegister();
-    Menu menu = new Menu(lib, hP1, printer, register, keyboard);
+    Menu menu = new Menu(lib, printer, register, keyboard);
     BibliotecaApp biblioteca = new BibliotecaApp(printer, lib, menu, keyboard);
 
     @Before

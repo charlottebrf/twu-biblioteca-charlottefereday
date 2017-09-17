@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 import java.util.List;
-import java.util.Scanner;
 
 import static java.util.Collections.sort;
 
@@ -39,6 +38,12 @@ public class BibliotecaApp {
             userInput = keyboard.read();
         }
         return menu.process(userInput);
+    }
+
+    public static void main(String[] args) {
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(new Printer(), new Library(), new Menu(new Library(), new Printer() , new BookRegister()), new Keyboard());
+        bibliotecaApp.printWelcome();
+        bibliotecaApp.interactiveMenu();
     }
 
 }
