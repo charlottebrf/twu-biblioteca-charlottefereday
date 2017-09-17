@@ -19,12 +19,12 @@ public class MenuTest {
         return new ByteArrayInputStream( stringy.getBytes() );
     }
 
-    Menu menu = new Menu(library, harryPotter1, printer, register);
+    Menu menu = new Menu(library, printer, register);
 
 
     @Before
     public void setUp() {
-        menu = new Menu(library, harryPotter1, printer, register);
+        menu = new Menu(library, printer, register);
         library.addBooks(hP2);
         library.addBooks(harryPotter1);
         register.addBooksToRegister(hP2);
@@ -55,7 +55,7 @@ public class MenuTest {
         lib2.addBooks(harryPotter1);
         register.addBooksToRegister(hP2);
         register.addBooksToRegister(harryPotter1);
-        Menu menu2 = new Menu (lib2, harryPotter1, printer, register, keyboard);
+        Menu menu2 = new Menu (lib2, printer, register, keyboard);
 
         assertEquals("Thank you! Enjoy the book", menu2.process("2"));
     }
@@ -68,7 +68,7 @@ public class MenuTest {
         lib2.addBooks(harryPotter1);
         register.addBooksToRegister(hP2);
         register.addBooksToRegister(harryPotter1);
-        Menu menu3 = new Menu (lib2, harryPotter1, printer, register, keyboard);
+        Menu menu3 = new Menu (lib2, printer, register, keyboard);
 
         assertEquals("That book is not available.", menu3.process("2"));
     }
@@ -77,7 +77,7 @@ public class MenuTest {
     public void willReturnABookIfNotInLibrary() {
         Keyboard keyboard = new Keyboard(toStream("Harry Potter and the Philosopher's Stone"));
         Library lib2 = new Library(keyboard);
-        Menu menu2 = new Menu (lib2, harryPotter1, printer, register, keyboard);
+        Menu menu2 = new Menu (lib2, printer, register, keyboard);
         lib2.addBooks(hP2);
         register.addBooksToRegister(hP2);
         register.addBooksToRegister(harryPotter1);
@@ -88,7 +88,7 @@ public class MenuTest {
     public void willNotReturnABookIfAlreadyInLibrary() {
         Keyboard keyboard = new Keyboard(toStream("heqvdkjewvcjms"));
         Library lib2 = new Library(keyboard);
-        Menu menu2 = new Menu (lib2, harryPotter1, printer, register, keyboard);
+        Menu menu2 = new Menu (lib2, printer, register, keyboard);
         lib2.addBooks(hP2);
         lib2.addBooks(harryPotter1);
         register.addBooksToRegister(hP2);

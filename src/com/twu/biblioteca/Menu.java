@@ -2,22 +2,20 @@ package com.twu.biblioteca;
 
 public class Menu {
     private final Library library;
-    private final Book book;
     private final Printer printer;
     private final Keyboard keyboard;
     private final BookRegister register;
 
 
-    public Menu(Library library, Book book, Printer printer, BookRegister register, Keyboard keyboard) {
+    public Menu(Library library, Printer printer, BookRegister register, Keyboard keyboard) {
         this.library = library;
-        this.book = book;
         this.printer = printer;
         this.register = register;
         this.keyboard = keyboard;
     }
 
-    public Menu(Library library, Book book, Printer printer, BookRegister register) {
-        this(library, book, printer, register, new Keyboard());
+    public Menu(Library library, Printer printer, BookRegister register) {
+        this(library, printer, register, new Keyboard());
     }
 
     //todo: properly format the strings
