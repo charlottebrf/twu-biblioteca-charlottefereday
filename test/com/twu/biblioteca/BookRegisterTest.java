@@ -42,12 +42,8 @@ public class BookRegisterTest {
 
     @Test
     public void returnsNoBookWhenNotFoundInFromRegister() {
-        Keyboard keyboard = new Keyboard(toStream("heqvdkjewvcjms"));
-        BookRegister register3 = new BookRegister(keyboard);
-        register3.addBooksToRegister(harryPotter1);
-        register3.addBooksToRegister(hP2);
 
-        assertEquals(Book.NO_BOOK, register3.findBookInRegisterFromTitle());
+        assertEquals(Book.NO_BOOK, register.findBookInRegisterFromTitle("heqvdkjewvcjms"));
     }
 
     @Test
