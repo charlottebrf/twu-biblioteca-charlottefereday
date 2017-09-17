@@ -18,12 +18,12 @@ public class BibliotecaApp {
     }
 
     public void printMainMenu() {
-        printer.getMenuHeader();
-        printer.getMainMenu();
+        printer.display("****" + printer.display("Main Menu") + "****" + "\n\n");
+        printer.display("1. List Books\n2. Checkout books\n3. Return books\n4. Exit");
     }
 
     public void printWelcome() {
-        printer.getWelcome();
+        printer.display("Welcome to the new Biblioteca App: we are open for business!");
     }
 
     public List<String> listLibraryBookTitles() {
@@ -32,13 +32,13 @@ public class BibliotecaApp {
         return bookTitles;
     }
 
-    public void interactiveMenu() {
+    public String interactiveMenu() {
         String userInput = "";
         while ( userInput.equals("")) {
             printMainMenu();
             userInput = keyboard.read();
         }
-        menu.process(userInput);
+        return menu.process(userInput);
     }
 
 }
