@@ -11,11 +11,8 @@ import static org.junit.Assert.assertEquals;
 public class LibraryTest {
 
     Book harryPotter1 = new Book(new BookTitle("Harry Potter and the Philosopher's Stone"), new Author("J.K.Rowlng"), new Year(1997));
-
     Book hP2 = new Book(new BookTitle("Harry Potter and the Chamber of Secrets"), new Author("J.K.Rowlng"), new Year(1998));
-
     Library lib = new Library();
-
 
     @Before
     public void setUp() {
@@ -23,7 +20,6 @@ public class LibraryTest {
         lib.addBooks(harryPotter1);
         lib.addBooks(hP2);
     }
-
 
     @Test
     public void addsABookToTheLibrary() {

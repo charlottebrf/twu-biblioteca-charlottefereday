@@ -32,7 +32,7 @@ public class Menu {
     }
 
     public String checkedOutSuccessOrFailureMessage(String title) {
-        if (library.findBookFromTitle(title) == Book.NO_BOOK && register.hasBookTitleInRegister(title) ) {
+        if (library.findBookFromTitle(title) == Book.NO_BOOK && register.hasBookTitleInRegister(title)) {
             return printer.display("Thank you! Enjoy the book");
         } else {
             return printer.display("That book is not available.");
@@ -49,7 +49,7 @@ public class Menu {
 
     public String checkOutBook() {
         String title = keyboard.read();
-        if (register.hasBookTitleInRegister(title) && library.hasBookTitleInLibrary(title) ) {
+        if (register.hasBookTitleInRegister(title) && library.hasBookTitleInLibrary(title)) {
             printer.display("You have chosen to check out a book, redirecting you now");
             Book checkedOutBook = library.findBookFromTitle(title);
             library.removeBooks(checkedOutBook);
@@ -74,15 +74,20 @@ public class Menu {
     public String process(String selection) {
         String result = "";
         switch (selection) {
-            case "1":  result = displayLibraryBooks();
+            case "1":
+                result = displayLibraryBooks();
                 break;
-            case "2": result = checkOutBook();
+            case "2":
+                result = checkOutBook();
                 break;
-            case "3": result = returnBook();
+            case "3":
+                result = returnBook();
                 break;
-            case "4": result = exitProgram();
+            case "4":
+                result = exitProgram();
                 break;
-            default: result = checkIsValidOption();
+            default:
+                result = checkIsValidOption();
                 break;
         }
         return result;

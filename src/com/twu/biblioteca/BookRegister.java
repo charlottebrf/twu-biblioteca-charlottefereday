@@ -15,7 +15,8 @@ public class BookRegister {
         this.keyboard = keyboard;
     }
 
-    public BookRegister() { this(new Keyboard());
+    public BookRegister() {
+        this(new Keyboard());
     }
 
     public void addBooksToRegister(Book book) {
@@ -26,7 +27,7 @@ public class BookRegister {
         return new LinkedList<>(booksInRegister.values());
     }
 
-    public Book findBookInRegisterFromTitle(String desiredTitle ) {
+    public Book findBookInRegisterFromTitle(String desiredTitle) {
         return booksInRegister.getOrDefault(desiredTitle, Book.NO_BOOK);
     }
 

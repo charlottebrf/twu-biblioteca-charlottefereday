@@ -17,7 +17,6 @@ public class Keyboard {
         this.reader = new BufferedReader(new InputStreamReader(in));
     }
 
-
     public String read() {
         String returnedBook = "";
         try {

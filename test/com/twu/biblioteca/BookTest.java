@@ -14,9 +14,7 @@ public class BookTest {
 
     @Before
     public void setUp() {
-        Book harryPotter1 = new Book(firstHP, rowling, year);
-        BookTitle firstHP = new BookTitle("Harry Potter and the Philosopher's Stone");
-        Author rowling = new Author("J.K.Rowlng");
+        harryPotter1 = new Book(firstHP, rowling, year);
     }
 
     @Test

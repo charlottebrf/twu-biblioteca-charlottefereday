@@ -1,4 +1,5 @@
 package com.twu.biblioteca;
+
 import java.util.List;
 
 import static java.util.Collections.sort;
@@ -33,7 +34,7 @@ public class BibliotecaApp {
 
     public String interactiveMenu() {
         String userInput = "";
-        while ( userInput.equals("")) {
+        while (userInput.equals("")) {
             printMainMenu();
             userInput = keyboard.read();
         }

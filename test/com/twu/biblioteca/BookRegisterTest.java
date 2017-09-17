@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.Collections;
 import java.util.LinkedList;
 
 import static org.junit.Assert.*;
@@ -13,9 +12,11 @@ import static org.junit.Assert.*;
 public class BookRegisterTest {
     Book harryPotter1 = new Book(new BookTitle("Harry Potter and the Philosopher's Stone"), new Author("J.K.Rowlng"), new Year(1997));
     Book hP2 = new Book(new BookTitle("Harry Potter and the Chamber of Secrets"), new Author("J.K.Rowlng"), new Year(1998));
+
     public InputStream toStream(String stringy) {
-        return new ByteArrayInputStream( stringy.getBytes() );
+        return new ByteArrayInputStream(stringy.getBytes());
     }
+
     BookRegister register = new BookRegister();
 
     @Before
@@ -36,13 +37,11 @@ public class BookRegisterTest {
 
     @Test
     public void bookTitlesCanBeSearchedForInRegister() {
-
-        assertEquals(harryPotter1,register.findBookInRegisterFromTitle("Harry Potter and the Philosopher's Stone"));
+        assertEquals(harryPotter1, register.findBookInRegisterFromTitle("Harry Potter and the Philosopher's Stone"));
     }
 
     @Test
     public void returnsNoBookWhenNotFoundInFromRegister() {
-
         assertEquals(Book.NO_BOOK, register.findBookInRegisterFromTitle("heqvdkjewvcjms"));
     }
 
@@ -57,11 +56,11 @@ public class BookRegisterTest {
 
     @Test
     public void returnsTrueIfBookIsPresent() {
-        assertEquals(true,register.hasBookTitleInRegister("Harry Potter and the Philosopher's Stone"));
+        assertEquals(true, register.hasBookTitleInRegister("Harry Potter and the Philosopher's Stone"));
     }
 
     @Test
     public void returnsFalseIfBookIsNotPresent() {
-        assertEquals(false,register.hasBookTitleInRegister("heqvdkjewvcjms"));
+        assertEquals(false, register.hasBookTitleInRegister("heqvdkjewvcjms"));
     }
 }
