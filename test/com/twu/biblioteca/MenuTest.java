@@ -3,22 +3,14 @@ package com.twu.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.LinkedList;
-import java.util.Scanner;
-
 import static org.junit.Assert.assertEquals;
 
 public class MenuTest {
     Library library = new Library();
-    Book harryPotter1 = new Book(new BookTitle("Harry Potter and the Philosopher's Stone"), new Author("J.K.Rowlng"), new Year(1997));
-    Book hP2 = new Book(new BookTitle("Harry Potter and the Chamber of Secrets"), new Author("J.K.Rowlng"), new Year(1998));
+    Book harryPotter1 = new Book(new BookTitle("Harry Potter and the Philosopher's Stone"), new Author("J.K.Rowling"), new Year(1997));
+    Book hP2 = new Book(new BookTitle("Harry Potter and the Chamber of Secrets"), new Author("J.K.Rowling"), new Year(1998));
     Printer printer = new Printer();
-//    Keyboard keyboard = new Keyboard(toStream("1"));
-    public InputStream toStream(String stringy) {
-        return new ByteArrayInputStream( stringy.getBytes() );
-    }
+
     Menu menu = new Menu(library, harryPotter1, printer);
 
 
@@ -35,8 +27,7 @@ public class MenuTest {
     @Test
     public void canProcessAStringToSelectMenuOption() {
         Menu menu2 = new Menu(library, harryPotter1, printer);
-        assertEquals("|" + hP2.getBookTitle() + "|" + hP2.getBookAuthor() + "|" + hP2.getBookYear() + "|" + "\n" +
-                    "|" + harryPotter1.getBookTitle() + "|" + harryPotter1.getBookAuthor() + "|" + harryPotter1.getBookYear() + "|" + "\n",
+        assertEquals("|              Book Title               |   Author  | Year|\n|Harry Potter and the Chamber of Secrets|J.K.Rowling|1998|\n|Harry Potter and the Philosopher's Stone|J.K.Rowling|1997|\n",
                     menu2.process("1"));
     }
 
