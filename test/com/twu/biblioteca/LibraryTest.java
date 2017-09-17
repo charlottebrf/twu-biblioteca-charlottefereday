@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -30,6 +31,7 @@ public class LibraryTest {
         lib.addBooks(hP2);
     }
 
+
     @Test
     public void addsABookToTheLibrary() {
         LinkedList<Book> expectedBooksInLib = new LinkedList<Book>();
@@ -51,8 +53,8 @@ public class LibraryTest {
 
     @Test
     public void getsAllBookInformationFromTheLibrary() {
-        assertEquals("|Harry Potter and the Chamber of Secrets|J.K.Rowlng|1998|\n|Harry Potter and the Philosopher's Stone|J.K.Rowlng|1997|\n",
-                                lib.getBookDetails());
+
+        assertEquals("|Harry Potter and the Chamber of Secrets|J.K.Rowlng|1998|\n|Harry Potter and the Philosopher's Stone|J.K.Rowlng|1997|\n", lib.getBookDetails());
     }
 
     @Test

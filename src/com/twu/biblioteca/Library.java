@@ -42,6 +42,7 @@ public class Library {
     }
 
     //    Todo: Refactor to move the printing of titles away from the library higher up the stack to the printer
+//    Todo: format this printing
     public String getBookDetails() {
         String bookDetails = "";
         for (Book value : booksInLibrary.values()) {
