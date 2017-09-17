@@ -3,9 +3,6 @@ package com.twu.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.util.Collections;
 import java.util.LinkedList;
 
@@ -16,10 +13,6 @@ public class LibraryTest {
     Book harryPotter1 = new Book(new BookTitle("Harry Potter and the Philosopher's Stone"), new Author("J.K.Rowlng"), new Year(1997));
 
     Book hP2 = new Book(new BookTitle("Harry Potter and the Chamber of Secrets"), new Author("J.K.Rowlng"), new Year(1998));
-
-    public InputStream toStream(String stringy) {
-        return new ByteArrayInputStream( stringy.getBytes() );
-    }
 
     Library lib = new Library();
 
@@ -59,7 +52,6 @@ public class LibraryTest {
     @Test
     public void updatesListOfBooksOnceABookHasBeenCheckedOut() {
         lib.removeBooks(hP2);
-
         LinkedList<String> title = new LinkedList<String>();
         String hpTitle = new BookTitle("Harry Potter and the Philosopher's Stone").getTitle();
         title.add(hpTitle);
@@ -69,13 +61,11 @@ public class LibraryTest {
 
     @Test
     public void returnsABookObjectWhenGivenABookTitle() {
-
         assertEquals(harryPotter1, lib.findBookFromTitle(harryPotter1.getBookTitle()));
     }
 
     @Test
     public void returnsNoBookObjectWhenGivenABookTitle() {
-
         assertEquals(Book.NO_BOOK, lib.findBookFromTitle("heqvdkjewvcjms"));
     }
 
