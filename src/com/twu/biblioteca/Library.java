@@ -41,14 +41,22 @@ public class Library {
         return booksInLibrary.getOrDefault(desiredTitle, Book.NO_BOOK);
     }
 
-    //    Todo: Refactor to move the printing of titles away from the library higher up the stack to the printer
-//    Todo: format this printing
     public String getBookDetails() {
         String bookDetails = "";
-        for (Book value : booksInLibrary.values()) {
-            bookDetails += "|" + value.getBookTitle() + "|" + value.getBookAuthor() + "|" + value.getBookYear() + "|" + "\n";
+        for (Book book : sortedBooks()) {
+            bookDetails += "|" + book.getBookTitle() + "|" + book.getBookAuthor() + "|" + book.getBookYear() + "|" + "\n";
         }
+
         return bookDetails;
+    }
+
+    public List<Book> sortedBooks() {
+        List<Book> books = new LinkedList<>(booksInLibrary.values());
+
+        Comparator<Book> howToSort = Comparator.comparing(Book::getBookTitle);
+
+        books.sort(howToSort);
+        return books;
     }
 
     public boolean hasBookTitleInLibrary(String title) {

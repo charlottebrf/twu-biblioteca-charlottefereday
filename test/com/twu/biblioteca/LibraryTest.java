@@ -53,7 +53,6 @@ public class LibraryTest {
 
     @Test
     public void getsAllBookInformationFromTheLibrary() {
-
         assertEquals("|Harry Potter and the Chamber of Secrets|J.K.Rowlng|1998|\n|Harry Potter and the Philosopher's Stone|J.K.Rowlng|1997|\n", lib.getBookDetails());
     }
 
