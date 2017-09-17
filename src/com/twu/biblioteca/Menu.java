@@ -6,7 +6,6 @@ public class Menu {
     private final Keyboard keyboard;
     private final BookRegister register;
 
-
     public Menu(Library library, Printer printer, BookRegister register, Keyboard keyboard) {
         this.library = library;
         this.printer = printer;
@@ -18,25 +17,18 @@ public class Menu {
         this(library, printer, register, new Keyboard());
     }
 
-    //todo: properly format the strings
     public String displayLibraryBooks() {
-        String bookList = "";
-        bookList = library.getBookDetails();
-        String header = printer.display("|              Book Title               |   Author  | Year|\n");
-        printer.display(header + bookList);
-        return header + bookList;
+        String header = "|              Book Title               |   Author  | Year|\n";
+        printer.display(header + library.getBookDetails());
+        return library.getBookDetails();
     }
 
-    //todo: refactor to be able to invoke exitProgram()
     public String checkIsValidOption() {
         return printer.display("Select a valid option!");
-//        exitProgram();
     }
 
-    //todo: refactor to be able to invoke exitProgram()
     public String exitProgram() {
         return printer.display("You have selected quit: exiting the program now");
-//        System.exit(0);
     }
 
     public String checkedOutSuccessOrFailureMessage(String title) {

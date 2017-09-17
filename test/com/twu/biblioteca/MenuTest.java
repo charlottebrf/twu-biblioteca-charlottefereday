@@ -33,7 +33,7 @@ public class MenuTest {
 
     @Test
     public void canProcessAStringToSelectMenuOption() {
-        assertEquals("|              Book Title               |   Author  | Year|\n|Harry Potter and the Chamber of Secrets|J.K.Rowling|1998|\n|Harry Potter and the Philosopher's Stone|J.K.Rowling|1997|\n",
+                assertEquals("|Harry Potter and the Chamber of Secrets|J.K.Rowling|1998|\n|Harry Potter and the Philosopher's Stone|J.K.Rowling|1997|\n",
                     menu.process("1"));
     }
 

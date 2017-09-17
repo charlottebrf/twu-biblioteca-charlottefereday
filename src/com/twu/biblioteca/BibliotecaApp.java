@@ -17,7 +17,7 @@ public class BibliotecaApp {
     }
 
     public void printMainMenu() {
-        printer.display("****" + printer.display("Main Menu") + "****" + "\n\n");
+        printer.display("\n**** Main Menu ****\n\n");
         printer.display("1. List Books\n2. Checkout books\n3. Return books\n4. Exit");
     }
 
@@ -41,7 +41,21 @@ public class BibliotecaApp {
     }
 
     public static void main(String[] args) {
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(new Printer(), new Library(), new Menu(new Library(), new Printer() , new BookRegister()), new Keyboard());
+        Library library = new Library();
+        Book harryPotter1 = new Book(new BookTitle("Harry Potter and the Philosopher's Stone"), new Author("J.K.Rowlng"), new Year(1997));
+        Book hP2 = new Book(new BookTitle("Harry Potter and the Chamber of Secrets"), new Author("J.K.Rowlng"), new Year(1998));
+        Book alphabet = new Book(new BookTitle("AAA"), new Author("BBBB"), new Year(2009));
+        library.addBooks(harryPotter1);
+        library.addBooks(hP2);
+        BookRegister register = new BookRegister();
+        register.addBooksToRegister(hP2);
+        register.addBooksToRegister(harryPotter1);
+        register.addBooksToRegister(alphabet);
+
+        Printer printer = new Printer();
+        Keyboard keyboard = new Keyboard();
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(printer, library, new Menu(library, printer, register, keyboard), keyboard);
+
         bibliotecaApp.printWelcome();
         bibliotecaApp.interactiveMenu();
     }
