@@ -55,7 +55,6 @@ public class Menu {
         }
     }
 
-    //Todo: figure out how I can get the scanner object in here so line 33 can work & refactor as very long
     //Todo: think about responsbility - is the menu the correct place or should this be refactored to the library to check books & printer class to console log
 //    Todo: fix this to add in a book registry: which keeps track of all the books & also asks the user for the title, year & date
     public String checkOutBook() {

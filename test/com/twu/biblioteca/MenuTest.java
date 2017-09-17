@@ -23,33 +23,33 @@ public class MenuTest {
         library.addBooks(hP2);
         library.addBooks(harryPotter1);
     }
-
-    @Test
-    public void canProcessAStringToSelectMenuOption() {
-        Menu menu2 = new Menu(library, harryPotter1, printer);
-        assertEquals("|              Book Title               |   Author  | Year|\n|Harry Potter and the Chamber of Secrets|J.K.Rowling|1998|\n|Harry Potter and the Philosopher's Stone|J.K.Rowling|1997|\n",
-                    menu2.process("1"));
-    }
-
-    @Test
-    public void givesAMesageforAnInvalidOption() {
-
-        assertEquals("", menu.process("x"));
-    }
-
-    @Test
-    public void givesAQuitOption() {
-        assertEquals("", menu.process("4"));
-    }
-
-
+//
+//    @Test
+//    public void canProcessAStringToSelectMenuOption() {
+//        Menu menu2 = new Menu(library, harryPotter1, printer);
+//        assertEquals("|              Book Title               |   Author  | Year|\n|Harry Potter and the Chamber of Secrets|J.K.Rowling|1998|\n|Harry Potter and the Philosopher's Stone|J.K.Rowling|1997|\n",
+//                    menu2.process("1"));
+//    }
+//
+//    @Test
+//    public void givesAMesageforAnInvalidOption() {
+//
+//        assertEquals("", menu.process("x"));
+//    }
+//
+//    @Test
+//    public void givesAQuitOption() {
+//        assertEquals("", menu.process("4"));
+//    }
+//
+//
 //    @Test
 //    public void checkoutABookOption() {
-//        assertEquals(success, menu.checkOutBook());
+//        assertEquals("Thank you! Enjoy the book", menu.process("2"));
 //    }
 //
 //    @Test
 //    public void returnABookOption() {
-//        assertEquals(success2, menu.returnBook());
+//        assertEquals("Thank you for returning the book.", menu.process("3"));
 //    }
 }
