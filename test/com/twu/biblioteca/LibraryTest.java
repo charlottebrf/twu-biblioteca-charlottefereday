@@ -57,7 +57,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void updatesListOfBooksOnceABookHasBeenCheckedOut() throws Exception {
+    public void updatesListOfBooksOnceABookHasBeenCheckedOut() {
         lib.removeBooks(hP2);
 
         LinkedList<String> title = new LinkedList<String>();

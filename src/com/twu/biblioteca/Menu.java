@@ -5,17 +5,19 @@ public class Menu {
     private final Book book;
     private final Printer printer;
     private final Keyboard keyboard;
+    private final BookRegister register;
 
 
-    public Menu(Library library, Book book, Printer printer, Keyboard keyboard) {
+    public Menu(Library library, Book book, Printer printer, BookRegister register, Keyboard keyboard) {
         this.library = library;
         this.book = book;
         this.printer = printer;
+        this.register = register;
         this.keyboard = keyboard;
     }
 
-    public Menu(Library library, Book book, Printer printer) {
-        this(library, book, printer, new Keyboard());
+    public Menu(Library library, Book book, Printer printer, BookRegister register) {
+        this(library, book, printer, register, new Keyboard());
     }
 
     //todo: properly format the strings
@@ -59,7 +61,7 @@ public class Menu {
 //    Todo: fix this to add in a book registry: which keeps track of all the books & also asks the user for the title, year & date
     public String checkOutBook() {
         String title = keyboard.read();
-        if (library.hasBookTitleInLibrary(title)) {
+        if (register.findBookInRegisterFromTitle(title) && library.hasBookTitleInLibrary() ) {
             printer.display("You have chosen to check out a book, redirecting you now");
             Book checkedOutBook = library.findBookFromTitle();
             library.removeBooks(checkedOutBook);

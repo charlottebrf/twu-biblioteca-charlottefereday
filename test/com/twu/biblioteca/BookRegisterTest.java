@@ -36,11 +36,36 @@ public class BookRegisterTest {
 
     @Test
     public void bookTitlesCanBeSearchedForInRegister() {
-        Keyboard keyboard = new Keyboard(toStream("Harry Potter and the Philosopher's Stone"));
-        BookRegister register2 = new BookRegister(keyboard);
-        register2.addBooksToRegister(harryPotter1);
 
+        assertEquals(harryPotter1,register.findBookInRegisterFromTitle("Harry Potter and the Philosopher's Stone"));
+    }
 
-        assertEquals(harryPotter1,register2.findBookInRegisterFromTitle());
+    @Test
+    public void returnsNoBookWhenNotFoundInFromRegister() {
+        Keyboard keyboard = new Keyboard(toStream("heqvdkjewvcjms"));
+        BookRegister register3 = new BookRegister(keyboard);
+        register3.addBooksToRegister(harryPotter1);
+        register3.addBooksToRegister(hP2);
+
+        assertEquals(Book.NO_BOOK, register3.findBookInRegisterFromTitle());
+    }
+
+    @Test
+    public void booksCanBeRemovedFromRegister() throws Exception {
+        LinkedList<Book> expectedBooksInRegister = new LinkedList<Book>();
+        expectedBooksInRegister.add(hP2);
+        register.removesBooksFromRegister(harryPotter1);
+
+        assertEquals(expectedBooksInRegister, register.getBooksInRegister());
+    }
+
+    @Test
+    public void returnsTrueIfBookIsPresent() {
+        assertEquals(true,register.hasBookTitleInRegister("Harry Potter and the Philosopher's Stone"));
+    }
+
+    @Test
+    public void returnsFalseIfBookIsNotPresent() {
+        assertEquals(false,register.hasBookTitleInRegister("heqvdkjewvcjms"));
     }
 }

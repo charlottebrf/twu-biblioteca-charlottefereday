@@ -26,8 +26,15 @@ public class BookRegister {
         return new LinkedList<>(booksInRegister.values());
     }
 
-    public Book findBookInRegisterFromTitle() {
-        String desiredTitle = keyboard.read();
+    public Book findBookInRegisterFromTitle(String desiredTitle ) {
         return booksInRegister.getOrDefault(desiredTitle, Book.NO_BOOK);
+    }
+
+    public void removesBooksFromRegister(Book book) {
+        booksInRegister.remove(book.getBookTitle());
+    }
+
+    public boolean hasBookTitleInRegister(String title) {
+        return booksInRegister.containsKey(title);
     }
 }

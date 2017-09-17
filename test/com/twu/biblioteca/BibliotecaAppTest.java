@@ -27,7 +27,8 @@ public class BibliotecaAppTest {
         return new ByteArrayInputStream( stringy.getBytes() );
     }
     Library lib = new Library();
-    Menu menu = new Menu(lib, hP1, printer, keyboard);
+    BookRegister register = new BookRegister();
+    Menu menu = new Menu(lib, hP1, printer, register, keyboard);
     BibliotecaApp biblioteca = new BibliotecaApp(printer, lib, menu, keyboard);
 
     @Before
@@ -35,7 +36,8 @@ public class BibliotecaAppTest {
         biblioteca = new BibliotecaApp(printer, lib, menu, keyboard);
         lib.addBooks(hP1);
         lib.addBooks(hP2);
-
+        register.addBooksToRegister(hP1);
+        register.addBooksToRegister(hP2);
     }
 
     @Test
