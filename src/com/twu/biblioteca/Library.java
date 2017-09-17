@@ -36,8 +36,7 @@ public class Library {
         return titles;
     }
 
-    public Book findBookFromTitle() {
-        String desiredTitle = keyboard.read();
+    public Book findBookFromTitle(String desiredTitle) {
         return booksInLibrary.getOrDefault(desiredTitle, Book.NO_BOOK);
     }
 
