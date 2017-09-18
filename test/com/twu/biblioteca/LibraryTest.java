@@ -46,8 +46,8 @@ public class LibraryTest {
     @Test
     public void getsABookTitleFromTheLibrary() {
         LinkedList<String> title = new LinkedList<String>();
-        title.add(harryPotter1.getBookTitle());
-        title.add(hP2.getBookTitle());
+        title.add(harryPotter1.title.getTitle());
+        title.add(hP2.title.getTitle());
         Collections.sort(title);
 
         assertEquals(title, lib.getBookTitles());
@@ -95,7 +95,7 @@ public class LibraryTest {
 
     @Test
     public void returnsABookObjectWhenGivenABookTitle() {
-        assertEquals(harryPotter1, lib.findBookFromTitle(harryPotter1.getBookTitle()));
+        assertEquals(harryPotter1, lib.findBookFromTitle(harryPotter1.title.getTitle()));
     }
 
     @Test
@@ -116,7 +116,7 @@ public class LibraryTest {
     @Test
     public void returnsFalseIfBookIsNotInTheLibrary() {
         lib.removeBooks(hP2);
-        String title = hP2.getBookTitle();
+        String title = hP2.title.getTitle();
 
         assertEquals(false, lib.hasBookTitleInLibrary(title));
     }
@@ -131,7 +131,7 @@ public class LibraryTest {
 
     @Test
     public void returnsTrueIfBookIsInTheLibrary() {
-        String title = hP2.getBookTitle();
+        String title = hP2.title.getTitle();
 
         assertEquals(true, lib.hasBookTitleInLibrary(title));
     }

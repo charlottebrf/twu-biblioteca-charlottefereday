@@ -16,18 +16,20 @@ public class Library {
         this.keyboard = keyboard;
     }
 
+//    Todo: figure out how to refactor so that I'm not duplicating common methods for Movies & Books
+
     public Library() {
         this(new Keyboard());
     }
 
     public void addBooks(Book book) {
-        booksInLibrary.put(book.getBookTitle(), book);
+        booksInLibrary.put(book.title.getTitle(), book);
     }
 
     public void addMovies(Movie movie) { moviesInLibrary.put(movie.getMovieName(), movie);}
 
     public void removeBooks(Book book) {
-        booksInLibrary.remove(book.getBookTitle());
+        booksInLibrary.remove(book.title.getTitle());
     }
 
     public void removeMovies(Movie movie) { moviesInLibrary.remove(movie.getMovieName());}
@@ -39,7 +41,7 @@ public class Library {
     public List<Movie> getMovies() { return new LinkedList<>(moviesInLibrary.values()); }
 
     public List<String> getBookTitles() {
-        List<String> titles = booksInLibrary.values().stream().map(book -> book.getBookTitle()).collect(toList());
+        List<String> titles = booksInLibrary.values().stream().map(book -> book.title.getTitle()).collect(toList());
         Collections.sort(titles);
         return titles;
     }
@@ -61,7 +63,7 @@ public class Library {
     public String getBookDetails() {
         String bookDetails = "";
         for (Book book : sortedBooks()) {
-            bookDetails += "|" + book.getBookTitle() + "|" + book.getBookAuthor() + "|" + book.getBookYear() + "|" + "\n";
+            bookDetails += "|" + book.title.getTitle() + "|" + book.getBookAuthor() + "|" + book.getBookYear() + "|" + "\n";
         }
 
         return bookDetails;
@@ -78,7 +80,7 @@ public class Library {
     public List<Book> sortedBooks() {
         List<Book> books = new LinkedList<>(booksInLibrary.values());
 
-        Comparator<Book> howToSort = Comparator.comparing(Book::getBookTitle);
+        Comparator<Book> howToSort = Comparator.comparing(book -> book.title.getTitle());
 
         books.sort(howToSort);
         return books;
