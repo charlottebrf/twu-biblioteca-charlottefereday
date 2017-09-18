@@ -54,12 +54,22 @@ public class LibraryRegisterTest {
     }
 
     @Test
-    public void returnsNoBookWhenNotFoundInFromRegister() {
+    public void movieNamesCanBeSearchedForInRegister() {
+        assertEquals(killBill, register.findMovieInRegisterFromName("Kill Bill"));
+    }
+
+    @Test
+    public void returnsNoBookWhenNotFoundFromRegister() {
         assertEquals(Book.NO_BOOK, register.findBookInRegisterFromTitle("heqvdkjewvcjms"));
     }
 
     @Test
-    public void booksCanBeRemovedFromRegister() throws Exception {
+    public void returnsNoMovieWhenNotFoundInRegister() {
+        assertEquals(Movie.NO_MOVIE, register.findMovieInRegisterFromName("heqvdkjewvcjms"));
+    }
+
+    @Test
+    public void booksCanBeRemovedFromRegister() {
         LinkedList<Book> expectedBooksInRegister = new LinkedList<Book>();
         expectedBooksInRegister.add(hP2);
         register.removesBooksFromRegister(harryPotter1);
@@ -68,12 +78,31 @@ public class LibraryRegisterTest {
     }
 
     @Test
+    public void moviesCanBeRemovedFromRegister() {
+        LinkedList<Movie> expectedMoviesInRegister = new LinkedList<Movie>();
+        expectedMoviesInRegister.add(cinderella);
+        register.removesMoviesFromRegister(killBill);
+
+        assertEquals(expectedMoviesInRegister, register.getMoviesInRegister());
+    }
+
+    @Test
     public void returnsTrueIfBookIsPresent() {
         assertEquals(true, register.hasBookTitleInRegister("Harry Potter and the Philosopher's Stone"));
     }
 
     @Test
+    public void returnsTrueIfMovieIsPresent() {
+        assertEquals(true, register.hasMovieNameInRegister("Kill Bill"));
+    }
+
+    @Test
     public void returnsFalseIfBookIsNotPresent() {
         assertEquals(false, register.hasBookTitleInRegister("heqvdkjewvcjms"));
+    }
+
+    @Test
+    public void returnsFalseIfMovieIsNotPresent() {
+        assertEquals( false, register.hasMovieNameInRegister("heqvdkjewvcjms"));
     }
 }

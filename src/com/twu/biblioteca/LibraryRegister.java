@@ -35,11 +35,15 @@ public class LibraryRegister {
         return booksInRegister.getOrDefault(desiredTitle, Book.NO_BOOK);
     }
 
-    public void removesBooksFromRegister(Book book) {
-        booksInRegister.remove(book.title.getTitle());
+    public Movie findMovieInRegisterFromName(String desiredName) {
+        return moviesInRegister.getOrDefault(desiredName, Movie.NO_MOVIE);
     }
 
-    public boolean hasBookTitleInRegister(String title) {
-        return booksInRegister.containsKey(title);
-    }
+    public void removesBooksFromRegister(Book book) { booksInRegister.remove(book.title.getTitle());}
+
+    public void removesMoviesFromRegister(Movie movie) { moviesInRegister.remove(movie.getMovieName());}
+
+    public boolean hasBookTitleInRegister(String title) { return booksInRegister.containsKey(title);}
+
+    public boolean hasMovieNameInRegister(String name) { return moviesInRegister.containsKey(name);}
 }
