@@ -63,6 +63,14 @@ public class Library {
         return bookDetails;
     }
 
+    public String getMovieDetails() {
+        String movieDetails = "";
+        for (Movie movie : sortedMovies()) {
+            movieDetails += "|" + movie.getMovieName() + "|" + movie.getMovieYear() + "|" + movie.getMovieDirector() + "|" + movie.getMovieRating() + "|" + "\n";
+        }
+        return movieDetails;
+    }
+
     public List<Book> sortedBooks() {
         List<Book> books = new LinkedList<>(booksInLibrary.values());
 
@@ -70,6 +78,15 @@ public class Library {
 
         books.sort(howToSort);
         return books;
+    }
+
+    public List<Movie> sortedMovies() {
+        List<Movie> movies = new LinkedList<>(moviesInLibrary.values());
+
+        Comparator<Movie> howToSort = Comparator.comparing(Movie::getMovieName);
+
+        movies.sort(howToSort);
+        return movies;
     }
 
     public boolean hasBookTitleInLibrary(String title) {

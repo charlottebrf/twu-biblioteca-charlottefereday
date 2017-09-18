@@ -69,6 +69,11 @@ public class LibraryTest {
     }
 
     @Test
+    public void getsAllMovieInformationFromTheLibrary() {
+        assertEquals("|Cinderella|2015|Kenneth Branagh|0|\n|Kill Bill|2002|Quentin Tarantino|5|\n", lib.getMovieDetails());
+    }
+
+    @Test
     public void updatesListOfBooksOnceABookHasBeenCheckedOut() {
         lib.removeBooks(hP2);
         LinkedList<String> title = new LinkedList<String>();
