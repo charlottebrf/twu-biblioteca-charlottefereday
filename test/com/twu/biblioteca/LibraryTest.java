@@ -100,7 +100,7 @@ public class LibraryTest {
 
     @Test
     public void returnsAMovieObjectWhenGivenAMovieName() {
-        assertEquals();
+        assertEquals(killBill, lib.findMovieFromName(killBill.getMovieName()));
     }
 
     @Test

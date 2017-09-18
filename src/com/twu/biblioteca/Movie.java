@@ -6,6 +6,7 @@ public class Movie {
     private final Year year;
     private final Director director;
     private final MovieRating rating;
+    public static final Movie NO_MOVIE = new Movie(new MovieName("No movie"), new Year(1111), new Director("No director"), new MovieRating());
 
     public Movie(MovieName name, Year year, Director director, MovieRating rating) {
         this.name = name;

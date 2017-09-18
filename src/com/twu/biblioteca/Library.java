@@ -54,6 +54,10 @@ public class Library {
         return booksInLibrary.getOrDefault(desiredTitle, Book.NO_BOOK);
     }
 
+    public Movie findMovieFromName(String desiredName) {
+        return moviesInLibrary.getOrDefault(desiredName, Movie.NO_MOVIE);
+    }
+
     public String getBookDetails() {
         String bookDetails = "";
         for (Book book : sortedBooks()) {
