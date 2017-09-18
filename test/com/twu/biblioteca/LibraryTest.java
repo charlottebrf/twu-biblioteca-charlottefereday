@@ -54,6 +54,16 @@ public class LibraryTest {
     }
 
     @Test
+    public void getsAMovieNameFromTheLibrary() throws Exception {
+        LinkedList<String> names = new LinkedList<>();
+        names.add(killBill.getMovieName());
+        names.add(cinderella.getMovieName());
+        Collections.sort(names);
+
+        assertEquals(names, lib.getMovieNames());
+    }
+
+    @Test
     public void getsAllBookInformationFromTheLibrary() {
         assertEquals("|Harry Potter and the Chamber of Secrets|J.K.Rowlng|1998|\n|Harry Potter and the Philosopher's Stone|J.K.Rowlng|1997|\n", lib.getBookDetails());
     }

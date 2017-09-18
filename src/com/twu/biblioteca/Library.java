@@ -44,6 +44,12 @@ public class Library {
         return titles;
     }
 
+    public List<String> getMovieNames() {
+        List<String> names = moviesInLibrary.values().stream().map(movie -> movie.getMovieName()).collect(toList());
+        Collections.sort(names);
+        return names;
+    }
+
     public Book findBookFromTitle(String desiredTitle) {
         return booksInLibrary.getOrDefault(desiredTitle, Book.NO_BOOK);
     }
