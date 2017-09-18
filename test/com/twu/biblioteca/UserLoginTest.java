@@ -10,8 +10,8 @@ import java.util.Map;
 import static org.junit.Assert.*;
 
 public class UserLoginTest {
-
-    Password password = new Password("abcdefgh");
+    String unguessable = "abcdefgh";
+    Password password = new Password(unguessable);
     BigInteger cell = new BigInteger("0123456789");
     LibraryNumber libnum = new LibraryNumber(123-4567);
     UserLogin login = new UserLogin();
@@ -27,7 +27,7 @@ public class UserLoginTest {
     }
 
     @Test
-    public void checksForUserLibraryNumber() {
-        assertEquals(libnum, login.findPasswordFromLibraryNumber());
-        }
+    public void getsUserLoginKey() {
+        assertEquals(cell, login.getUserLoginPassword(cell));
+    }
 }
