@@ -45,6 +45,8 @@ public class Menu {
         }
     }
 
+    //Todo: see if possible to refactor movie additions so not duplicating code
+
     public String checkedOutMovieSuccessOrFailureMessage(String name) {
         if(library.findMovieFromName(name) == Movie.NO_MOVIE && register.hasMovieNameInRegister(name)) {
             return printer.display("Thank you! Enjoy the movie");
