@@ -19,18 +19,13 @@ public class BibliotecaApp {
 
     public void printMainMenu() {
         printer.display("\n**** Main Menu ****\n\n");
-        printer.display("1. List Books\n2. Checkout books\n3. Return books\n4. Exit");
+        printer.display("1. List Books\n2. List Movies\n3. Checkout Books\n4. Checkout Movies\n5. Return Books\n6. Exit");
     }
 
     public void printWelcome() {
         printer.display("Welcome to the new Biblioteca App: we are open for business!");
     }
 
-    public List<String> listLibraryBookTitles() {
-        List<String> bookTitles = library.getBookTitles();
-        sort(bookTitles);
-        return bookTitles;
-    }
 
     public String interactiveMenu() {
         String userInput = "";
@@ -46,12 +41,21 @@ public class BibliotecaApp {
         Book harryPotter1 = new Book(new BookTitle("Harry Potter and the Philosopher's Stone"), new Author("J.K.Rowlng"), new Year(1997));
         Book hP2 = new Book(new BookTitle("Harry Potter and the Chamber of Secrets"), new Author("J.K.Rowlng"), new Year(1998));
         Book alphabet = new Book(new BookTitle("AAA"), new Author("BBBB"), new Year(2009));
+        Movie killBill = new Movie(new MovieName("Kill Bill"), new Year(2002), new Director("Quentin Tarantino"), new MovieRating(5));
+        Movie cinderella = new Movie(new MovieName("Cinderella"), new Year(2015), new Director("Kenneth Branagh"), new MovieRating());
+        Movie alphabet2 = new Movie(new MovieName("AAA"), new Year(1111), new Director("BBB"), new MovieRating());
         library.addBooks(harryPotter1);
         library.addBooks(hP2);
-        BookRegister register = new BookRegister();
+        library.addMovies(killBill);
+        library.addMovies(cinderella);
+        library.addMovies(alphabet2);
+        LibraryRegister register = new LibraryRegister();
         register.addBooksToRegister(hP2);
         register.addBooksToRegister(harryPotter1);
         register.addBooksToRegister(alphabet);
+        register.addMoviesToRegister(killBill);
+        register.addMoviesToRegister(cinderella);
+        register.addMoviesToRegister(alphabet2);
 
         Printer printer = new Printer();
         Keyboard keyboard = new Keyboard();

@@ -24,7 +24,7 @@ public class BibliotecaAppTest {
     }
 
     Library lib = new Library();
-    BookRegister register = new BookRegister();
+    LibraryRegister register = new LibraryRegister();
     Menu menu = new Menu(lib, printer, register, keyboard);
     BibliotecaApp biblioteca = new BibliotecaApp(printer, lib, menu, keyboard);
 
@@ -37,17 +37,6 @@ public class BibliotecaAppTest {
         register.addBooksToRegister(hP2);
     }
 
-    @Test
-    public void displaysListOfBooks() {
-        List<String> listOfTitles = new LinkedList<>();
-        String title2 = hP2.getBookTitle();
-        listOfTitles.add(title2);
-        String title1 = hP1.getBookTitle();
-        listOfTitles.add(title1);
-
-
-        assertEquals(listOfTitles, biblioteca.listLibraryBookTitles());
-    }
 }
 
 
