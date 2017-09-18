@@ -105,11 +105,13 @@ public class Menu {
                 break;
             case "2":
                 result = displayLibraryMovies();
+                break;
             case "3":
                 result = checkOutBook();
                 break;
             case "4":
                 result = checkOutMovie();
+                break;
             case "5":
                 result = returnBook();
                 break;

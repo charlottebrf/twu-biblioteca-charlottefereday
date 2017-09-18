@@ -32,6 +32,8 @@ public class MenuTest {
         library.addMovies(cinderella);
         register.addBooksToRegister(hP2);
         register.addBooksToRegister(harryPotter1);
+        register.addMoviesToRegister(killBill);
+        register.addMoviesToRegister(cinderella);
     }
 
 //    "1. List Books\n2. List Movies\n3. Checkout Books\n4. Checkout Movies\n5. Return Books\n6. Exit"
@@ -77,9 +79,10 @@ public class MenuTest {
         Library lib3 = new Library(keyboard);
         lib3.addMovies(cinderella);
         lib3.addMovies(killBill);
-        register.addMoviesToRegister(cinderella);
-        register.addMoviesToRegister(killBill);
-        Menu menu3 = new Menu(lib3, printer, register, keyboard);
+        LibraryRegister register2 = new LibraryRegister();
+        register2.addMoviesToRegister(cinderella);
+        register2.addMoviesToRegister(killBill);
+        Menu menu3 = new Menu(lib3, printer, register2, keyboard);
 
         assertEquals("Thank you! Enjoy the movie", menu3.process("4"));
     }
@@ -94,7 +97,21 @@ public class MenuTest {
         register.addBooksToRegister(harryPotter1);
         Menu menu3 = new Menu(lib2, printer, register, keyboard);
 
-        assertEquals("That book is not available.", menu3.process("2"));
+        assertEquals("That book is not available.", menu3.process("3"));
+    }
+
+    @Test
+    public void willNotCheckOutAnUnavailableMovie() {
+        Keyboard keyboard = new Keyboard(toStream("heqvdkjewvcjms"));
+        Library lib3 = new Library(keyboard);
+        lib3.addMovies(cinderella);
+        lib3.addMovies(killBill);
+        LibraryRegister register2 = new LibraryRegister();
+        register2.addMoviesToRegister(cinderella);
+        register2.addMoviesToRegister(killBill);
+        Menu menu3 = new Menu(lib3, printer, register2, keyboard);
+
+        assertEquals("That movie is not available.", menu3.process("4"));
     }
 
     @Test
@@ -105,7 +122,7 @@ public class MenuTest {
         lib2.addBooks(hP2);
         register.addBooksToRegister(hP2);
         register.addBooksToRegister(harryPotter1);
-        assertEquals("Thank you for returning the book.", menu2.process("3"));
+        assertEquals("Thank you for returning the book.", menu2.process("5"));
     }
 
     @Test
@@ -117,6 +134,6 @@ public class MenuTest {
         lib2.addBooks(harryPotter1);
         register.addBooksToRegister(hP2);
         register.addBooksToRegister(harryPotter1);
-        assertEquals("That is not a valid book to return.", menu2.process("3"));
+        assertEquals("That is not a valid book to return.", menu2.process("5"));
     }
 }
