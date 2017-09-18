@@ -12,6 +12,8 @@ public class LibraryTest {
 
     Book harryPotter1 = new Book(new BookTitle("Harry Potter and the Philosopher's Stone"), new Author("J.K.Rowlng"), new Year(1997));
     Book hP2 = new Book(new BookTitle("Harry Potter and the Chamber of Secrets"), new Author("J.K.Rowlng"), new Year(1998));
+    Movie killBill = new Movie(new MovieName("Kill Bill"), new Year(2002), new Director("Quentin Tarantino"), new MovieRating(5));
+    Movie cinderella = new Movie(new MovieName("Cinderella"), new Year(2015), new Director("Kenneth Branagh"), new MovieRating());
     Library lib = new Library();
 
     @Before
@@ -19,6 +21,8 @@ public class LibraryTest {
         lib = new Library();
         lib.addBooks(harryPotter1);
         lib.addBooks(hP2);
+        lib.addMovies(killBill);
+        lib.addMovies(cinderella);
     }
 
     @Test
@@ -28,6 +32,15 @@ public class LibraryTest {
         expectedBooksInLib.add(harryPotter1);
 
         assertEquals(expectedBooksInLib, lib.getBooks());
+    }
+
+    @Test
+    public void addsAMovieToTheLibrary() {
+        LinkedList<Movie> expectedMoviesInLib = new LinkedList<>();
+        expectedMoviesInLib.add(killBill);
+        expectedMoviesInLib.add(cinderella);
+
+        assertEquals(expectedMoviesInLib, lib.getMovies());
     }
 
     @Test

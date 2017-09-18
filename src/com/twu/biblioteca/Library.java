@@ -7,10 +7,12 @@ import static java.util.stream.Collectors.toList;
 public class Library {
 
     private Map<String, Book> booksInLibrary;
+    private Map<String, Movie> moviesInLibrary;
     private final Keyboard keyboard;
 
     public Library(Keyboard keyboard) {
         booksInLibrary = new HashMap<String, Book>();
+        moviesInLibrary = new HashMap<String, Movie>();
         this.keyboard = keyboard;
     }
 
@@ -22,13 +24,19 @@ public class Library {
         booksInLibrary.put(book.getBookTitle(), book);
     }
 
+    public void addMovies(Movie movie) { moviesInLibrary.put(movie.getMovieName(), movie);}
+
     public void removeBooks(Book book) {
         booksInLibrary.remove(book.getBookTitle());
     }
 
+    public void removeMovies(Movie movie) { moviesInLibrary.remove(movie.getMovieName());}
+
     public List<Book> getBooks() {
         return new LinkedList<>(booksInLibrary.values());
     }
+
+    public List<Movie> getMovies() { return new LinkedList<>(moviesInLibrary.values()); }
 
     public List<String> getBookTitles() {
         List<String> titles = booksInLibrary.values().stream().map(book -> book.getBookTitle()).collect(toList());
