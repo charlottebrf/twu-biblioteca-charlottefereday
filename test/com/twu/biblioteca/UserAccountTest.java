@@ -14,18 +14,20 @@ public class UserAccountTest {
 
     LibraryNumber libnum = new LibraryNumber(123-4567);
     Password password = new Password("abcdefgh");
+    UserLogin login = new UserLogin();
     UserName userName = new UserName("Charlotte Fereday");
     UserEmailAddress email = new UserEmailAddress("foo@foo.com");
     BigInteger cell = new BigInteger("0123456789");
     UserPhoneNumber number = new UserPhoneNumber(cell);
 
-    UserAccount account = new UserAccount(libnum, password, userName, email, number);
+    UserAccount account = new UserAccount(login, userName, email, number);
 
     @Before
     public void setUp() throws Exception {
-        account = new UserAccount(libnum, password, userName, email, number);
+        account = new UserAccount(login, userName, email, number);
         account.addBooksToAccount(harryPotter1);
         account.addBooksToAccount(hP2);
+        login.addUserLogin(libnum, password);
     }
 
     @Test
@@ -49,5 +51,10 @@ public class UserAccountTest {
         account.removeBooksFromAccount(harryPotter1);
 
         assertEquals(expectedBooksInAccount, account.getBooksInAccount() );
+    }
+
+    @Test
+    public void checksIfValidAccount() {
+        assertEquals(true, account.isValid());
     }
 }

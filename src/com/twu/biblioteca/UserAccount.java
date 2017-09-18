@@ -7,16 +7,14 @@ import java.util.Map;
 
 public class UserAccount {
 
-    final private LibraryNumber libraryNumber;
-    final private Password password;
+    final private UserLogin login;
     final private UserName userName;
     final private UserEmailAddress email;
     final private UserPhoneNumber phoneNumber;
     final private  Map<String, Book> booksInAccount;
 
-    public UserAccount(LibraryNumber libraryNumber, Password password, UserName userName, UserEmailAddress email, UserPhoneNumber phoneNumber) {
-        this.libraryNumber = libraryNumber;
-        this.password = password;
+    public UserAccount(UserLogin login, UserName userName, UserEmailAddress email, UserPhoneNumber phoneNumber) {
+        this.login = login;
         this.userName = userName;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -31,12 +29,14 @@ public class UserAccount {
         booksInAccount.put(book.title.getTitle(), book);
     }
 
-
     public List<Book> getBooksInAccount() {
         return new LinkedList<>(booksInAccount.values());
     }
 
     public void removeBooksFromAccount(Book book) { booksInAccount.remove(book.title.getTitle());}
 
+    public boolean isValid(LibraryNumber libraryNumber) {
+        return login.containsKey(libraryNumber);
+    }
 
 }
