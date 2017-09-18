@@ -122,10 +122,24 @@ public class LibraryTest {
     }
 
     @Test
+    public void returnsFalseIfMovieIsNotInTheLibrary() throws Exception {
+        lib.removeMovies(cinderella);
+        String name = cinderella.getMovieName();
+
+        assertEquals(false, lib.hasMovieNameInLibrary(name));
+    }
+
+    @Test
     public void returnsTrueIfBookIsInTheLibrary() {
         String title = hP2.getBookTitle();
 
         assertEquals(true, lib.hasBookTitleInLibrary(title));
     }
 
+    @Test
+    public void returnsTrueIfMovieIsInTheLibrary() {
+        String name = killBill.getMovieName();
+
+        assertEquals(true, lib.hasMovieNameInLibrary(name));
+    }
 }

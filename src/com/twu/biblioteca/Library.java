@@ -96,4 +96,6 @@ public class Library {
     public boolean hasBookTitleInLibrary(String title) {
         return booksInLibrary.containsKey(title);
     }
+
+    public boolean hasMovieNameInLibrary(String name) { return moviesInLibrary.containsKey(name); }
 }
