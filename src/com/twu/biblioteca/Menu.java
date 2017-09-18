@@ -24,7 +24,7 @@ public class Menu {
     }
 
     public String displayLibraryMovies() {
-        String header = "|  Film Name |Year|Director|Moving Rating|\n";
+        String header = "|Film Name|Year|Director|Rating|\n";
         printer.display(header + library.getMovieDetails());
         return library.getMovieDetails();
     }
@@ -62,9 +62,9 @@ public class Menu {
     }
 
     public String checkOutBook() {
+        printer.display("You have chosen to check out a book. Please enter the title of the book you'd like to check out:");
         String title = keyboard.read();
         if (register.hasBookTitleInRegister(title) && library.hasBookTitleInLibrary(title)) {
-            printer.display("You have chosen to check out a book, redirecting you now");
             Book checkedOutBook = library.findBookFromTitle(title);
             library.removeBooks(checkedOutBook);
             return checkedOutSuccessOrFailureMessage(title);
@@ -74,9 +74,9 @@ public class Menu {
     }
 
     public String checkOutMovie() {
+        printer.display("You haven chosen to check out a movie. Please enter the name of the movie you'd like to check out:");
         String name = keyboard.read();
         if(register.hasMovieNameInRegister(name) && library.hasMovieNameInLibrary(name)) {
-            printer.display("You haven chosen to check out a movie, redirecting you now");
             Movie checkedOuMovie = library.findMovieFromName(name);
             library.removeMovies(checkedOuMovie);
             return checkedOutMovieSuccessOrFailureMessage(name);
@@ -86,9 +86,9 @@ public class Menu {
     }
 
     public String returnBook() {
+        printer.display("You have chosen to return a book. Please enter the title of the book you'd like to return:");
         String title = keyboard.read();
         if (register.hasBookTitleInRegister(title) && !library.hasBookTitleInLibrary(title)) {
-            printer.display("You have chosen to return a book, redirecting you now");
             Book returnedBook = register.findBookInRegisterFromTitle(title);
             library.addBooks(returnedBook);
             return returnedSuccessOrFailureMessage(title);
