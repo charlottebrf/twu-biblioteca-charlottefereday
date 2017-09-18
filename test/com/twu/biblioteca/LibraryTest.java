@@ -84,8 +84,23 @@ public class LibraryTest {
     }
 
     @Test
+    public void updatesListOfMoviesOnceAMovieHasBeenCheckedOut() {
+        lib.removeMovies(cinderella);
+        LinkedList<String> name = new LinkedList<>();
+        String killBillName = new MovieName("Kill Bill").getName();
+        name.add(killBillName);
+
+        assertEquals(name, lib.getMovieNames());
+    }
+
+    @Test
     public void returnsABookObjectWhenGivenABookTitle() {
         assertEquals(harryPotter1, lib.findBookFromTitle(harryPotter1.getBookTitle()));
+    }
+
+    @Test
+    public void returnsAMovieObjectWhenGivenAMovieName() {
+        assertEquals();
     }
 
     @Test
