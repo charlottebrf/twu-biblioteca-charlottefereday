@@ -104,8 +104,13 @@ public class LibraryTest {
     }
 
     @Test
-    public void returnsNoBookObjectWhenGivenABookTitle() {
+    public void returnsNoBookObjectWhenGivenANonExistentBookTitle() {
         assertEquals(Book.NO_BOOK, lib.findBookFromTitle("heqvdkjewvcjms"));
+    }
+
+    @Test
+    public void returnsNoMovieObjectWhenGivenANonExistentMovieTitle() {
+        assertEquals(Movie.NO_MOVIE, lib.findMovieFromName("heqvdkjewvcjms"));
     }
 
     @Test
