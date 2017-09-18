@@ -9,21 +9,25 @@ import java.util.LinkedList;
 
 import static org.junit.Assert.*;
 
-public class BookRegisterTest {
+public class LibraryRegisterTest {
     Book harryPotter1 = new Book(new BookTitle("Harry Potter and the Philosopher's Stone"), new Author("J.K.Rowlng"), new Year(1997));
     Book hP2 = new Book(new BookTitle("Harry Potter and the Chamber of Secrets"), new Author("J.K.Rowlng"), new Year(1998));
+    Movie killBill = new Movie(new MovieName("Kill Bill"), new Year(2002), new Director("Quentin Tarantino"), new MovieRating(5));
+    Movie cinderella = new Movie(new MovieName("Cinderella"), new Year(2015), new Director("Kenneth Branagh"), new MovieRating());
 
     public InputStream toStream(String stringy) {
         return new ByteArrayInputStream(stringy.getBytes());
     }
 
-    BookRegister register = new BookRegister();
+    LibraryRegister register = new LibraryRegister();
 
     @Before
     public void setUp() throws Exception {
-        register = new BookRegister();
+        register = new LibraryRegister();
         register.addBooksToRegister(harryPotter1);
         register.addBooksToRegister(hP2);
+        register.addMoviesToRegister(killBill);
+        register.addMoviesToRegister(cinderella);
     }
 
     @Test
@@ -33,6 +37,15 @@ public class BookRegisterTest {
         expectedBooksInRegister.add(harryPotter1);
 
         assertEquals(expectedBooksInRegister, register.getBooksInRegister());
+    }
+
+    @Test
+    public void moviesCanBeAddedToRegister() {
+        LinkedList<Movie> expectedMoviesInRegister = new LinkedList<Movie>();
+        expectedMoviesInRegister.add(killBill);
+        expectedMoviesInRegister.add(cinderella);
+
+        assertEquals(expectedMoviesInRegister, register.getMoviesInRegister());
     }
 
     @Test

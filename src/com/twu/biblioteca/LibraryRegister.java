@@ -5,34 +5,38 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class BookRegister {
+public class LibraryRegister {
 
     private Map<String, Book> booksInRegister;
+    private Map<String, Movie> moviesInRegister;
     private final Keyboard keyboard;
 
-    public BookRegister(Keyboard keyboard) {
+    public LibraryRegister(Keyboard keyboard) {
         booksInRegister = new HashMap<String, Book>();
+        moviesInRegister = new HashMap<String, Movie>();
         this.keyboard = keyboard;
     }
 
-    public BookRegister() {
+    public LibraryRegister() {
         this(new Keyboard());
     }
 
-    public void addBooksToRegister(Book book) {
-        booksInRegister.put(book.getBookTitle(), book);
-    }
+    public void addBooksToRegister(Book book) { booksInRegister.put(book.title.getTitle(), book); }
+
+    public void addMoviesToRegister(Movie movie) { moviesInRegister.put(movie.getMovieName(), movie);}
 
     public List<Book> getBooksInRegister() {
         return new LinkedList<>(booksInRegister.values());
     }
+
+    public List<Movie> getMoviesInRegister() { return  new LinkedList<>(moviesInRegister.values());}
 
     public Book findBookInRegisterFromTitle(String desiredTitle) {
         return booksInRegister.getOrDefault(desiredTitle, Book.NO_BOOK);
     }
 
     public void removesBooksFromRegister(Book book) {
-        booksInRegister.remove(book.getBookTitle());
+        booksInRegister.remove(book.title.getTitle());
     }
 
     public boolean hasBookTitleInRegister(String title) {
