@@ -1,6 +1,8 @@
 package com.twu.biblioteca;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public class UserAccount {
@@ -24,6 +26,17 @@ public class UserAccount {
     public UserAccount getUserAccount() {
         return this;
     }
+
+    public void addBooksToAccount(Book book) {
+        booksInAccount.put(book.title.getTitle(), book);
+    }
+
+
+    public List<Book> getBooksInAccount() {
+        return new LinkedList<>(booksInAccount.values());
+    }
+
+    public void removeBooksFromAccount(Book book) { booksInAccount.remove(book.title.getTitle());}
 
 
 }
