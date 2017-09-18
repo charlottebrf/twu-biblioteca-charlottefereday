@@ -24,7 +24,7 @@ public class BookTest {
 
     @Test
     public void getsBookTitle() {
-        assertEquals("Harry Potter and the Philosopher's Stone", harryPotter1.getBookTitle());
+        assertEquals("Harry Potter and the Philosopher's Stone", harryPotter1.title.getTitle());
     }
 
     @Test

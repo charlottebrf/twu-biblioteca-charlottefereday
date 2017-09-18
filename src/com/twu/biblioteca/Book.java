@@ -16,10 +16,6 @@ public class Book {
         return this;
     }
 
-    public String getBookTitle() {
-        return this.title.getTitle();
-    }
-
     public String getBookAuthor() {
         return this.author.getAuthor();
     }
