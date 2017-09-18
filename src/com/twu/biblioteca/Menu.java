@@ -99,6 +99,14 @@ public class Menu {
         }
     }
 
+//    public String userLogin() {
+//        printer.display("To complete this action, you will first need to sign in. Please enter your Library number:");
+//        String libraryNumber = keyboard.read();
+//        printer.display("Please now enter you password:");
+//        String libraryNumber = keyboard.read();
+//
+//    }
+
     public String process(String selection) {
         String result = "";
         switch (selection) {
