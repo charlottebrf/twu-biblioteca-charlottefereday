@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 public class UserAccount {
-
-    final private UserLogin login;
     final private UserName userName;
     final private UserEmailAddress email;
     final private UserPhoneNumber phoneNumber;
+    final private UserLogin login;
     final private  Map<String, Book> booksInAccount;
+    final private  Map<String, UserLogin> loginDetails;
 
     public UserAccount(UserLogin login, UserName userName, UserEmailAddress email, UserPhoneNumber phoneNumber) {
         this.login = login;
@@ -19,6 +19,7 @@ public class UserAccount {
         this.email = email;
         this.phoneNumber = phoneNumber;
         booksInAccount = new HashMap<String, Book>();
+        loginDetails = new HashMap<String, UserLogin>();
     }
 
     public UserAccount getUserAccount() {
@@ -29,14 +30,16 @@ public class UserAccount {
         booksInAccount.put(book.title.getTitle(), book);
     }
 
+    public void addAccountDetails(UserLogin userLogin) { loginDetails.put(()), userLogin);}
+
     public List<Book> getBooksInAccount() {
         return new LinkedList<>(booksInAccount.values());
     }
 
     public void removeBooksFromAccount(Book book) { booksInAccount.remove(book.title.getTitle());}
 
-    public boolean isValid(LibraryNumber libraryNumber) {
-        return login.containsKey(libraryNumber);
+    public boolean isValid(Integer libraryNumber) {
+        return loginDetails.containsKey(libraryNumber);
     }
 
 }
