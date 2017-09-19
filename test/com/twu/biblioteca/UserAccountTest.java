@@ -21,6 +21,8 @@ public class UserAccountTest {
     UserEmailAddress email = new UserEmailAddress("foo@foo.com");
     BigInteger cell = new BigInteger("0123456789");
     UserPhoneNumber number = new UserPhoneNumber(cell);
+
+
     UserLogin login = new UserLogin();
 
     UserAccount account = new UserAccount(login, userName, email, number);

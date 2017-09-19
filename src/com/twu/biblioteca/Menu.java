@@ -5,16 +5,18 @@ public class Menu {
     private final Printer printer;
     private final Keyboard keyboard;
     private final LibraryRegister register;
+    private final UserAccount account;
 
-    public Menu(Library library, Printer printer, LibraryRegister register, Keyboard keyboard) {
+    public Menu(UserAccount account, Library library, Printer printer, LibraryRegister register, Keyboard keyboard) {
+        this.account = account;
         this.library = library;
         this.printer = printer;
         this.register = register;
         this.keyboard = keyboard;
     }
 
-    public Menu(Library library, Printer printer, LibraryRegister register) {
-        this(library, printer, register, new Keyboard());
+    public Menu(UserAccount account, Library library, Printer printer, LibraryRegister register) {
+        this(account, library, printer, register, new Keyboard());
     }
 
     public String displayLibraryBooks() {

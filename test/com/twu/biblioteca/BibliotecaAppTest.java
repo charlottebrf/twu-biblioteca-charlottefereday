@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.math.BigInteger;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,7 +26,17 @@ public class BibliotecaAppTest {
 
     Library lib = new Library();
     LibraryRegister register = new LibraryRegister();
-    Menu menu = new Menu(lib, printer, register, keyboard);
+
+    int num = 123-4567;
+    LibraryNumber libnum = new LibraryNumber(num);
+    Password password = new Password("abcdefgh");
+    UserLogin login = new UserLogin();
+    UserName userName = new UserName("Charlotte Fereday");
+    UserEmailAddress email = new UserEmailAddress("foo@foo.com");
+    BigInteger cell = new BigInteger("0123456789");
+    UserPhoneNumber number = new UserPhoneNumber(cell);
+    UserAccount account = new UserAccount(login, userName, email, number);
+    Menu menu = new Menu(account, lib, printer, register, keyboard);
     BibliotecaApp biblioteca = new BibliotecaApp(printer, lib, menu, keyboard);
 
     @Before
@@ -35,6 +46,7 @@ public class BibliotecaAppTest {
         lib.addBooks(hP2);
         register.addBooksToRegister(hP1);
         register.addBooksToRegister(hP2);
+        login.addUserLogin(libnum, password);
     }
 
 }

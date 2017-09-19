@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import static java.util.Collections.sort;
@@ -57,9 +58,20 @@ public class BibliotecaApp {
         register.addMoviesToRegister(cinderella);
         register.addMoviesToRegister(alphabet2);
 
+        int num = 1234567;
+        LibraryNumber libnum = new LibraryNumber(num);
+        Password password = new Password("abcdefgh");
+        UserLogin login = new UserLogin();
+        login.addUserLogin(libnum, password);
+        UserName userName = new UserName("Charlotte Fereday");
+        UserEmailAddress email = new UserEmailAddress("foo@foo.com");
+        BigInteger cell = new BigInteger("0123456789");
+        UserPhoneNumber number = new UserPhoneNumber(cell);
+        UserAccount account = new UserAccount(login, userName, email, number);
+
         Printer printer = new Printer();
         Keyboard keyboard = new Keyboard();
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(printer, library, new Menu(library, printer, register, keyboard), keyboard);
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(printer, library, new Menu(account, library, printer, register, keyboard), keyboard);
 
         bibliotecaApp.printWelcome();
         bibliotecaApp.interactiveMenu();
