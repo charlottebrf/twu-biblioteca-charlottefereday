@@ -160,5 +160,7 @@ public class MenuTest {
         Keyboard keyboard = new Keyboard(toStream("Harry Potter and the Philosopher's Stone"));
         Library lib2 = new Library(keyboard);
         Menu menu2 = new Menu(account, lib2, printer, register, keyboard);
+
+        assertEquals("Thank you! Enjoy the book", menu2.process("3"));
     }
 }

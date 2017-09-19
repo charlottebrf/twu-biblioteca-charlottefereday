@@ -66,6 +66,7 @@ public class Menu {
     }
 
     public String checkOutBook() {
+        userLogin();
         printer.display("You have chosen to check out a book. Please enter the title of the book you'd like to check out:");
         String title = keyboard.read();
         if (register.hasBookTitleInRegister(title) && library.hasBookTitleInLibrary(title)) {
@@ -101,13 +102,25 @@ public class Menu {
         }
     }
 
-//    public String userLogin() {
-//        printer.display("To complete this action, you will first need to sign in. Please enter your Library number:");
-//        String libraryNumber = keyboard.read();
-//        printer.display("Please now enter you password:");
-//        String libraryNumber = keyboard.read();
-//
-//    }
+    public void userLogin() {
+        printer.display("To complete this action, you will first need to sign in. Please enter your Library number:");
+        String libraryNumber = keyboard.read();
+        printer.display("Please now enter you password:");
+        String password = keyboard.read();
+
+        int libnum = Integer.parseInt(libraryNumber);
+        LibraryNumber convertedLibraryNumber = new LibraryNumber(libnum);
+        Password convertedPassword = new Password(password);
+
+        if (account.isValid(convertedLibraryNumber, convertedPassword)) {
+            checkOutBook();
+        } else {
+            printer.display("We can't find that account. Exiting the program.");
+            exitProgram();
+
+        }
+
+    }
 
     public String process(String selection) {
         String result = "";
