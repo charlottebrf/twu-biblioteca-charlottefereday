@@ -61,8 +61,7 @@ public class BibliotecaApp {
         int num = 1234567;
         LibraryNumber libnum = new LibraryNumber(num);
         Password password = new Password("abcdefgh");
-        UserLogin login = new UserLogin();
-        login.addUserLogin(libnum, password);
+        UserLogin login = new UserLogin(libnum,password);
         UserName userName = new UserName("Charlotte Fereday");
         UserEmailAddress email = new UserEmailAddress("foo@foo.com");
         BigInteger cell = new BigInteger("0123456789");

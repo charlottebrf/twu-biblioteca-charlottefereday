@@ -30,7 +30,7 @@ public class BibliotecaAppTest {
     int num = 123-4567;
     LibraryNumber libnum = new LibraryNumber(num);
     Password password = new Password("abcdefgh");
-    UserLogin login = new UserLogin();
+    UserLogin login = new UserLogin(libnum, password);
     UserName userName = new UserName("Charlotte Fereday");
     UserEmailAddress email = new UserEmailAddress("foo@foo.com");
     BigInteger cell = new BigInteger("0123456789");
@@ -46,7 +46,6 @@ public class BibliotecaAppTest {
         lib.addBooks(hP2);
         register.addBooksToRegister(hP1);
         register.addBooksToRegister(hP2);
-        login.addUserLogin(libnum, password);
     }
 
 }
