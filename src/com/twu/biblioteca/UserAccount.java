@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,6 +20,10 @@ public class UserAccount {
         this.phoneNumber = phoneNumber;
         booksInAccount = new HashMap<String, Book>();
     }
+
+    public String getUserName() { return this.userName.getUserName(); }
+    public String getUserEmailAddress() { return this.email.getEmail(); }
+    public BigInteger getUserNumber() { return this.phoneNumber.getNumber(); }
 
     public UserAccount getUserAccount() {
         return this;
