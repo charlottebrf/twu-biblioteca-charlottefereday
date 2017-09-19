@@ -28,17 +28,14 @@ public class Keyboard {
     }
 
     public LibraryNumber readLibraryNumber() {
-        int libnum = 0;
-        String login;
         try {
-            login = reader.readLine();
-            libnum = Integer.parseInt(login);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (NumberFormatException e)  {
-            e.printStackTrace();
+            String line = reader.readLine();
+            return new LibraryNumber(Integer.parseInt(line));
+
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Not recognized: try again");
+            return readLibraryNumber();
         }
-        return new LibraryNumber(libnum);
     }
 
     public Password readPassword() {

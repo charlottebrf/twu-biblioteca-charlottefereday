@@ -24,7 +24,6 @@ public class KeyboardTest {
         Keyboard keyboard = new Keyboard(toStream(""));
 
         assertEquals(null, keyboard.read());
-
     }
 
     @Test
