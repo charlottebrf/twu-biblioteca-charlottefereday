@@ -19,9 +19,9 @@ public class MenuTest {
     LibraryRegister register = new LibraryRegister();
 
 
-    int num = 123-4567;
-    int num2 = 768-9000;
+    int num = 1234567;
     LibraryNumber libnum = new LibraryNumber(num);
+    int num2 = 7689000;
     LibraryNumber libnum2 = new LibraryNumber(num2);
     Password password = new Password("abcdefgh");
     UserLogin login = new UserLogin(libnum, password);

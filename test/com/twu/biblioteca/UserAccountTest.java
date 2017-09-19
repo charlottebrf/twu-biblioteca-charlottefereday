@@ -12,8 +12,8 @@ public class UserAccountTest {
     Book harryPotter1 = new Book(new BookTitle("Harry Potter and the Philosopher's Stone"), new Author("J.K.Rowlng"), new Year(1997));
     Book hP2 = new Book(new BookTitle("Harry Potter and the Chamber of Secrets"), new Author("J.K.Rowlng"), new Year(1998));
 
-    int num = 123-4567;
-    int num2 = 768-9000;
+    int num = 1234567;
+    int num2 = 7689000;
     LibraryNumber libnum = new LibraryNumber(num);
     LibraryNumber libnum2 = new LibraryNumber(num2);
     Password password = new Password("abcdefgh");

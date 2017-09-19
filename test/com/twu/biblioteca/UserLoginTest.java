@@ -8,8 +8,8 @@ import static org.junit.Assert.*;
 public class UserLoginTest {
     String unguessable = "abcdefgh";
     String wrong = "xxx";
-    int number = 123-4567;
-    int number2 = 123-1111;
+    int number = 1234567;
+    int number2 = 1231111;
     Password password = new Password(unguessable);
     Password password2 = new Password(wrong);
     LibraryNumber libnum = new LibraryNumber(number);

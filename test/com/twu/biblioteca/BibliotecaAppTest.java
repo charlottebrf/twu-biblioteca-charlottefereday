@@ -27,7 +27,7 @@ public class BibliotecaAppTest {
     Library lib = new Library();
     LibraryRegister register = new LibraryRegister();
 
-    int num = 123-4567;
+    int num = 1234567;
     LibraryNumber libnum = new LibraryNumber(num);
     Password password = new Password("abcdefgh");
     UserLogin login = new UserLogin(libnum, password);

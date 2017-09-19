@@ -7,7 +7,7 @@ import java.math.BigInteger;
 import static org.junit.Assert.*;
 
 public class LibraryNumberTest {
-    int credential = 123-4567;
+    int credential = 1234567;
     LibraryNumber number = new LibraryNumber(credential);
 
     @Test
