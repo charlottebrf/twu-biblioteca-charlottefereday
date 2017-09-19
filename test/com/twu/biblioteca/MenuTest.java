@@ -156,10 +156,26 @@ public class MenuTest {
     }
 
     @Test
-    public void onlyAUserWithAValidLoginCanUseCheckoutOrReturnServices() {
+    public void AValidLoginCanUseCheckoutOrReturnServices() {
         Keyboard username1 = new Keyboard(toStream("1234567\nabcdefgh\n"));
         Menu menu2 = new Menu(account, library, printer, register, username1);
 
         assertEquals(true, menu2.userLogin());
+    }
+
+    @Test
+    public void InvalidLoginCannotUseCheckoutOrReturnServices() {
+        Keyboard username1 = new Keyboard(toStream("67\nabcdefgh\n"));
+        Menu menu2 = new Menu(account, library, printer, register, username1);
+
+        assertEquals(false, menu2.userLogin());
+    }
+
+    @Test
+    public void validUserCanSeeTheirAccountDetails() {
+        Keyboard username1 = new Keyboard(toStream("1234567\nabcdefgh\n"));
+        Menu menu2 = new Menu(account, library, printer, register, username1);
+
+        assertEquals("You have chosen to view your account details. Please find this listed below:", menu2.process("7"));
     }
 }
