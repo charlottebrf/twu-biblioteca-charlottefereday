@@ -13,5 +13,8 @@ public class Password {
         return this.password;
     }
 
-
+    public boolean equals(Object aPassword) {
+        Password p = (Password) aPassword;
+        return getPassword().equals(((Password) aPassword).getPassword());
+    }
 }
