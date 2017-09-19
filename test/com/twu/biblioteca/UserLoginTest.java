@@ -36,4 +36,11 @@ public class UserLoginTest {
         assertEquals(false, login.isValid(libnum, password2));
     }
 
+    @Test
+    public void validPassword() {
+        UserLogin login = new UserLogin(new LibraryNumber(1), new Password("foo"));
+
+        assertTrue(login.isValid(new LibraryNumber(1), new Password("foo")));
+    }
+
 }
