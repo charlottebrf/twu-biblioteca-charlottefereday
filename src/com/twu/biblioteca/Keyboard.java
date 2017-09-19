@@ -41,4 +41,14 @@ public class Keyboard {
         return new LibraryNumber(libnum);
     }
 
+    public Password readPassword() {
+        String password = "";
+        try {
+            password = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return new Password(password);
+    }
+
 }

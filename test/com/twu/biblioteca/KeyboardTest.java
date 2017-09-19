@@ -38,4 +38,14 @@ public class KeyboardTest {
 
         assertEquals(libnum.getNumber(), keyboard.readLibraryNumber().getNumber());
     }
+
+
+    @Test
+    public void canReadInputAndReturnAsPassword() {
+        String topSecret = "abcdefgh";
+        Password password = new Password(topSecret);
+        Keyboard keyboard = new Keyboard(toStream("abcdefgh"));
+
+        assertEquals(password.getPassword(), keyboard.readPassword().getPassword());
+    }
 }
