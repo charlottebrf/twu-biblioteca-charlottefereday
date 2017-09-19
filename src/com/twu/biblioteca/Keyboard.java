@@ -27,5 +27,18 @@ public class Keyboard {
         return returnedBook;
     }
 
-    //read number method 
+    public LibraryNumber readLibraryNumber() {
+        int libnum = 0;
+        String login = "";
+        try {
+            login = reader.readLine();
+            libnum = Integer.parseInt(login);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NumberFormatException e)  {
+            e.printStackTrace();
+        }
+        return new LibraryNumber(libnum);
+    }
+
 }

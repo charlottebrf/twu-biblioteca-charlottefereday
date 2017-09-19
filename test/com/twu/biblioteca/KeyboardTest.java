@@ -29,4 +29,13 @@ public class KeyboardTest {
         assertEquals(null, keyboard.read());
 
     }
+
+    @Test
+    public void canReadInputAndReturnAsALibraryNumber() {
+        int num = 1234567;
+        LibraryNumber libnum = new LibraryNumber(num);
+        Keyboard keyboard = new Keyboard(toStream("1234567"));
+
+        assertEquals(libnum.getNumber(), keyboard.readLibraryNumber().getNumber());
+    }
 }
