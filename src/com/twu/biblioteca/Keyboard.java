@@ -29,7 +29,7 @@ public class Keyboard {
 
     public LibraryNumber readLibraryNumber() {
         int libnum = 0;
-        String login = "";
+        String login;
         try {
             login = reader.readLine();
             libnum = Integer.parseInt(login);

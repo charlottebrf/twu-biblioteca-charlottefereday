@@ -2,7 +2,6 @@ package com.twu.biblioteca;
 
 import org.junit.Test;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
@@ -17,9 +16,7 @@ public class KeyboardTest {
     @Test
     public void canReadInput() {
         Keyboard keyboard = new Keyboard(toStream("book title"));
-
         assertEquals("book title", keyboard.read());
-
     }
 
     @Test
@@ -38,7 +35,6 @@ public class KeyboardTest {
 
         assertEquals(libnum.getNumber(), keyboard.readLibraryNumber().getNumber());
     }
-
 
     @Test
     public void canReadInputAndReturnAsPassword() {
