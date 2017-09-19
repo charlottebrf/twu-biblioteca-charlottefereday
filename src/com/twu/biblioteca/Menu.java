@@ -99,8 +99,14 @@ public class Menu {
     }
 
     public String returnBook() {
-        printer.display("You have chosen to return a book. Please enter the title of the book you'd like to return:");
-        String title = keyboard.read();
+        String title;
+        if (userLogin()) {
+            printer.display("You have chosen to return a book. Please enter the title of the book you'd like to return:");
+            title = keyboard.read();
+        } else {
+            return exitProgram();
+        }
+
         if (register.hasBookTitleInRegister(title) && !library.hasBookTitleInLibrary(title)) {
             Book returnedBook = register.findBookInRegisterFromTitle(title);
             library.addBooks(returnedBook);
