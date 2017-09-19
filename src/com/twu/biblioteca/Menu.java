@@ -79,6 +79,7 @@ public class Menu {
         if (register.hasBookTitleInRegister(title) && library.hasBookTitleInLibrary(title)) {
             Book checkedOutBook = library.findBookFromTitle(title);
             library.removeBooks(checkedOutBook);
+            account.addBooksToAccount(checkedOutBook);
             return checkedOutSuccessOrFailureMessage(title);
         } else {
             return checkedOutSuccessOrFailureMessage(title);
@@ -110,6 +111,7 @@ public class Menu {
         if (register.hasBookTitleInRegister(title) && !library.hasBookTitleInLibrary(title)) {
             Book returnedBook = register.findBookInRegisterFromTitle(title);
             library.addBooks(returnedBook);
+            account.removeBooksFromAccount(returnedBook);
             return returnedSuccessOrFailureMessage(title);
         } else {
             return returnedSuccessOrFailureMessage(title);

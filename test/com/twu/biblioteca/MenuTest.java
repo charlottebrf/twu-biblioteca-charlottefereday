@@ -79,7 +79,7 @@ public class MenuTest {
 
     @Test
     public void willCheckOutAnAvailableBook() {
-        Keyboard keyboard = new Keyboard(toStream("Harry Potter and the Philosopher's Stone"));
+        Keyboard keyboard = new Keyboard(toStream("1234567\nabcdefgh\nHarry Potter and the Philosopher's Stone"));
         Library lib2 = new Library(keyboard);
         lib2.addBooks(hP2);
         lib2.addBooks(harryPotter1);
@@ -107,7 +107,7 @@ public class MenuTest {
 
     @Test
     public void willNotCheckOutAnUnavailableBook() {
-        Keyboard keyboard = new Keyboard(toStream("heqvdkjewvcjms"));
+        Keyboard keyboard = new Keyboard(toStream("1234567\nabcdefgh\nheqvdkjewvcjms\n"));
         Library lib2 = new Library(keyboard);
         lib2.addBooks(hP2);
         lib2.addBooks(harryPotter1);
@@ -134,7 +134,7 @@ public class MenuTest {
 
     @Test
     public void willReturnABookIfNotInLibrary() {
-        Keyboard keyboard = new Keyboard(toStream("Harry Potter and the Philosopher's Stone"));
+        Keyboard keyboard = new Keyboard(toStream("1234567\nabcdefgh\nHarry Potter and the Philosopher's Stone\n"));
         Library lib2 = new Library(keyboard);
         Menu menu2 = new Menu(account, lib2, printer, register, keyboard);
         lib2.addBooks(hP2);
@@ -145,7 +145,7 @@ public class MenuTest {
 
     @Test
     public void willNotReturnABookIfAlreadyInLibrary() {
-        Keyboard keyboard = new Keyboard(toStream("heqvdkjewvcjms"));
+        Keyboard keyboard = new Keyboard(toStream("1234567\nabcdefgh\nheqvdkjewvcjms\n"));
         Library lib2 = new Library(keyboard);
         Menu menu2 = new Menu(account, lib2, printer, register, keyboard);
         lib2.addBooks(hP2);
@@ -157,9 +157,9 @@ public class MenuTest {
 
     @Test
     public void onlyAUserWithAValidLoginCanUseCheckoutOrReturnServices() {
-        Keyboard username1 = new Keyboard(toStream("1234567"));
+        Keyboard username1 = new Keyboard(toStream("1234567\nabcdefgh\n"));
         Menu menu2 = new Menu(account, library, printer, register, username1);
 
-        assertEquals(false, menu2.userLogin());
+        assertEquals(true, menu2.userLogin());
     }
 }
