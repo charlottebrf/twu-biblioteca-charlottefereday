@@ -1,24 +1,16 @@
 package com.twu.biblioteca;
 
-import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.Map;
-
 public class UserLogin {
-    final private Map<LibraryNumber, Password> userLogin;
+    final private LibraryNumber libraryNumber;
+    final private Password password;
 
-    public UserLogin() {
-        userLogin = new HashMap<LibraryNumber, Password>();
+    public UserLogin(LibraryNumber libraryNumber, Password password) {
+        this.libraryNumber = libraryNumber;
+        this.password = password;
     }
 
-    public void addUserLogin(LibraryNumber libraryNumber, Password password) {
-        userLogin.put(libraryNumber, password);
+    public boolean isValid(LibraryNumber libraryNumber2, Password password2) {
+        return this.libraryNumber.equals(libraryNumber2) && this.password.equals(password2);
     }
-
-    public UserLogin getUserLogin() {
-        return this;
-    }
-
-    public Password getUserLoginPassword(LibraryNumber number) { return userLogin.get(number);}
 
 }
