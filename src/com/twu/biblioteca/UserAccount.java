@@ -9,7 +9,7 @@ public class UserAccount {
     final private UserName userName;
     final private UserEmailAddress email;
     final private UserPhoneNumber phoneNumber;
-    final private UserLogin login;
+    final public UserLogin login;
     final private  Map<String, Book> booksInAccount;
 
     public UserAccount(UserLogin login, UserName userName, UserEmailAddress email, UserPhoneNumber phoneNumber) {
@@ -34,7 +34,4 @@ public class UserAccount {
 
     public void removeBooksFromAccount(Book book) { booksInAccount.remove(book.title.getTitle());}
 
-    public boolean isValid(LibraryNumber libraryNumber, Password password) {
-        return password == login.getUserLoginPassword(libraryNumber);
-    }
 }

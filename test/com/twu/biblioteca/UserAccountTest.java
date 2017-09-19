@@ -23,7 +23,7 @@ public class UserAccountTest {
     UserPhoneNumber number = new UserPhoneNumber(cell);
 
 
-    UserLogin login = new UserLogin();
+    UserLogin login = new UserLogin(libnum, password);
 
     UserAccount account = new UserAccount(login, userName, email, number);
 
@@ -32,7 +32,6 @@ public class UserAccountTest {
         account = new UserAccount(login,userName, email, number);
         account.addBooksToAccount(harryPotter1);
         account.addBooksToAccount(hP2);
-        login.addUserLogin(libnum, password);
     }
 
     @Test
@@ -56,15 +55,5 @@ public class UserAccountTest {
         account.removeBooksFromAccount(harryPotter1);
 
         assertEquals(expectedBooksInAccount, account.getBooksInAccount() );
-    }
-
-    @Test
-    public void ifAccountIsValidReturnsTrue() {
-        assertEquals(true, account.isValid(libnum, password));
-    }
-
-    @Test
-    public void ifAccountIsNotValidReturnsFalse() {
-        assertEquals(false, account.isValid(libnum2,password));
     }
 }
