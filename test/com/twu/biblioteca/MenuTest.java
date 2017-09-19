@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
 
@@ -155,11 +156,10 @@ public class MenuTest {
     }
 
     @Test
-    public void userHasToLoginToAccountBeforeCheckingOutOrReturningBooks() {
-        Keyboard keyboard = new Keyboard(toStream("Harry Potter and the Philosopher's Stone"));
-        Library lib2 = new Library(keyboard);
-        Menu menu2 = new Menu(account, lib2, printer, register, keyboard);
+    public void onlyAUserWithAValidLoginCanUseCheckoutOrReturnServices() {
+        Keyboard username1 = new Keyboard(toStream("1234567"));
+        Menu menu2 = new Menu(account, library, printer, register, username1);
 
-        assertEquals("Thank you! Enjoy the book", menu2.process("3"));
+        assertEquals(false, menu2.userLogin());
     }
 }

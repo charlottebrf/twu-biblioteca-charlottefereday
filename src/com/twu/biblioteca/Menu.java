@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import sun.security.util.Password;
+
 public class Menu {
     private final Library library;
     private final Printer printer;
@@ -66,9 +68,14 @@ public class Menu {
     }
 
     public String checkOutBook() {
-        userLogin();
-        printer.display("You have chosen to check out a book. Please enter the title of the book you'd like to check out:");
-        String title = keyboard.read();
+        String title;
+        if (userLogin()) {
+            printer.display("You have chosen to check out a book. Please enter the title of the book you'd like to check out:");
+            title = keyboard.read();
+        } else {
+            return exitProgram();
+        }
+
         if (register.hasBookTitleInRegister(title) && library.hasBookTitleInLibrary(title)) {
             Book checkedOutBook = library.findBookFromTitle(title);
             library.removeBooks(checkedOutBook);
@@ -77,6 +84,7 @@ public class Menu {
             return checkedOutSuccessOrFailureMessage(title);
         }
     }
+
 
     public String checkOutMovie() {
         printer.display("You haven chosen to check out a movie. Please enter the name of the movie you'd like to check out:");
@@ -102,24 +110,12 @@ public class Menu {
         }
     }
 
-    public void userLogin() {
+    public boolean userLogin() {
         printer.display("To complete this action, you will first need to sign in. Please enter your Library number:");
-        String libraryNumber = keyboard.read();
+        LibraryNumber convertedLibraryNumber = keyboard.readLibraryNumber();
         printer.display("Please now enter you password:");
-        String password = keyboard.read();
-
-        int libnum = Integer.parseInt(libraryNumber);
-        LibraryNumber convertedLibraryNumber = new LibraryNumber(libnum);
-        Password convertedPassword = new Password(password);
-
-        if (account.login.isValid(convertedLibraryNumber, convertedPassword)) {
-            checkOutBook();
-        } else {
-            printer.display("We can't find that account. Exiting the program.");
-            exitProgram();
-
-        }
-
+        com.twu.biblioteca.Password convertedPassword = keyboard.readPassword();
+        return account.login.isValid(convertedLibraryNumber, convertedPassword);
     }
 
     public String process(String selection) {
