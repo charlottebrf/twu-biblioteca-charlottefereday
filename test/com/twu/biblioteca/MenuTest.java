@@ -24,7 +24,7 @@ public class MenuTest {
     LibraryNumber libnum = new LibraryNumber(num);
     LibraryNumber libnum2 = new LibraryNumber(num2);
     Password password = new Password("abcdefgh");
-    UserLogin login = new UserLogin();
+    UserLogin login = new UserLogin(libnum, password);
 
     UserName userName = new UserName("Charlotte Fereday");
     UserEmailAddress email = new UserEmailAddress("foo@foo.com");
@@ -50,7 +50,6 @@ public class MenuTest {
         register.addBooksToRegister(harryPotter1);
         register.addMoviesToRegister(killBill);
         register.addMoviesToRegister(cinderella);
-        login.addUserLogin(libnum, password);
     }
 
 //    "1. List Books\n2. List Movies\n3. Checkout Books\n4. Checkout Movies\n5. Return Books\n6. Exit"

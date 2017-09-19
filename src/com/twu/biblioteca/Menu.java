@@ -112,7 +112,7 @@ public class Menu {
         LibraryNumber convertedLibraryNumber = new LibraryNumber(libnum);
         Password convertedPassword = new Password(password);
 
-        if (account.isValid(convertedLibraryNumber, convertedPassword)) {
+        if (account.login.isValid(convertedLibraryNumber, convertedPassword)) {
             checkOutBook();
         } else {
             printer.display("We can't find that account. Exiting the program.");
