@@ -11,7 +11,6 @@ public class UserLogin {
         userLogin = new HashMap<LibraryNumber, Password>();
     }
 
-
     public void addUserLogin(LibraryNumber libraryNumber, Password password) {
         userLogin.put(libraryNumber, password);
     }
@@ -20,6 +19,6 @@ public class UserLogin {
         return this;
     }
 
-    public Password getUserLoginPassword(BigInteger number) { return userLogin.get(number);}
+    public Password getUserLoginPassword(LibraryNumber number) { return userLogin.get(number);}
 
 }

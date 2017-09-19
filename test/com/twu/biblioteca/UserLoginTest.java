@@ -11,14 +11,15 @@ import static org.junit.Assert.*;
 
 public class UserLoginTest {
     String unguessable = "abcdefgh";
+    int number = 123-4567;
     Password password = new Password(unguessable);
-    BigInteger cell = new BigInteger("0123456789");
     LibraryNumber libnum = new LibraryNumber(123-4567);
     UserLogin login = new UserLogin();
 
     @Before
     public void setUp() {
         login = new UserLogin();
+        login.addUserLogin(libnum, password);
     }
 
     @Test
@@ -27,7 +28,7 @@ public class UserLoginTest {
     }
 
     @Test
-    public void getsUserLoginKey() {
-        assertEquals(cell, login.getUserLoginPassword(cell));
+    public void getsUserLoginPassword() {
+        assertEquals(password, login.getUserLoginPassword(libnum));
     }
 }
