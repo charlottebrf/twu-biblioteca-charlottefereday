@@ -100,6 +100,8 @@ public class MenuTest {
 
     @Test
     public void willCheckOutAnAvailableMovie() {
+        System.setOut(new java.io.PrintStream(outputStream));
+        System.out.print("Thank you! Enjoy the movie");
         Keyboard keyboard = new Keyboard(toStream("Kill Bill"));
         Library lib3 = new Library(keyboard);
         lib3.addMovies(cinderella);
@@ -109,7 +111,7 @@ public class MenuTest {
         register2.addMoviesToRegister(killBill);
         Menu menu3 = new Menu(account, lib3, printer, register2, keyboard);
 
-        assertEquals("Thank you! Enjoy the movie", menu3.process("4"));
+        assertEquals(outputStream.toString(), menu3.checkOutMovie());
     }
 
     @Test

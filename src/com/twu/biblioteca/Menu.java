@@ -147,7 +147,7 @@ public class Menu {
                 checkOutBook();
                 break;
             case "4":
-                result = checkOutMovie();
+                checkOutMovie();
                 break;
             case "5":
                 result = returnBook();
