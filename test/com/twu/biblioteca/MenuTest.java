@@ -116,6 +116,8 @@ public class MenuTest {
 
     @Test
     public void willNotCheckOutAnUnavailableBook() {
+        System.setOut(new java.io.PrintStream(outputStream));
+        System.out.print("That book is not available.");
         Keyboard keyboard = new Keyboard(toStream("1234567\nabcdefgh\nheqvdkjewvcjms\n"));
         Library lib2 = new Library(keyboard);
         lib2.addBooks(hP2);
@@ -124,11 +126,13 @@ public class MenuTest {
         register.addBooksToRegister(harryPotter1);
         Menu menu3 = new Menu(account, lib2, printer, register, keyboard);
 
-        assertEquals("That book is not available.", menu3.process("3"));
+        assertEquals(outputStream.toString(), menu3.checkOutBook());
     }
 
     @Test
     public void willNotCheckOutAnUnavailableMovie() {
+        System.setOut(new java.io.PrintStream(outputStream));
+        System.out.print("That movie is not available.");
         Keyboard keyboard = new Keyboard(toStream("heqvdkjewvcjms"));
         Library lib3 = new Library(keyboard);
         lib3.addMovies(cinderella);
@@ -138,7 +142,7 @@ public class MenuTest {
         register2.addMoviesToRegister(killBill);
         Menu menu3 = new Menu(account, lib3, printer, register2, keyboard);
 
-        assertEquals("That movie is not available.", menu3.process("4"));
+        assertEquals(outputStream.toString(), menu3.checkOutMovie());
     }
 
     @Test

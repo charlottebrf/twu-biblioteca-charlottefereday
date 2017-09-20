@@ -69,7 +69,7 @@ public class Menu {
             printer.display("You have chosen to check out a book. Please enter the title of the book you'd like to check out:");
             title = keyboard.read();
         } else {
-            return exitProgram();
+            return checkIsValidOption();
         }
 
         if (register.hasBookTitleInRegister(title) && library.hasBookTitleInLibrary(title)) {
@@ -84,11 +84,12 @@ public class Menu {
 
 
     public String checkOutMovie() {
-        printer.display("You haven chosen to check out a movie. Please enter the name of the movie you'd like to check out:");
-        String name = keyboard.read();
+        String name;
+            printer.display("You haven chosen to check out a movie. Please enter the name of the movie you'd like to check out:");
+            name = keyboard.read();
         if(register.hasMovieNameInRegister(name) && library.hasMovieNameInLibrary(name)) {
-            Movie checkedOuMovie = library.findMovieFromName(name);
-            library.removeMovies(checkedOuMovie);
+            Movie checkedOutMovie = library.findMovieFromName(name);
+            library.removeMovies(checkedOutMovie);
             return checkedOutMovieSuccessOrFailureMessage(name);
         } else {
             return checkedOutMovieSuccessOrFailureMessage(name);
@@ -101,7 +102,7 @@ public class Menu {
             printer.display("You have chosen to return a book. Please enter the title of the book you'd like to return:");
             title = keyboard.read();
         } else {
-            return exitProgram();
+            return checkIsValidOption();
         }
 
         if (register.hasBookTitleInRegister(title) && !library.hasBookTitleInLibrary(title)) {
