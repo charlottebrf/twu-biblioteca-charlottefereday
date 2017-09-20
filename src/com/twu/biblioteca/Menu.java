@@ -151,7 +151,7 @@ public class Menu {
                 checkOutMovie();
                 break;
             case "5":
-                result = returnBook();
+               returnBook();
                 break;
             case "6":
                 exitProgram();

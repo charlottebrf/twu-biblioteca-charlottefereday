@@ -147,17 +147,21 @@ public class MenuTest {
 
     @Test
     public void willReturnABookIfNotInLibrary() {
+        System.setOut(new java.io.PrintStream(outputStream));
+        System.out.print("Thank you for returning the book.");
         Keyboard keyboard = new Keyboard(toStream("1234567\nabcdefgh\nHarry Potter and the Philosopher's Stone\n"));
         Library lib2 = new Library(keyboard);
         Menu menu2 = new Menu(account, lib2, printer, register, keyboard);
         lib2.addBooks(hP2);
         register.addBooksToRegister(hP2);
         register.addBooksToRegister(harryPotter1);
-        assertEquals("Thank you for returning the book.", menu2.process("5"));
+        assertEquals(outputStream.toString(), menu2.returnBook());
     }
 
     @Test
     public void willNotReturnABookIfAlreadyInLibrary() {
+        System.setOut(new java.io.PrintStream(outputStream));
+        System.out.print("That is not a valid book to return.");
         Keyboard keyboard = new Keyboard(toStream("1234567\nabcdefgh\nheqvdkjewvcjms\n"));
         Library lib2 = new Library(keyboard);
         Menu menu2 = new Menu(account, lib2, printer, register, keyboard);
@@ -165,7 +169,7 @@ public class MenuTest {
         lib2.addBooks(harryPotter1);
         register.addBooksToRegister(hP2);
         register.addBooksToRegister(harryPotter1);
-        assertEquals("That is not a valid book to return.", menu2.process("5"));
+        assertEquals(outputStream.toString(), menu2.returnBook());
     }
 
     @Test
