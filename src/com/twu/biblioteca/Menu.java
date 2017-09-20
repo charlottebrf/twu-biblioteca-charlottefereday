@@ -157,7 +157,7 @@ public class Menu {
                 exitProgram();
                 break;
             case "7":
-                result = seeAccountDetails();
+                seeAccountDetails();
                 break;
             default:
                 checkIsValidOption();

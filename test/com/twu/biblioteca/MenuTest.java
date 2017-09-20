@@ -173,7 +173,7 @@ public class MenuTest {
     }
 
     @Test
-    public void AValidLoginCanUseCheckoutOrReturnServices() {
+    public void aValidLoginCanUseCheckoutOrReturnServices() {
         Keyboard username1 = new Keyboard(toStream("1234567\nabcdefgh\n"));
         Menu menu2 = new Menu(account, library, printer, register, username1);
 
@@ -190,9 +190,11 @@ public class MenuTest {
 
     @Test
     public void validUserCanSeeTheirAccountDetails() {
+        System.setOut(new java.io.PrintStream(outputStream));
+        System.out.print("You have chosen to view your account details. Please find this listed below:");
         Keyboard username1 = new Keyboard(toStream("1234567\nabcdefgh\n"));
         Menu menu2 = new Menu(account, library, printer, register, username1);
 
-        assertEquals("You have chosen to view your account details. Please find this listed below:", menu2.process("7"));
+        assertEquals(outputStream.toString(), menu2.seeAccountDetails());
     }
 }
