@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.commands.DisplayBooksCommand;
+import com.twu.biblioteca.commands.DisplayMoviesCommand;
 
 public class Menu {
     private final Library library;
@@ -19,19 +20,6 @@ public class Menu {
 
     public Menu(UserAccount account, Library library, Printer printer, LibraryRegister register) {
         this(account, library, printer, register, new Keyboard());
-    }
-
-
-    public String displayLibraryBooks() {
-        String header = "|              Book Title               |   Author  | Year|\n";
-        printer.display(header + library.getBookDetails());
-        return header + library.getBookDetails();
-    }
-
-    public String displayLibraryMovies() {
-        String header = "|Film Name|Year|Director|Rating|\n";
-        printer.display(header + library.getMovieDetails());
-        return library.getMovieDetails();
     }
 
     public String checkIsValidOption() {
@@ -144,7 +132,7 @@ public class Menu {
                 new DisplayBooksCommand(library, printer).execute();
                 break;
             case "2":
-                displayLibraryMovies();
+                new DisplayMoviesCommand(library, printer).execute();
                 break;
             case "3":
                 checkOutBook();

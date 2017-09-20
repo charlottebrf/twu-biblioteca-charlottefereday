@@ -54,20 +54,6 @@ public class MenuTest {
         register.addMoviesToRegister(cinderella);
     }
 
-    @Test
-//    Todo: make sure to test the DisplayBooksCommand
-    public void canDisplayBooksInLibrary() {
-        System.setOut(new java.io.PrintStream(outputStream));
-        System.out.println("|              Book Title               |   Author  | Year|\n|Harry Potter and the Chamber of Secrets|J.K.Rowling|1998|\n|Harry Potter and the Philosopher's Stone|J.K.Rowling|1997|");
-        assertEquals(outputStream.toString(), menu.displayLibraryBooks());
-    }
-
-    @Test
-    public void canDisplayMoviesInLibrary() {
-        System.setOut(new java.io.PrintStream(outputStream));
-        System.out.println("|Cinderella|2015|Kenneth Branagh|0|\n|Kill Bill|2002|Quentin Tarantino|5|");
-        assertEquals(outputStream.toString(), menu.displayLibraryMovies());
-    }
 
     @Test
     public void givesAMesageforAnInvalidOption() {
