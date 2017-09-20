@@ -136,7 +136,6 @@ public class Menu {
     }
 
     public String process(String selection) {
-        String result = "";
         switch (selection) {
             case "1":
                 displayLibraryBooks();
@@ -162,7 +161,7 @@ public class Menu {
                 checkIsValidOption();
                 break;
         }
-        return result;
+        return "";
     }
 
 }
