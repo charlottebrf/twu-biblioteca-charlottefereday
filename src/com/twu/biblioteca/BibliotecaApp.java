@@ -28,13 +28,14 @@ public class BibliotecaApp {
     }
 
 
-    public String interactiveMenu() {
+    public void interactiveMenu() {
         String userInput = "";
         while (userInput.equals("")) {
             printMainMenu();
             userInput = keyboard.read();
+            userInput = menu.process(userInput);
         }
-        return menu.process(userInput);
+       return;
     }
 
     public static void main(String[] args) {
