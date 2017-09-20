@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
 
@@ -38,6 +37,8 @@ public class MenuTest {
         return new ByteArrayInputStream(stringy.getBytes());
     }
 
+    java.io.ByteArrayOutputStream outputStream = new java.io.ByteArrayOutputStream();
+
     Menu menu = new Menu(account, library, printer, register);
 
     @Before
@@ -53,12 +54,11 @@ public class MenuTest {
         register.addMoviesToRegister(cinderella);
     }
 
-//    "1. List Books\n2. List Movies\n3. Checkout Books\n4. Checkout Movies\n5. Return Books\n6. Exit"
-
     @Test
     public void canDisplayBooksInLibrary() {
-        assertEquals("|Harry Potter and the Chamber of Secrets|J.K.Rowling|1998|\n|Harry Potter and the Philosopher's Stone|J.K.Rowling|1997|\n",
-                menu.process("1"));
+        System.setOut(new java.io.PrintStream(outputStream));
+        System.out.println("|              Book Title               |   Author  | Year|\n|Harry Potter and the Chamber of Secrets|J.K.Rowling|1998|\n|Harry Potter and the Philosopher's Stone|J.K.Rowling|1997|");
+        assertEquals(outputStream.toString(), menu.displayLibraryBooks());
     }
 
     @Test

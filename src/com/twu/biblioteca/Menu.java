@@ -24,7 +24,7 @@ public class Menu {
     public String displayLibraryBooks() {
         String header = "|              Book Title               |   Author  | Year|\n";
         printer.display(header + library.getBookDetails());
-        return library.getBookDetails();
+        return header + library.getBookDetails();
     }
 
     public String displayLibraryMovies() {
@@ -48,8 +48,6 @@ public class Menu {
             return printer.display("That book is not available.");
         }
     }
-
-    //Todo: see if possible to refactor movie additions so not duplicating code
 
     public String checkedOutMovieSuccessOrFailureMessage(String name) {
         if(library.findMovieFromName(name) == Movie.NO_MOVIE && register.hasMovieNameInRegister(name)) {
@@ -142,12 +140,14 @@ public class Menu {
         String result = "";
         switch (selection) {
             case "1":
-                result = displayLibraryBooks();
+                displayLibraryBooks();
                 break;
             case "2":
-                result = displayLibraryMovies();
+//                displayLibraryMovies();
+                result =  displayLibraryMovies();
                 break;
             case "3":
+//                checkOutBook();
                 result = checkOutBook();
                 break;
             case "4":
@@ -166,6 +166,7 @@ public class Menu {
                 result = checkIsValidOption();
                 break;
         }
+        System.out.println(result);
         return result;
     }
 
