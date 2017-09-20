@@ -154,8 +154,7 @@ public class Menu {
                returnBook();
                 break;
             case "6":
-                exitProgram();
-                break;
+                return exitProgram();
             case "7":
                 seeAccountDetails();
                 break;
@@ -163,7 +162,6 @@ public class Menu {
                 checkIsValidOption();
                 break;
         }
-        System.out.println(result);
         return result;
     }
 
