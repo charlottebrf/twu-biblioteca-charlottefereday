@@ -70,7 +70,9 @@ public class MenuTest {
 
     @Test
     public void givesAMesageforAnInvalidOption() {
-        assertEquals("Select a valid option!", menu.process("x"));
+        System.setOut(new java.io.PrintStream(outputStream));
+        System.out.print("Select a valid option!");
+        assertEquals(outputStream.toString(), menu.process("x"));
     }
 
 
