@@ -55,6 +55,7 @@ public class MenuTest {
     }
 
     @Test
+//    Todo: make sure to test the DisplayBooksCommand
     public void canDisplayBooksInLibrary() {
         System.setOut(new java.io.PrintStream(outputStream));
         System.out.println("|              Book Title               |   Author  | Year|\n|Harry Potter and the Chamber of Secrets|J.K.Rowling|1998|\n|Harry Potter and the Philosopher's Stone|J.K.Rowling|1997|");

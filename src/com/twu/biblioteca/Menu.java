@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.commands.DisplayBooksCommand;
+
 public class Menu {
     private final Library library;
     private final Printer printer;
@@ -139,7 +141,7 @@ public class Menu {
     public String process(String selection) {
         switch (selection) {
             case "1":
-                displayLibraryBooks();
+                new DisplayBooksCommand(library, printer).execute();
                 break;
             case "2":
                 displayLibraryMovies();
