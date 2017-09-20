@@ -85,6 +85,8 @@ public class MenuTest {
 
     @Test
     public void willCheckOutAnAvailableBook() {
+        System.setOut(new java.io.PrintStream(outputStream));
+        System.out.print("Thank you! Enjoy the book");
         Keyboard keyboard = new Keyboard(toStream("1234567\nabcdefgh\nHarry Potter and the Philosopher's Stone"));
         Library lib2 = new Library(keyboard);
         lib2.addBooks(hP2);
@@ -93,8 +95,7 @@ public class MenuTest {
         register.addBooksToRegister(harryPotter1);
         Menu menu2 = new Menu(account, lib2, printer, register, keyboard);
 
-
-        assertEquals("Thank you! Enjoy the book", menu2.process("3"));
+        assertEquals(outputStream.toString(), menu2.checkOutBook());
     }
 
     @Test

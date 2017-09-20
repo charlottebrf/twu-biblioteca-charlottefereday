@@ -144,8 +144,7 @@ public class Menu {
                 displayLibraryMovies();
                 break;
             case "3":
-//                checkOutBook();
-                result = checkOutBook();
+                checkOutBook();
                 break;
             case "4":
                 result = checkOutMovie();
