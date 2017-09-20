@@ -70,20 +70,6 @@ public class MenuTest {
         assertEquals(outputStream.toString(), menu.exitProgram());
     }
 
-    @Test
-    public void willCheckOutAnAvailableBook() {
-        System.setOut(new java.io.PrintStream(outputStream));
-        System.out.print("Thank you! Enjoy the book");
-        Keyboard keyboard = new Keyboard(toStream("1234567\nabcdefgh\nHarry Potter and the Philosopher's Stone"));
-        Library lib2 = new Library(keyboard);
-        lib2.addBooks(hP2);
-        lib2.addBooks(harryPotter1);
-        register.addBooksToRegister(hP2);
-        register.addBooksToRegister(harryPotter1);
-        Menu menu2 = new Menu(account, lib2, printer, register, keyboard);
-
-        assertEquals(outputStream.toString(), menu2.checkOutBook());
-    }
 
     @Test
     public void willCheckOutAnAvailableMovie() {
@@ -101,20 +87,6 @@ public class MenuTest {
         assertEquals(outputStream.toString(), menu3.checkOutMovie());
     }
 
-    @Test
-    public void willNotCheckOutAnUnavailableBook() {
-        System.setOut(new java.io.PrintStream(outputStream));
-        System.out.print("That book is not available.");
-        Keyboard keyboard = new Keyboard(toStream("1234567\nabcdefgh\nheqvdkjewvcjms\n"));
-        Library lib2 = new Library(keyboard);
-        lib2.addBooks(hP2);
-        lib2.addBooks(harryPotter1);
-        register.addBooksToRegister(hP2);
-        register.addBooksToRegister(harryPotter1);
-        Menu menu3 = new Menu(account, lib2, printer, register, keyboard);
-
-        assertEquals(outputStream.toString(), menu3.checkOutBook());
-    }
 
     @Test
     public void willNotCheckOutAnUnavailableMovie() {

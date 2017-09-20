@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.commands.ChecksOutBooksCommand;
 import com.twu.biblioteca.commands.DisplayBooksCommand;
 import com.twu.biblioteca.commands.DisplayMoviesCommand;
 
@@ -51,25 +52,6 @@ public class Menu {
             return printer.display("Thank you for returning the book.");
         } else {
             return printer.display("That is not a valid book to return.");
-        }
-    }
-
-    public String checkOutBook() {
-        String title;
-        if (userLogin()) {
-            printer.display("You have chosen to check out a book. Please enter the title of the book you'd like to check out:");
-            title = keyboard.read();
-        } else {
-            return checkIsValidOption();
-        }
-
-        if (register.hasBookTitleInRegister(title) && library.hasBookTitleInLibrary(title)) {
-            Book checkedOutBook = library.findBookFromTitle(title);
-            library.removeBooks(checkedOutBook);
-            account.addBooksToAccount(checkedOutBook);
-            return checkedOutSuccessOrFailureMessage(title);
-        } else {
-            return checkedOutSuccessOrFailureMessage(title);
         }
     }
 
@@ -135,7 +117,7 @@ public class Menu {
                 new DisplayMoviesCommand(library, printer).execute();
                 break;
             case "3":
-                checkOutBook();
+                new ChecksOutBooksCommand(library, printer, keyboard, account, register).execute();
                 break;
             case "4":
                 checkOutMovie();
@@ -155,6 +137,9 @@ public class Menu {
         return "";
     }
 
+
 }
+
+
 
 
