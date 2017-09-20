@@ -143,8 +143,7 @@ public class Menu {
                 displayLibraryBooks();
                 break;
             case "2":
-//                displayLibraryMovies();
-                result =  displayLibraryMovies();
+                displayLibraryMovies();
                 break;
             case "3":
 //                checkOutBook();

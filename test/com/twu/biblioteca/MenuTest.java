@@ -36,8 +36,8 @@ public class MenuTest {
     public InputStream toStream(String stringy) {
         return new ByteArrayInputStream(stringy.getBytes());
     }
-
     java.io.ByteArrayOutputStream outputStream = new java.io.ByteArrayOutputStream();
+
 
     Menu menu = new Menu(account, library, printer, register);
 
@@ -63,7 +63,9 @@ public class MenuTest {
 
     @Test
     public void canDisplayMoviesInLibrary() {
-        assertEquals("|Cinderella|2015|Kenneth Branagh|0|\n|Kill Bill|2002|Quentin Tarantino|5|\n", menu.process("2"));
+        System.setOut(new java.io.PrintStream(outputStream));
+        System.out.println("|Cinderella|2015|Kenneth Branagh|0|\n|Kill Bill|2002|Quentin Tarantino|5|");
+        assertEquals(outputStream.toString(), menu.displayLibraryMovies());
     }
 
     @Test
