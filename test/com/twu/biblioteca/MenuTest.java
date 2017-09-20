@@ -72,13 +72,15 @@ public class MenuTest {
     public void givesAMesageforAnInvalidOption() {
         System.setOut(new java.io.PrintStream(outputStream));
         System.out.print("Select a valid option!");
-        assertEquals(outputStream.toString(), menu.process("x"));
+        assertEquals(outputStream.toString(), menu.checkIsValidOption());
     }
 
 
     @Test
     public void givesAQuitOption() {
-        assertEquals("You have selected quit: exiting the program now", menu.process("6"));
+        System.setOut(new java.io.PrintStream(outputStream));
+        System.out.print("You have selected quit: exiting the program now");
+        assertEquals(outputStream.toString(), menu.exitProgram());
     }
 
     @Test

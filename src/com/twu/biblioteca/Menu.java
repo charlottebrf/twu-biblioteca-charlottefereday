@@ -154,13 +154,13 @@ public class Menu {
                 result = returnBook();
                 break;
             case "6":
-                result = exitProgram();
+                exitProgram();
                 break;
             case "7":
                 result = seeAccountDetails();
                 break;
             default:
-                result = checkIsValidOption();
+                checkIsValidOption();
                 break;
         }
         System.out.println(result);
