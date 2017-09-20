@@ -16,8 +16,6 @@ public class Library {
         this.keyboard = keyboard;
     }
 
-//    Todo: figure out how to refactor so that I'm not duplicating common methods for Movies & Books
-
     public Library() {
         this(new Keyboard());
     }

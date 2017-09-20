@@ -19,6 +19,7 @@ public class Menu {
         this(account, library, printer, register, new Keyboard());
     }
 
+
     public String displayLibraryBooks() {
         String header = "|              Book Title               |   Author  | Year|\n";
         printer.display(header + library.getBookDetails());

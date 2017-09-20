@@ -1,9 +1,6 @@
 package com.twu.biblioteca;
 
 import java.math.BigInteger;
-import java.util.List;
-
-import static java.util.Collections.sort;
 
 public class BibliotecaApp {
     private final Printer printer;

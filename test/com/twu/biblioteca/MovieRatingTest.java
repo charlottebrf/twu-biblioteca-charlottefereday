@@ -24,10 +24,4 @@ public class MovieRatingTest {
         MovieRating rating3 = new MovieRating(10);
         assertEquals(10, rating3.getRating());
     }
-
-//    @Test
-//    public void wontAcceptNumberGreaterThanTen() {
-//        MovieRating rating4 = new MovieRating(11);
-//        assertEquals(0, rating4.getRating());
-//    }
 }

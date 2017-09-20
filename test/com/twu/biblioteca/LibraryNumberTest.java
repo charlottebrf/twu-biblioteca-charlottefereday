@@ -2,9 +2,7 @@ package com.twu.biblioteca;
 
 import org.junit.Test;
 
-import java.math.BigInteger;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class LibraryNumberTest {
     int credential = 1234567;
