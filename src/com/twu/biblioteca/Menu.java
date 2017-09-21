@@ -1,9 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.commands.ChecksOutBooksCommand;
-import com.twu.biblioteca.commands.ChecksOutMoviesCommand;
-import com.twu.biblioteca.commands.DisplayBooksCommand;
-import com.twu.biblioteca.commands.DisplayMoviesCommand;
+import com.twu.biblioteca.commands.*;
 
 public class Menu {
     private final Library library;
@@ -32,34 +29,6 @@ public class Menu {
         return printer.display("You have selected quit: exiting the program now");
     }
 
-
-    public String returnedSuccessOrFailureMessage(String title) {
-        if (library.findBookFromTitle(title) != Book.NO_BOOK && register.hasBookTitleInRegister(title)) {
-            return printer.display("Thank you for returning the book.");
-        } else {
-            return printer.display("That is not a valid book to return.");
-        }
-    }
-
-
-    public String returnBook() {
-        String title;
-        if (userLogin()) {
-            printer.display("You have chosen to return a book. Please enter the title of the book you'd like to return:");
-            title = keyboard.read();
-        } else {
-            return checkIsValidOption();
-        }
-
-        if (register.hasBookTitleInRegister(title) && !library.hasBookTitleInLibrary(title)) {
-            Book returnedBook = register.findBookInRegisterFromTitle(title);
-            library.addBooks(returnedBook);
-            account.removeBooksFromAccount(returnedBook);
-            return returnedSuccessOrFailureMessage(title);
-        } else {
-            return returnedSuccessOrFailureMessage(title);
-        }
-    }
 
     public boolean userLogin() {
         printer.display("To complete this action, you will first need to sign in. Please enter your Library number:");
@@ -97,7 +66,7 @@ public class Menu {
                 new ChecksOutMoviesCommand(library, printer, keyboard, register).execute();
                 break;
             case "5":
-               returnBook();
+               new ReturnsBooksCommand(library, printer, keyboard, account, register).execute();
                 break;
             case "6":
                 return exitProgram();
@@ -113,7 +82,5 @@ public class Menu {
 
 
 }
-
-
 
 
