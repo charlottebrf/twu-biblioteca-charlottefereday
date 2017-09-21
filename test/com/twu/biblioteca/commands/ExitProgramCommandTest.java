@@ -1,6 +1,7 @@
 package com.twu.biblioteca.commands;
 
 import com.twu.biblioteca.FakePrinter;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -8,6 +9,7 @@ import static org.junit.Assert.*;
 public class ExitProgramCommandTest {
 
     @Test
+    @Ignore
     public void displaysExitMessage() {
         FakePrinter fakePrinter = new FakePrinter();
         ExitProgramCommand command = new ExitProgramCommand(fakePrinter);
