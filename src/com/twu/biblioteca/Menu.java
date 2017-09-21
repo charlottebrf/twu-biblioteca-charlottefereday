@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.commands.ChecksOutBooksCommand;
+import com.twu.biblioteca.commands.ChecksOutMoviesCommand;
 import com.twu.biblioteca.commands.DisplayBooksCommand;
 import com.twu.biblioteca.commands.DisplayMoviesCommand;
 
@@ -30,22 +31,7 @@ public class Menu {
     public String exitProgram() {
         return printer.display("You have selected quit: exiting the program now");
     }
-
-    public String checkedOutSuccessOrFailureMessage(String title) {
-        if (library.findBookFromTitle(title) == Book.NO_BOOK && register.hasBookTitleInRegister(title)) {
-            return printer.display("Thank you! Enjoy the book");
-        } else {
-            return printer.display("That book is not available.");
-        }
-    }
-
-    public String checkedOutMovieSuccessOrFailureMessage(String name) {
-        if(library.findMovieFromName(name) == Movie.NO_MOVIE && register.hasMovieNameInRegister(name)) {
-            return printer.display("Thank you! Enjoy the movie");
-        } else {
-            return printer.display("That movie is not available.");
-        }
-    }
+    
 
     public String returnedSuccessOrFailureMessage(String title) {
         if (library.findBookFromTitle(title) != Book.NO_BOOK && register.hasBookTitleInRegister(title)) {
@@ -55,19 +41,6 @@ public class Menu {
         }
     }
 
-
-    public String checkOutMovie() {
-        String name;
-            printer.display("You haven chosen to check out a movie. Please enter the name of the movie you'd like to check out:");
-            name = keyboard.read();
-        if(register.hasMovieNameInRegister(name) && library.hasMovieNameInLibrary(name)) {
-            Movie checkedOutMovie = library.findMovieFromName(name);
-            library.removeMovies(checkedOutMovie);
-            return checkedOutMovieSuccessOrFailureMessage(name);
-        } else {
-            return checkedOutMovieSuccessOrFailureMessage(name);
-        }
-    }
 
     public String returnBook() {
         String title;
@@ -121,7 +94,7 @@ public class Menu {
                 new ChecksOutBooksCommand(library, printer, keyboard, account, register).execute();
                 break;
             case "4":
-                checkOutMovie();
+                new ChecksOutMoviesCommand(library, printer, keyboard, register).execute();
                 break;
             case "5":
                returnBook();

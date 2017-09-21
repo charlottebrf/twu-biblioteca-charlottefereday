@@ -71,40 +71,6 @@ public class MenuTest {
         assertEquals(outputStream.toString(), menu.exitProgram());
     }
 
-
-    @Test
-    public void willCheckOutAnAvailableMovie() {
-        System.setOut(new java.io.PrintStream(outputStream));
-        System.out.print("Thank you! Enjoy the movie");
-        Keyboard keyboard = new Keyboard(toStream("Kill Bill"));
-        Library lib3 = new Library(keyboard);
-        lib3.addMovies(cinderella);
-        lib3.addMovies(killBill);
-        LibraryRegister register2 = new LibraryRegister();
-        register2.addMoviesToRegister(cinderella);
-        register2.addMoviesToRegister(killBill);
-        Menu menu3 = new Menu(account, lib3, printer, register2, keyboard);
-
-        assertEquals(outputStream.toString(), menu3.checkOutMovie());
-    }
-
-
-    @Test
-    public void willNotCheckOutAnUnavailableMovie() {
-        System.setOut(new java.io.PrintStream(outputStream));
-        System.out.print("That movie is not available.");
-        Keyboard keyboard = new Keyboard(toStream("heqvdkjewvcjms"));
-        Library lib3 = new Library(keyboard);
-        lib3.addMovies(cinderella);
-        lib3.addMovies(killBill);
-        LibraryRegister register2 = new LibraryRegister();
-        register2.addMoviesToRegister(cinderella);
-        register2.addMoviesToRegister(killBill);
-        Menu menu3 = new Menu(account, lib3, printer, register2, keyboard);
-
-        assertEquals(outputStream.toString(), menu3.checkOutMovie());
-    }
-
     @Test
     public void willReturnABookIfNotInLibrary() {
         System.setOut(new java.io.PrintStream(outputStream));
