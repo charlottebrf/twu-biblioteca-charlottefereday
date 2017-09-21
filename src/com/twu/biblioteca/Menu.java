@@ -65,10 +65,10 @@ public class Menu {
                new ReturnsBooksCommand(library, printer, keyboard, account, register).execute();
                 break;
             case "6":
-                new ExitProgramCommand(printer);
+                new ExitProgramCommand(printer).execute();
                 break;
             case "7":
-                seeAccountDetails();
+                new DisplayAccountDetailsCommand(printer, account, keyboard).execute();
                 break;
             default:
                 checkIsValidOption();
@@ -77,7 +77,5 @@ public class Menu {
         return "";
     }
 
-
 }
-
 
