@@ -25,10 +25,6 @@ public class Menu {
         return printer.display("Select a valid option!");
     }
 
-    public String exitProgram() {
-        return printer.display("You have selected quit: exiting the program now");
-    }
-
 
     public boolean userLogin() {
         printer.display("To complete this action, you will first need to sign in. Please enter your Library number:");
@@ -69,7 +65,8 @@ public class Menu {
                new ReturnsBooksCommand(library, printer, keyboard, account, register).execute();
                 break;
             case "6":
-                return exitProgram();
+                new ExitProgramCommand(printer);
+                break;
             case "7":
                 seeAccountDetails();
                 break;

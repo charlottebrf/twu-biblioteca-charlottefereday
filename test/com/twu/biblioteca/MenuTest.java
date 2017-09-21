@@ -64,13 +64,6 @@ public class MenuTest {
     }
 
 
-    @Test
-    public void givesAQuitOption() {
-        System.setOut(new java.io.PrintStream(outputStream));
-        System.out.print("You have selected quit: exiting the program now");
-        assertEquals(outputStream.toString(), menu.exitProgram());
-    }
-
 
     @Test
     public void aValidLoginCanUseCheckoutOrReturnServices() {
