@@ -33,7 +33,10 @@ public class Menu {
 
     public void printMainMenu() {
         printer.display("\n**** Main Menu ****\n\n");
-        printer.display("1. List Books\n2. List Movies\n3. Checkout Books\n4. Checkout Movies\n5. Return Books\n6. Exit\n7. See account details");
+        for (int index = 0; index < commands.size(); index++) {
+            String choice = (index + 1) + ". " + commands.get(index).intent() + "\n";
+            printer.display(choice);
+        }
     }
 }
 
