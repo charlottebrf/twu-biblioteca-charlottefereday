@@ -7,8 +7,10 @@ import java.util.List;
 
 public class Menu {
     private final List<Command> commands;
+    private final Printer printer;
 
     public Menu(UserAccount account, Library library, Printer printer, LibraryRegister register, Keyboard keyboard) {
+        this.printer = printer;
         this.commands = new LinkedList<>();
         commands.add(new DisplayBooksCommand(library, printer));
         commands.add(new DisplayMoviesCommand(library, printer));
@@ -27,6 +29,11 @@ public class Menu {
         int selectionNum = Integer.parseInt(selection);
         commands.get(selectionNum - 1).execute();
         return "";
+    }
+
+    public void printMainMenu() {
+        printer.display("\n**** Main Menu ****\n\n");
+        printer.display("1. List Books\n2. List Movies\n3. Checkout Books\n4. Checkout Movies\n5. Return Books\n6. Exit\n7. See account details");
     }
 }
 

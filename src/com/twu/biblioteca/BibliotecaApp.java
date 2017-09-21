@@ -15,11 +15,6 @@ public class BibliotecaApp {
         this.keyboard = keyboard;
     }
 
-    public void printMainMenu() {
-        printer.display("\n**** Main Menu ****\n\n");
-        printer.display("1. List Books\n2. List Movies\n3. Checkout Books\n4. Checkout Movies\n5. Return Books\n6. Exit\n7. See account details");
-    }
-
     public void printWelcome() {
         printer.display("Welcome to the new Biblioteca App: we are open for business!");
     }
@@ -28,7 +23,7 @@ public class BibliotecaApp {
     public void interactiveMenu() {
         String userInput = "";
         while (userInput.equals("")) {
-            printMainMenu();
+            menu.printMainMenu();
             userInput = keyboard.read();
             userInput = menu.process(userInput);
         }
