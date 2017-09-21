@@ -15,4 +15,9 @@ public class NotValidOptionCommand implements Command {
     public void execute() {
         printer.display("Select a valid option!");
     }
+
+    @Override
+    public String intent() {
+        return "Not implemented";
+    }
 }

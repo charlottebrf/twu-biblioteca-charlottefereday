@@ -46,4 +46,9 @@ public class ChecksOutBooksCommand implements Command {
         Password convertedPassword = keyboard.readPassword();
         return account.login.isValid(convertedLibraryNumber, convertedPassword);
     }
+
+    @Override
+    public String intent() {
+        return "Check out books";
+    }
 }

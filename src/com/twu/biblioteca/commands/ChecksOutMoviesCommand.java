@@ -17,6 +17,11 @@ public class ChecksOutMoviesCommand implements Command {
     }
 
     @Override
+    public String intent() {
+        return "Check out movies";
+    }
+
+    @Override
     public void execute() {
         String name;
         printer.display("You haven chosen to check out a movie. Please enter the name of the movie you'd like to check out:");
@@ -28,6 +33,5 @@ public class ChecksOutMoviesCommand implements Command {
         } else {
             printer.display("That movie is not available");
         }
-
     }
 }

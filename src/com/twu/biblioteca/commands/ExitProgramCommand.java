@@ -16,4 +16,9 @@ public class ExitProgramCommand implements Command {
         printer.display("You have selected quit: exiting the program now");
         System.exit(0);
     }
+
+    @Override
+    public String intent() {
+        return "Exit programme";
+    }
 }

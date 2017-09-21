@@ -45,4 +45,9 @@ public class ReturnsBooksCommand implements Command {
         Password convertedPassword = keyboard.readPassword();
         return account.login.isValid(convertedLibraryNumber, convertedPassword);
     }
+
+    @Override
+    public String intent() {
+        return "Return books";
+    }
 }

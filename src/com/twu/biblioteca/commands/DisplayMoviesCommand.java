@@ -21,4 +21,8 @@ public class DisplayMoviesCommand implements Command {
         printer.display(header + library.getMovieDetails());
     }
 
+    @Override
+    public String intent() {
+        return "Display movies";
+    }
 }

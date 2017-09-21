@@ -36,4 +36,8 @@ public class DisplayAccountDetailsCommand implements Command {
         return account.login.isValid(convertedLibraryNumber, convertedPassword);
     }
 
+    @Override
+    public String intent() {
+        return "Display account details";
+    }
 }

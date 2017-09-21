@@ -19,4 +19,9 @@ public class DisplayBooksCommand implements Command {
         String header = "|              Book Title               |   Author  | Year|\n";
         printer.display(header + library.getBookDetails());
     }
+
+    @Override
+    public String intent() {
+        return "Display books";
+    }
 }
