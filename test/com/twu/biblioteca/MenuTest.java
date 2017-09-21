@@ -1,13 +1,10 @@
 package com.twu.biblioteca;
 
 import org.junit.Before;
-import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.math.BigInteger;
-
-import static org.junit.Assert.assertEquals;
 
 public class MenuTest {
     Library library = new Library();
