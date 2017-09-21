@@ -34,19 +34,6 @@ public class Menu {
         return account.login.isValid(convertedLibraryNumber, convertedPassword);
     }
 
-    public String seeAccountDetails() {
-        if (userLogin()) {
-            printer.display("You have chosen to view your account details. Please find this listed below:");
-            printer.display("User Name:" + account.getUserName() );
-            printer.display("Email address:" + account.getUserEmailAddress());
-            printer.display("Phone number:" + account.getUserNumber());
-            printer.display("Books in account:" + account.getBooksInAccountDetails());
-            return "You have chosen to view your account details. Please find this listed below:";
-        } else {
-            return  printer.display("We don't recognise those account details, redirecting you to the main menu");
-        }
-    }
-
     public String process(String selection) {
         switch (selection) {
             case "1":

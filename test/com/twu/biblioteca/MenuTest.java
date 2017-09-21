@@ -80,14 +80,4 @@ public class MenuTest {
 
         assertEquals(false, menu2.userLogin());
     }
-
-    @Test
-    public void validUserCanSeeTheirAccountDetails() {
-        System.setOut(new java.io.PrintStream(outputStream));
-        System.out.print("You have chosen to view your account details. Please find this listed below:");
-        Keyboard username1 = new Keyboard(toStream("1234567\nabcdefgh\n"));
-        Menu menu2 = new Menu(account, library, printer, register, username1);
-
-        assertEquals(outputStream.toString(), menu2.seeAccountDetails());
-    }
 }
