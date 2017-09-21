@@ -26,7 +26,7 @@ public class ChecksOutBooksCommand implements Command {
             printer.display("You have chosen to check out a book. Please enter the title of the book you'd like to check out:");
             title = keyboard.read();
         } else {
-             checkIsValidOption();
+             printer.display("We don't recognise those account details, redirecting you to the main menu.");
         }
 
         if (libraryRegister.hasBookTitleInRegister(title) && library.hasBookTitleInLibrary(title)) {
@@ -45,9 +45,5 @@ public class ChecksOutBooksCommand implements Command {
         printer.display("Please now enter you password:");
         Password convertedPassword = keyboard.readPassword();
         return account.login.isValid(convertedLibraryNumber, convertedPassword);
-    }
-
-    public void checkIsValidOption() {
-        printer.display("Select a valid option!");
     }
 }

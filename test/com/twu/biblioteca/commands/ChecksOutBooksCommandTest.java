@@ -40,4 +40,16 @@ public class ChecksOutBooksCommandTest {
         assertEquals("Thank you! Enjoy the book", fakePrinter.output());
 
     }
+
+    @Test
+    public void aLoggedInUserCantCheckoutAnInvalidBook() {
+        library.addBooks(a);
+        register.addBooksToRegister(a);
+    Keyboard keyboard = new Keyboard(toStream("1234567\nabcdefgh\nfwedsfewf"));
+    FakePrinter fakePrinter = new FakePrinter();
+    ChecksOutBooksCommand command = new ChecksOutBooksCommand(library, fakePrinter, keyboard, account, register);
+        command.execute();
+    assertEquals("That book is not available.", fakePrinter.output());
+    }
+
 }
