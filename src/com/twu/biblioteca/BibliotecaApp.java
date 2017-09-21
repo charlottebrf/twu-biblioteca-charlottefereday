@@ -65,6 +65,7 @@ public class BibliotecaApp {
         BigInteger cell = new BigInteger("0123456789");
         UserPhoneNumber number = new UserPhoneNumber(cell);
         UserAccount account = new UserAccount(login, userName, email, number);
+        account.addBooksToAccount(harryPotter1);
 
         Printer printer = new Printer();
         Keyboard keyboard = new Keyboard();

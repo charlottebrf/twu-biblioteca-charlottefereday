@@ -1,10 +1,7 @@
 package com.twu.biblioteca;
 
 import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class UserAccount {
     final private UserName userName;
@@ -35,6 +32,24 @@ public class UserAccount {
 
     public List<Book> getBooksInAccount() {
         return new LinkedList<>(booksInAccount.values());
+    }
+
+    public String getBooksInAccountDetails() {
+        String bookDetails = "";
+        for (Book book : sortedBooks()) {
+            bookDetails += "|" + book.title.getTitle() + "|" + book.getBookAuthor() + "|" + book.getBookYear() + "|" + "\n";
+        }
+
+        return bookDetails;
+    }
+
+    public List<Book> sortedBooks() {
+        List<Book> books = new LinkedList<>(booksInAccount.values());
+
+        Comparator<Book> howToSort = Comparator.comparing(book -> book.title.getTitle());
+
+        books.sort(howToSort);
+        return books;
     }
 
     public void removeBooksFromAccount(Book book) { booksInAccount.remove(book.title.getTitle());}

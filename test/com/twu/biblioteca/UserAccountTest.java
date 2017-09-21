@@ -56,4 +56,9 @@ public class UserAccountTest {
 
         assertEquals(expectedBooksInAccount, account.getBooksInAccount() );
     }
+
+    @Test
+    public void getsAllBooksInAccount() {
+        assertEquals("|Harry Potter and the Chamber of Secrets|J.K.Rowlng|1998|\n|Harry Potter and the Philosopher's Stone|J.K.Rowlng|1997|\n", account.getBooksInAccountDetails());
+    }
 }
