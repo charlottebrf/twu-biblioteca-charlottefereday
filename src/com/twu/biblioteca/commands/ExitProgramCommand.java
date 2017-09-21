@@ -15,6 +15,5 @@ public class ExitProgramCommand implements Command {
     public void execute() {
         printer.display("You have selected quit: exiting the program now");
         System.exit(0);
-        return;
     }
 }
