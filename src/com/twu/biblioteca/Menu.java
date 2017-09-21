@@ -21,19 +21,6 @@ public class Menu {
         this(account, library, printer, register, new Keyboard());
     }
 
-    public String checkIsValidOption() {
-        return printer.display("Select a valid option!");
-    }
-
-
-    public boolean userLogin() {
-        printer.display("To complete this action, you will first need to sign in. Please enter your Library number:");
-        LibraryNumber convertedLibraryNumber = keyboard.readLibraryNumber();
-        printer.display("Please now enter you password:");
-        com.twu.biblioteca.Password convertedPassword = keyboard.readPassword();
-        return account.login.isValid(convertedLibraryNumber, convertedPassword);
-    }
-
     public String process(String selection) {
         switch (selection) {
             case "1":
@@ -49,7 +36,7 @@ public class Menu {
                 new ChecksOutMoviesCommand(library, printer, keyboard, register).execute();
                 break;
             case "5":
-               new ReturnsBooksCommand(library, printer, keyboard, account, register).execute();
+                new ReturnsBooksCommand(library, printer, keyboard, account, register).execute();
                 break;
             case "6":
                 new ExitProgramCommand(printer).execute();
@@ -58,11 +45,10 @@ public class Menu {
                 new DisplayAccountDetailsCommand(printer, account, keyboard).execute();
                 break;
             default:
-                checkIsValidOption();
+                new NotValidOptionCommand(printer).execute();
                 break;
         }
         return "";
     }
-
 }
 

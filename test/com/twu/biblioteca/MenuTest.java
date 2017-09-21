@@ -36,6 +36,7 @@ public class MenuTest {
     public InputStream toStream(String stringy) {
         return new ByteArrayInputStream(stringy.getBytes());
     }
+
     java.io.ByteArrayOutputStream outputStream = new java.io.ByteArrayOutputStream();
 
 
@@ -53,31 +54,5 @@ public class MenuTest {
         register.addMoviesToRegister(killBill);
         register.addMoviesToRegister(cinderella);
         account.addBooksToAccount(hP2);
-    }
-
-
-    @Test
-    public void givesAMesageforAnInvalidOption() {
-        System.setOut(new java.io.PrintStream(outputStream));
-        System.out.print("Select a valid option!");
-        assertEquals(outputStream.toString(), menu.checkIsValidOption());
-    }
-
-
-
-    @Test
-    public void aValidLoginCanUseCheckoutOrReturnServices() {
-        Keyboard username1 = new Keyboard(toStream("1234567\nabcdefgh\n"));
-        Menu menu2 = new Menu(account, library, printer, register, username1);
-
-        assertEquals(true, menu2.userLogin());
-    }
-
-    @Test
-    public void InvalidLoginCannotUseCheckoutOrReturnServices() {
-        Keyboard username1 = new Keyboard(toStream("67\nabcdefgh\n"));
-        Menu menu2 = new Menu(account, library, printer, register, username1);
-
-        assertEquals(false, menu2.userLogin());
     }
 }
