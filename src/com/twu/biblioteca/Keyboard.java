@@ -28,22 +28,24 @@ public class Keyboard {
     }
 
     public LibraryNumber readLibraryNumber() {
+        int number = 0;
         try {
             String line = reader.readLine();
-            return new LibraryNumber(Integer.parseInt(line));
-
+            number = Integer.parseInt(line);
         } catch (IOException | NumberFormatException e) {
             System.out.println("Not recognized: try again");
-            return readLibraryNumber();
+            readLibraryNumber();
         }
+        return new LibraryNumber(number);
     }
 
     public Password readPassword() {
         String password = "";
         try {
             password = reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Not recognized: try again");
+            readPassword();
         }
         return new Password(password);
     }

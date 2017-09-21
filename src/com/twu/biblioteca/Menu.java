@@ -31,7 +31,7 @@ public class Menu {
     public String exitProgram() {
         return printer.display("You have selected quit: exiting the program now");
     }
-    
+
 
     public String returnedSuccessOrFailureMessage(String title) {
         if (library.findBookFromTitle(title) != Book.NO_BOOK && register.hasBookTitleInRegister(title)) {
