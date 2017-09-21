@@ -102,9 +102,10 @@ public class Menu {
             printer.display("User Name:" + account.getUserName() );
             printer.display("Email address:" + account.getUserEmailAddress());
             printer.display("Phone number:" + account.getUserNumber());
+            printer.display("Books in account:" + account.getBooksInAccountDetails());
             return "You have chosen to view your account details. Please find this listed below:";
         } else {
-            return exitProgram();
+            return  printer.display("We don't recognise those account details, redirecting you to the main menu");
         }
     }
 

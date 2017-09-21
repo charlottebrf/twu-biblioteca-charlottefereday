@@ -52,6 +52,7 @@ public class MenuTest {
         register.addBooksToRegister(harryPotter1);
         register.addMoviesToRegister(killBill);
         register.addMoviesToRegister(cinderella);
+        account.addBooksToAccount(hP2);
     }
 
 
